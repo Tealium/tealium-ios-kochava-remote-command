@@ -1,0 +1,4 @@
+module KochavaTracker {
+    header "KochavaiOS/libKochavaTrackeriOS/KochavaTracker.h"
+    export *
+}
