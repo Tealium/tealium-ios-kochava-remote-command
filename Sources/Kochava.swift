@@ -60,6 +60,7 @@ enum Kochava {
         static let customEventNameString = "customEventNameString"
         static let infoDictionary = "infoDictionary"
         static let infoString = "infoString"
+        static let sleepTracker = "sleep_tracker"
     }
     
 }

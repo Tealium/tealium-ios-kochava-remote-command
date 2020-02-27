@@ -21,7 +21,7 @@ extension KochavaEvent: KochavaEventProtocol { }
 public protocol KochavaTrackable {
     var tealium: Tealium? { get set }
     func configure(with parameters: [AnyHashable: Any])
-    func sleepTracker()
+    func sleepTracker(_ sleep: Bool)
     func invalidate()
     func sendEvent(name: String)
     func sendEvent(name: String, with string: String?)
@@ -47,13 +47,14 @@ public class TealiumKochavaTracker: NSObject, KochavaTrackable, TealiumRegistrat
         } else {
             KochavaTracker.shared.configure(withParametersDictionary: parameters, delegate: nil)
         }
-        if let sleep = parameters[Kochava.ConfigKey.sleepTracker] as? Bool, sleep == true {
-            KochavaTracker.shared.sleepBool = true
+        if let sleep = parameters[Kochava.ConfigKey.sleepTracker] as? Bool,
+            sleep == true {
+            sleepTracker(sleep)
         }
     }
     
-    public func sleepTracker() {
-        KochavaTracker.shared.sleepBool = true
+    public func sleepTracker(_ sleep: Bool) {
+        KochavaTracker.shared.sleepBool = sleep
     }
     
     public func invalidate() {

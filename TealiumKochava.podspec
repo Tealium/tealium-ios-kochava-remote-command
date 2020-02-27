@@ -28,6 +28,7 @@ Pod::Spec.new do |s|
 
     # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
     s.ios.source_files      = "Sources/*.{swift}"
+    s.ios.source_files      = "Sources/KochavaiOS/**/*.{h,m}"
 
     # ――― Dependencies ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
     s.ios.dependency 'tealium-swift/Core'
@@ -35,6 +36,5 @@ Pod::Spec.new do |s|
     s.ios.dependency 'tealium-swift/TealiumDelegate'
     s.ios.dependency 'tealium-swift/TealiumTagManagement'
     s.ios.dependency 'tealium-swift/TealiumVolatileData'
-    s.ios.dependency 'Appboy-iOS-SDK', '~> 3.14.0'
 
 end

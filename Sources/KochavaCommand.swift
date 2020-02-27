@@ -92,11 +92,15 @@ public class KochavaCommand {
                     
                     tealKochavaTracker.configure(with: config)
                     
-                    if let _ = payload[Kochava.ConfigKey.sleepTracker] as? Bool {
-                        tealKochavaTracker.sleepTracker()
+                    if let sleepTracker = payload[Kochava.ConfigKey.sleepTracker] as? Bool {
+                        tealKochavaTracker.sleepTracker(sleepTracker)
                     }
                 case Kochava.Commands.sleeptracker:
-                    tealKochavaTracker.sleepTracker()
+                    guard let sleepTracker = payload[Kochava.ConfigKey.sleepTracker] as? Bool else {
+                       print("Tealium Kochava: `sleep_tracker` mapping is required in order to toggle sleep.")
+                        return
+                    }
+                    tealKochavaTracker.sleepTracker(sleepTracker)
                 case Kochava.Commands.invalidate:
                     tealKochavaTracker.invalidate()
                 case Kochava.Commands.sendidentitylink:

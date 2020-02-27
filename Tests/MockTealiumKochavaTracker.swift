@@ -19,6 +19,7 @@ protocol MockKochavaTrackerDelegate: class {
 
 class MockTealiumKochavaTracker: KochavaTrackable {
     
+    
     var configureWithAttributionDelegateCount = 0
     var configureWithoutAttributionDelegateCount = 0
     var configureWithSleepCount = 0
@@ -46,7 +47,7 @@ class MockTealiumKochavaTracker: KochavaTrackable {
         }
     }
     
-    func sleepTracker() {
+    func sleepTracker(_ sleep: Bool) {
         sleepCount += 1
     }
     
