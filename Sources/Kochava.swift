@@ -26,8 +26,7 @@ enum Kochava {
         static let kvaSDKVersion = "kva_sdk_version"
     }
     
-    // remove CaseIterable when done testing
-    enum Commands: CaseIterable {
+    enum Commands {
         static let configure = "configure"
         static let sleeptracker = "sleepTracker"
         static let invalidate = "invalidate"

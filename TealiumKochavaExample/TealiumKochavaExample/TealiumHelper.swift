@@ -8,7 +8,7 @@
 
 import Foundation
 import TealiumSwift
-//import TealiumFirebase
+//import TealiumKochava
 
 enum TealiumConfiguration {
     static let account = "tealiummobile"
@@ -25,24 +25,27 @@ class TealiumHelper {
                                environment: TealiumConfiguration.environment)
 
     var tealium: Tealium?
+    var deepLinkHelpers = [TealiumDeeplinkable]()
+    var pushTrackingHelpers = [TealiumRegistration]()
 
     private init() {
-        config.batchingEnabled = false
         config.logLevel = .verbose
         config.shouldUseRemotePublishSettings = false
-        let list = TealiumModulesList(isWhitelist: false,
-                                      moduleNames: ["autotracking", "collect", "consentmanager"])
-        config.modulesList = list
+
         tealium = Tealium(config: config,
-                          enableCompletion: { [weak self] _ in
-                              guard let self = self else { return }
-                              guard let remoteCommands = self.tealium?.remoteCommands() else {
-                                  return
-                              }
-                              // MARK: Kochava
-                              let kochavaCommand = KochavaCommand().remoteCommand()
-                              remoteCommands.add(kochavaCommand)
-                          })
+            enableCompletion: { [weak self] _ in
+                guard let self = self else { return }
+                guard let remoteCommands = self.tealium?.remoteCommands() else {
+                    return
+                }
+                // MARK: Kochava
+                let tealKochavaTracker = TealiumKochavaTracker()
+                let kochavaCommand = KochavaCommand(tealKochavaTracker: tealKochavaTracker).remoteCommand()
+                remoteCommands.add(kochavaCommand)
+                // Optional Push Message Tracking and Enhanced Deeplinking
+                self.deepLinkHelpers.append(tealKochavaTracker)
+                self.pushTrackingHelpers.append(tealKochavaTracker)
+            })
 
     }
 
