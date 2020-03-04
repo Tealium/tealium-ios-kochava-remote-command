@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
     s.source       = { :git => "https://github.com/Tealium/tealium-ios-kochava-remote-command.git", :tag => "#{s.version}" }
 
     # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-    s.ios.source_files      = "Sources/*.{swift}", "Sources/TealK.h", "Sources/libKochavaTrackeriOS/*.{h}", "Sources/libKochavaCoreiOS/*.{h}"
+    s.ios.source_files      = "Sources/*.{swift}", "Sources/TealiumKochava.h", "Sources/libKochavaTrackeriOS/*.{h}", "Sources/libKochavaCoreiOS/*.{h}"
     s.vendored_libraries = 'Sources/libKochavaCoreiOS/libKochavaCoreiOS.a', 'Sources/libKochavaTrackeriOS/libKochavaTrackeriOS.a' 
 
     # ――― Dependencies ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

@@ -16,7 +16,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CFD611822407172400346042"
+               BlueprintIdentifier = "CF9757822410585300015347"
                BuildableName = "TealiumKochavaTests.xctest"
                BlueprintName = "TealiumKochavaTests"
                ReferencedContainer = "container:TealiumKochava.xcodeproj">

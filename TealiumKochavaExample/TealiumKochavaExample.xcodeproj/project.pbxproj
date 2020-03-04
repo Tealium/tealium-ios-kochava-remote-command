@@ -54,7 +54,6 @@
 		CFA6B07E2404952D00CA6A07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CFA6B0852404965D00CA6A07 /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		CFA6B087240496B200CA6A07 /* Ecommerce.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Ecommerce.storyboard; sourceTree = "<group>"; };
-		CFD6120D2407340B00346042 /* TealiumKochavaExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TealiumKochavaExample-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +106,6 @@
 				CFA6B0822404961300CA6A07 /* Utilities */,
 				CFA6B053240493B700CA6A07 /* Assets.xcassets */,
 				CFA6B058240493B700CA6A07 /* Info.plist */,
-				CFD6120D2407340B00346042 /* TealiumKochavaExample-Bridging-Header.h */,
 			);
 			path = TealiumKochavaExample;
 			sourceTree = "<group>";
@@ -448,7 +446,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tealium.TealiumKochavaExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "TealiumKochavaExample/TealiumKochavaExample-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -468,7 +466,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tealium.TealiumKochavaExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "TealiumKochavaExample/TealiumKochavaExample-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

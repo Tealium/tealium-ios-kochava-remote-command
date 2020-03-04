@@ -7,301 +7,303 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CF9757402410552E00015347 /* libKochavaCoreiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD611DD2407294900346042 /* libKochavaCoreiOS.a */; };
-		CF9757412410552E00015347 /* libKochavaTrackeriOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD611BE2407203D00346042 /* libKochavaTrackeriOS.a */; };
-		CFD611842407172400346042 /* TealiumKochava.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD6117A2407172400346042 /* TealiumKochava.framework */; };
-		CFD6119C24071C9000346042 /* EnumMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6119524071C9000346042 /* EnumMap.swift */; };
-		CFD6119D24071C9000346042 /* TealiumDeeplinkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6119624071C9000346042 /* TealiumDeeplinkable.swift */; };
-		CFD6119E24071C9000346042 /* KochavaCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6119724071C9000346042 /* KochavaCommand.swift */; };
-		CFD6119F24071C9000346042 /* TealiumKochava.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD6119824071C9000346042 /* TealiumKochava.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611A024071C9000346042 /* KochavaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6119924071C9000346042 /* KochavaConstants.swift */; };
-		CFD611A124071C9000346042 /* TealiumKochavaTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6119A24071C9000346042 /* TealiumKochavaTracker.swift */; };
-		CFD611A924071CA400346042 /* HttpTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD611A424071CA400346042 /* HttpTestHelpers.swift */; };
-		CFD611AA24071CA400346042 /* TealiumKochavaTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD611A524071CA400346042 /* TealiumKochavaTrackerTests.swift */; };
-		CFD611AB24071CA400346042 /* MockKochavaEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD611A624071CA400346042 /* MockKochavaEvent.swift */; };
-		CFD611AC24071CA400346042 /* MockTealiumKochavaTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD611A724071CA400346042 /* MockTealiumKochavaTracker.swift */; };
-		CFD611C02407203D00346042 /* KVATracker.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD611BB2407203D00346042 /* KVATracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611C12407203D00346042 /* KochavaTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD611BC2407203D00346042 /* KochavaTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611C22407203D00346042 /* KVADeeplink.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD611BD2407203D00346042 /* KVADeeplink.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611C32407203D00346042 /* libKochavaTrackeriOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD611BE2407203D00346042 /* libKochavaTrackeriOS.a */; };
-		CFD611C42407203D00346042 /* KVATrackerProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD611BF2407203D00346042 /* KVATrackerProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611CA2407251100346042 /* TealiumCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD611C62407251100346042 /* TealiumCore.framework */; };
-		CFD611CB2407251100346042 /* TealiumCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFD611C62407251100346042 /* TealiumCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CFD611CC2407251100346042 /* TealiumRemoteCommands.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD611C72407251100346042 /* TealiumRemoteCommands.framework */; };
-		CFD611CD2407251100346042 /* TealiumRemoteCommands.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFD611C72407251100346042 /* TealiumRemoteCommands.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CFD611CE2407251100346042 /* TealiumDelegate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD611C82407251100346042 /* TealiumDelegate.framework */; };
-		CFD611CF2407251100346042 /* TealiumDelegate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFD611C82407251100346042 /* TealiumDelegate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CFD611D02407251100346042 /* TealiumTagManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD611C92407251100346042 /* TealiumTagManagement.framework */; };
-		CFD611D12407251100346042 /* TealiumTagManagement.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFD611C92407251100346042 /* TealiumTagManagement.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CFD611D62407280300346042 /* libKochavaTrackeriOS.a in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFD611BE2407203D00346042 /* libKochavaTrackeriOS.a */; };
-		CFD611EA2407294900346042 /* KVASendEventFuncProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD611DA2407294900346042 /* KVASendEventFuncProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611EB2407294900346042 /* KVAPartner.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD611DB2407294900346042 /* KVAPartner.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611EC2407294900346042 /* KVAAsForContextObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD611DC2407294900346042 /* KVAAsForContextObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611ED2407294900346042 /* libKochavaCoreiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD611DD2407294900346042 /* libKochavaCoreiOS.a */; };
-		CFD611EE2407294900346042 /* KVAConfigureWithObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD611DE2407294900346042 /* KVAConfigureWithObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611EF2407294900346042 /* KVAConsent.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD611DF2407294900346042 /* KVAConsent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611F02407294900346042 /* KVALogLevel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD611E02407294900346042 /* KVALogLevel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611F12407294900346042 /* KVAContext.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD611E12407294900346042 /* KVAContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611F22407294900346042 /* KVALog.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD611E22407294900346042 /* KVALog.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611F32407294900346042 /* KochavaEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD611E32407294900346042 /* KochavaEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611F42407294900346042 /* KVASharedPropertyProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD611E42407294900346042 /* KVASharedPropertyProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611F52407294900346042 /* KVASystem.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD611E52407294900346042 /* KVASystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611F62407294900346042 /* KVAProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD611E62407294900346042 /* KVAProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611F72407294900346042 /* KochavaCore.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD611E72407294900346042 /* KochavaCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611F82407294900346042 /* KVACoreProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD611E82407294900346042 /* KVACoreProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611F92407294900346042 /* KVAFromObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD611E92407294900346042 /* KVAFromObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD611FF24072AA900346042 /* TealiumVolatileData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD611FB24072A4C00346042 /* TealiumVolatileData.framework */; };
-		CFD61201240731B000346042 /* TealiumCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CFD611C62407251100346042 /* TealiumCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CFD61202240731B000346042 /* TealiumRemoteCommands.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CFD611C72407251100346042 /* TealiumRemoteCommands.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF9757842410585300015347 /* TealiumKochava.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF97577A2410585300015347 /* TealiumKochava.framework */; };
+		CF97578B2410585400015347 /* TealiumKochava.h in Headers */ = {isa = PBXBuildFile; fileRef = CF97577D2410585300015347 /* TealiumKochava.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757992410589900015347 /* TealiumKochavaTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757952410589900015347 /* TealiumKochavaTrackerTests.swift */; };
+		CF97579A2410589900015347 /* MockTealiumKochavaTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757962410589900015347 /* MockTealiumKochavaTracker.swift */; };
+		CF97579B2410589900015347 /* HttpTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757972410589900015347 /* HttpTestHelpers.swift */; };
+		CF97579C2410589900015347 /* MockKochavaEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757982410589900015347 /* MockKochavaEvent.swift */; };
+		CF9757B9241058B200015347 /* TealiumDeeplinkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97579D241058B100015347 /* TealiumDeeplinkable.swift */; };
+		CF9757BA241058B200015347 /* KochavaCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97579E241058B100015347 /* KochavaCommand.swift */; };
+		CF9757BB241058B200015347 /* TealiumKochavaTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97579F241058B100015347 /* TealiumKochavaTracker.swift */; };
+		CF9757BC241058B200015347 /* KVATracker.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757A1241058B100015347 /* KVATracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757BD241058B200015347 /* KochavaTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757A2241058B100015347 /* KochavaTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757BE241058B200015347 /* KVADeeplink.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757A3241058B100015347 /* KVADeeplink.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757BF241058B200015347 /* libKochavaTrackeriOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9757A4241058B100015347 /* libKochavaTrackeriOS.a */; };
+		CF9757C0241058B200015347 /* KVATrackerProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757A5241058B100015347 /* KVATrackerProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757C1241058B200015347 /* KochavaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757A6241058B100015347 /* KochavaConstants.swift */; };
+		CF9757C2241058B200015347 /* EnumMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757A7241058B100015347 /* EnumMap.swift */; };
+		CF9757C3241058B200015347 /* KVASendEventFuncProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757A9241058B200015347 /* KVASendEventFuncProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757C4241058B200015347 /* KVAPartner.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757AA241058B200015347 /* KVAPartner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757C5241058B200015347 /* KVAAsForContextObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757AB241058B200015347 /* KVAAsForContextObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757C6241058B200015347 /* libKochavaCoreiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9757AC241058B200015347 /* libKochavaCoreiOS.a */; };
+		CF9757C7241058B200015347 /* KVAConfigureWithObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757AD241058B200015347 /* KVAConfigureWithObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757C8241058B200015347 /* KVAConsent.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757AE241058B200015347 /* KVAConsent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757C9241058B200015347 /* KVALogLevel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757AF241058B200015347 /* KVALogLevel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757CA241058B200015347 /* KVAContext.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757B0241058B200015347 /* KVAContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757CB241058B200015347 /* KVALog.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757B1241058B200015347 /* KVALog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757CC241058B200015347 /* KochavaEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757B2241058B200015347 /* KochavaEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757CD241058B200015347 /* KVASharedPropertyProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757B3241058B200015347 /* KVASharedPropertyProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757CE241058B200015347 /* KVASystem.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757B4241058B200015347 /* KVASystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757CF241058B200015347 /* KVAProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757B5241058B200015347 /* KVAProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757D0241058B200015347 /* KochavaCore.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757B6241058B200015347 /* KochavaCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757D1241058B200015347 /* KVACoreProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757B7241058B200015347 /* KVACoreProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757D2241058B200015347 /* KVAFromObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757B8241058B200015347 /* KVAFromObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF9757EA241059E000015347 /* TealiumDelegate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9757E5241059DF00015347 /* TealiumDelegate.framework */; };
+		CF9757EB241059E000015347 /* TealiumDelegate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF9757E5241059DF00015347 /* TealiumDelegate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF9757EC241059E000015347 /* TealiumTagManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9757E6241059DF00015347 /* TealiumTagManagement.framework */; };
+		CF9757ED241059E000015347 /* TealiumTagManagement.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF9757E6241059DF00015347 /* TealiumTagManagement.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF9757EE241059E000015347 /* TealiumRemoteCommands.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9757E7241059DF00015347 /* TealiumRemoteCommands.framework */; };
+		CF9757EF241059E000015347 /* TealiumRemoteCommands.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF9757E7241059DF00015347 /* TealiumRemoteCommands.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF9757F0241059E000015347 /* TealiumVolatileData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9757E8241059DF00015347 /* TealiumVolatileData.framework */; };
+		CF9757F1241059E000015347 /* TealiumVolatileData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF9757E8241059DF00015347 /* TealiumVolatileData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF9757F2241059E000015347 /* TealiumCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9757E9241059DF00015347 /* TealiumCore.framework */; };
+		CF9757F3241059E000015347 /* TealiumCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF9757E9241059DF00015347 /* TealiumCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF9757F624105A6800015347 /* libKochavaCoreiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9757AC241058B200015347 /* libKochavaCoreiOS.a */; };
+		CF9757F724105A6800015347 /* libKochavaTrackeriOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9757A4241058B100015347 /* libKochavaTrackeriOS.a */; };
+		CF97580124105ADF00015347 /* TealiumCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CF9757E9241059DF00015347 /* TealiumCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF97580224105ADF00015347 /* TealiumRemoteCommands.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CF9757E7241059DF00015347 /* TealiumRemoteCommands.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CFD611852407172400346042 /* PBXContainerItemProxy */ = {
+		CF9757852410585300015347 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = CFD611712407172400346042 /* Project object */;
+			containerPortal = CF9757712410585300015347 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CFD611792407172400346042;
+			remoteGlobalIDString = CF9757792410585300015347;
 			remoteInfo = TealiumKochava;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CFD611D22407251100346042 /* Embed Frameworks */ = {
+		CF9757F4241059E000015347 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CFD611D62407280300346042 /* libKochavaTrackeriOS.a in Embed Frameworks */,
-				CFD611D12407251100346042 /* TealiumTagManagement.framework in Embed Frameworks */,
-				CFD611CD2407251100346042 /* TealiumRemoteCommands.framework in Embed Frameworks */,
-				CFD611CF2407251100346042 /* TealiumDelegate.framework in Embed Frameworks */,
-				CFD611CB2407251100346042 /* TealiumCore.framework in Embed Frameworks */,
+				CF9757F1241059E000015347 /* TealiumVolatileData.framework in Embed Frameworks */,
+				CF9757F3241059E000015347 /* TealiumCore.framework in Embed Frameworks */,
+				CF9757ED241059E000015347 /* TealiumTagManagement.framework in Embed Frameworks */,
+				CF9757EF241059E000015347 /* TealiumRemoteCommands.framework in Embed Frameworks */,
+				CF9757EB241059E000015347 /* TealiumDelegate.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFD61200240731A000346042 /* CopyFiles */ = {
+		CF9757F824105A6C00015347 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CFD61201240731B000346042 /* TealiumCore.framework in CopyFiles */,
-				CFD61202240731B000346042 /* TealiumRemoteCommands.framework in CopyFiles */,
+				CF97580124105ADF00015347 /* TealiumCore.framework in CopyFiles */,
+				CF97580224105ADF00015347 /* TealiumRemoteCommands.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CFD6117A2407172400346042 /* TealiumKochava.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TealiumKochava.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFD611832407172400346042 /* TealiumKochavaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TealiumKochavaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFD6119524071C9000346042 /* EnumMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumMap.swift; sourceTree = "<group>"; };
-		CFD6119624071C9000346042 /* TealiumDeeplinkable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TealiumDeeplinkable.swift; sourceTree = "<group>"; };
-		CFD6119724071C9000346042 /* KochavaCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KochavaCommand.swift; sourceTree = "<group>"; };
-		CFD6119824071C9000346042 /* TealiumKochava.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TealiumKochava.h; sourceTree = "<group>"; };
-		CFD6119924071C9000346042 /* KochavaConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KochavaConstants.swift; sourceTree = "<group>"; };
-		CFD6119A24071C9000346042 /* TealiumKochavaTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TealiumKochavaTracker.swift; sourceTree = "<group>"; };
-		CFD6119B24071C9000346042 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CFD611A424071CA400346042 /* HttpTestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTestHelpers.swift; sourceTree = "<group>"; };
-		CFD611A524071CA400346042 /* TealiumKochavaTrackerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TealiumKochavaTrackerTests.swift; sourceTree = "<group>"; };
-		CFD611A624071CA400346042 /* MockKochavaEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockKochavaEvent.swift; sourceTree = "<group>"; };
-		CFD611A724071CA400346042 /* MockTealiumKochavaTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTealiumKochavaTracker.swift; sourceTree = "<group>"; };
-		CFD611A824071CA400346042 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CFD611BB2407203D00346042 /* KVATracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVATracker.h; sourceTree = "<group>"; };
-		CFD611BC2407203D00346042 /* KochavaTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KochavaTracker.h; sourceTree = "<group>"; };
-		CFD611BD2407203D00346042 /* KVADeeplink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVADeeplink.h; sourceTree = "<group>"; };
-		CFD611BE2407203D00346042 /* libKochavaTrackeriOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libKochavaTrackeriOS.a; sourceTree = "<group>"; };
-		CFD611BF2407203D00346042 /* KVATrackerProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVATrackerProduct.h; sourceTree = "<group>"; };
-		CFD611C62407251100346042 /* TealiumCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumCore.framework; path = Carthage/Build/iOS/TealiumCore.framework; sourceTree = "<group>"; };
-		CFD611C72407251100346042 /* TealiumRemoteCommands.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumRemoteCommands.framework; path = Carthage/Build/iOS/TealiumRemoteCommands.framework; sourceTree = "<group>"; };
-		CFD611C82407251100346042 /* TealiumDelegate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumDelegate.framework; path = Carthage/Build/iOS/TealiumDelegate.framework; sourceTree = "<group>"; };
-		CFD611C92407251100346042 /* TealiumTagManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumTagManagement.framework; path = Carthage/Build/iOS/TealiumTagManagement.framework; sourceTree = "<group>"; };
-		CFD611DA2407294900346042 /* KVASendEventFuncProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVASendEventFuncProvider.h; sourceTree = "<group>"; };
-		CFD611DB2407294900346042 /* KVAPartner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAPartner.h; sourceTree = "<group>"; };
-		CFD611DC2407294900346042 /* KVAAsForContextObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAAsForContextObjectProtocol.h; sourceTree = "<group>"; };
-		CFD611DD2407294900346042 /* libKochavaCoreiOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libKochavaCoreiOS.a; sourceTree = "<group>"; };
-		CFD611DE2407294900346042 /* KVAConfigureWithObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAConfigureWithObjectProtocol.h; sourceTree = "<group>"; };
-		CFD611DF2407294900346042 /* KVAConsent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAConsent.h; sourceTree = "<group>"; };
-		CFD611E02407294900346042 /* KVALogLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVALogLevel.h; sourceTree = "<group>"; };
-		CFD611E12407294900346042 /* KVAContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAContext.h; sourceTree = "<group>"; };
-		CFD611E22407294900346042 /* KVALog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVALog.h; sourceTree = "<group>"; };
-		CFD611E32407294900346042 /* KochavaEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KochavaEvent.h; sourceTree = "<group>"; };
-		CFD611E42407294900346042 /* KVASharedPropertyProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVASharedPropertyProvider.h; sourceTree = "<group>"; };
-		CFD611E52407294900346042 /* KVASystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVASystem.h; sourceTree = "<group>"; };
-		CFD611E62407294900346042 /* KVAProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAProduct.h; sourceTree = "<group>"; };
-		CFD611E72407294900346042 /* KochavaCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KochavaCore.h; sourceTree = "<group>"; };
-		CFD611E82407294900346042 /* KVACoreProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVACoreProduct.h; sourceTree = "<group>"; };
-		CFD611E92407294900346042 /* KVAFromObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAFromObjectProtocol.h; sourceTree = "<group>"; };
-		CFD611FB24072A4C00346042 /* TealiumVolatileData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumVolatileData.framework; path = Carthage/Build/iOS/TealiumVolatileData.framework; sourceTree = "<group>"; };
+		CF97577A2410585300015347 /* TealiumKochava.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TealiumKochava.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF97577D2410585300015347 /* TealiumKochava.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TealiumKochava.h; sourceTree = "<group>"; };
+		CF97577E2410585300015347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF9757832410585300015347 /* TealiumKochavaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TealiumKochavaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF97578A2410585400015347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF9757942410589800015347 /* TealiumKochavaTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TealiumKochavaTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		CF9757952410589900015347 /* TealiumKochavaTrackerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TealiumKochavaTrackerTests.swift; sourceTree = "<group>"; };
+		CF9757962410589900015347 /* MockTealiumKochavaTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTealiumKochavaTracker.swift; sourceTree = "<group>"; };
+		CF9757972410589900015347 /* HttpTestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTestHelpers.swift; sourceTree = "<group>"; };
+		CF9757982410589900015347 /* MockKochavaEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockKochavaEvent.swift; sourceTree = "<group>"; };
+		CF97579D241058B100015347 /* TealiumDeeplinkable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TealiumDeeplinkable.swift; sourceTree = "<group>"; };
+		CF97579E241058B100015347 /* KochavaCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KochavaCommand.swift; sourceTree = "<group>"; };
+		CF97579F241058B100015347 /* TealiumKochavaTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TealiumKochavaTracker.swift; sourceTree = "<group>"; };
+		CF9757A1241058B100015347 /* KVATracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVATracker.h; sourceTree = "<group>"; };
+		CF9757A2241058B100015347 /* KochavaTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KochavaTracker.h; sourceTree = "<group>"; };
+		CF9757A3241058B100015347 /* KVADeeplink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVADeeplink.h; sourceTree = "<group>"; };
+		CF9757A4241058B100015347 /* libKochavaTrackeriOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libKochavaTrackeriOS.a; sourceTree = "<group>"; };
+		CF9757A5241058B100015347 /* KVATrackerProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVATrackerProduct.h; sourceTree = "<group>"; };
+		CF9757A6241058B100015347 /* KochavaConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KochavaConstants.swift; sourceTree = "<group>"; };
+		CF9757A7241058B100015347 /* EnumMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumMap.swift; sourceTree = "<group>"; };
+		CF9757A9241058B200015347 /* KVASendEventFuncProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVASendEventFuncProvider.h; sourceTree = "<group>"; };
+		CF9757AA241058B200015347 /* KVAPartner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAPartner.h; sourceTree = "<group>"; };
+		CF9757AB241058B200015347 /* KVAAsForContextObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAAsForContextObjectProtocol.h; sourceTree = "<group>"; };
+		CF9757AC241058B200015347 /* libKochavaCoreiOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libKochavaCoreiOS.a; sourceTree = "<group>"; };
+		CF9757AD241058B200015347 /* KVAConfigureWithObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAConfigureWithObjectProtocol.h; sourceTree = "<group>"; };
+		CF9757AE241058B200015347 /* KVAConsent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAConsent.h; sourceTree = "<group>"; };
+		CF9757AF241058B200015347 /* KVALogLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVALogLevel.h; sourceTree = "<group>"; };
+		CF9757B0241058B200015347 /* KVAContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAContext.h; sourceTree = "<group>"; };
+		CF9757B1241058B200015347 /* KVALog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVALog.h; sourceTree = "<group>"; };
+		CF9757B2241058B200015347 /* KochavaEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KochavaEvent.h; sourceTree = "<group>"; };
+		CF9757B3241058B200015347 /* KVASharedPropertyProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVASharedPropertyProvider.h; sourceTree = "<group>"; };
+		CF9757B4241058B200015347 /* KVASystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVASystem.h; sourceTree = "<group>"; };
+		CF9757B5241058B200015347 /* KVAProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAProduct.h; sourceTree = "<group>"; };
+		CF9757B6241058B200015347 /* KochavaCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KochavaCore.h; sourceTree = "<group>"; };
+		CF9757B7241058B200015347 /* KVACoreProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVACoreProduct.h; sourceTree = "<group>"; };
+		CF9757B8241058B200015347 /* KVAFromObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAFromObjectProtocol.h; sourceTree = "<group>"; };
+		CF9757E5241059DF00015347 /* TealiumDelegate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumDelegate.framework; path = Carthage/Build/iOS/TealiumDelegate.framework; sourceTree = "<group>"; };
+		CF9757E6241059DF00015347 /* TealiumTagManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumTagManagement.framework; path = Carthage/Build/iOS/TealiumTagManagement.framework; sourceTree = "<group>"; };
+		CF9757E7241059DF00015347 /* TealiumRemoteCommands.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumRemoteCommands.framework; path = Carthage/Build/iOS/TealiumRemoteCommands.framework; sourceTree = "<group>"; };
+		CF9757E8241059DF00015347 /* TealiumVolatileData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumVolatileData.framework; path = Carthage/Build/iOS/TealiumVolatileData.framework; sourceTree = "<group>"; };
+		CF9757E9241059DF00015347 /* TealiumCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumCore.framework; path = Carthage/Build/iOS/TealiumCore.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CFD611772407172400346042 /* Frameworks */ = {
+		CF9757772410585300015347 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFD611FF24072AA900346042 /* TealiumVolatileData.framework in Frameworks */,
-				CFD611C32407203D00346042 /* libKochavaTrackeriOS.a in Frameworks */,
-				CFD611CE2407251100346042 /* TealiumDelegate.framework in Frameworks */,
-				CFD611ED2407294900346042 /* libKochavaCoreiOS.a in Frameworks */,
-				CFD611CC2407251100346042 /* TealiumRemoteCommands.framework in Frameworks */,
-				CFD611CA2407251100346042 /* TealiumCore.framework in Frameworks */,
-				CFD611D02407251100346042 /* TealiumTagManagement.framework in Frameworks */,
+				CF9757F2241059E000015347 /* TealiumCore.framework in Frameworks */,
+				CF9757F0241059E000015347 /* TealiumVolatileData.framework in Frameworks */,
+				CF9757EC241059E000015347 /* TealiumTagManagement.framework in Frameworks */,
+				CF9757C6241058B200015347 /* libKochavaCoreiOS.a in Frameworks */,
+				CF9757EA241059E000015347 /* TealiumDelegate.framework in Frameworks */,
+				CF9757BF241058B200015347 /* libKochavaTrackeriOS.a in Frameworks */,
+				CF9757EE241059E000015347 /* TealiumRemoteCommands.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFD611802407172400346042 /* Frameworks */ = {
+		CF9757802410585300015347 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF9757402410552E00015347 /* libKochavaCoreiOS.a in Frameworks */,
-				CF9757412410552E00015347 /* libKochavaTrackeriOS.a in Frameworks */,
-				CFD611842407172400346042 /* TealiumKochava.framework in Frameworks */,
+				CF9757F624105A6800015347 /* libKochavaCoreiOS.a in Frameworks */,
+				CF9757F724105A6800015347 /* libKochavaTrackeriOS.a in Frameworks */,
+				CF9757842410585300015347 /* TealiumKochava.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CFD611702407172400346042 = {
+		CF9757702410585300015347 = {
 			isa = PBXGroup;
 			children = (
-				CFD6119424071C9000346042 /* Sources */,
-				CFD611A324071CA400346042 /* Tests */,
-				CFD6117B2407172400346042 /* Products */,
-				CFD611C52407251000346042 /* Frameworks */,
+				CF97577C2410585300015347 /* Sources */,
+				CF9757872410585300015347 /* Tests */,
+				CF97577B2410585300015347 /* Products */,
+				CF9757D32410592A00015347 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		CFD6117B2407172400346042 /* Products */ = {
+		CF97577B2410585300015347 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CFD6117A2407172400346042 /* TealiumKochava.framework */,
-				CFD611832407172400346042 /* TealiumKochavaTests.xctest */,
+				CF97577A2410585300015347 /* TealiumKochava.framework */,
+				CF9757832410585300015347 /* TealiumKochavaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CFD6119424071C9000346042 /* Sources */ = {
+		CF97577C2410585300015347 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				CFD611D92407294900346042 /* libKochavaCoreiOS */,
-				CFD611BA2407203D00346042 /* libKochavaTrackeriOS */,
-				CFD6119524071C9000346042 /* EnumMap.swift */,
-				CFD6119624071C9000346042 /* TealiumDeeplinkable.swift */,
-				CFD6119724071C9000346042 /* KochavaCommand.swift */,
-				CFD6119924071C9000346042 /* KochavaConstants.swift */,
-				CFD6119A24071C9000346042 /* TealiumKochavaTracker.swift */,
-				CFD6119824071C9000346042 /* TealiumKochava.h */,
-				CFD6119B24071C9000346042 /* Info.plist */,
+				CF9757A0241058B100015347 /* libKochavaTrackeriOS */,
+				CF9757A8241058B200015347 /* libKochavaCoreiOS */,
+				CF9757A7241058B100015347 /* EnumMap.swift */,
+				CF97579E241058B100015347 /* KochavaCommand.swift */,
+				CF9757A6241058B100015347 /* KochavaConstants.swift */,
+				CF97579D241058B100015347 /* TealiumDeeplinkable.swift */,
+				CF97579F241058B100015347 /* TealiumKochavaTracker.swift */,
+				CF97577D2410585300015347 /* TealiumKochava.h */,
+				CF97577E2410585300015347 /* Info.plist */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		CFD611A324071CA400346042 /* Tests */ = {
+		CF9757872410585300015347 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				CFD611A424071CA400346042 /* HttpTestHelpers.swift */,
-				CFD611A524071CA400346042 /* TealiumKochavaTrackerTests.swift */,
-				CFD611A624071CA400346042 /* MockKochavaEvent.swift */,
-				CFD611A724071CA400346042 /* MockTealiumKochavaTracker.swift */,
-				CFD611A824071CA400346042 /* Info.plist */,
+				CF9757972410589900015347 /* HttpTestHelpers.swift */,
+				CF9757982410589900015347 /* MockKochavaEvent.swift */,
+				CF9757962410589900015347 /* MockTealiumKochavaTracker.swift */,
+				CF9757952410589900015347 /* TealiumKochavaTrackerTests.swift */,
+				CF97578A2410585400015347 /* Info.plist */,
+				CF9757942410589800015347 /* TealiumKochavaTests-Bridging-Header.h */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		CFD611BA2407203D00346042 /* libKochavaTrackeriOS */ = {
+		CF9757A0241058B100015347 /* libKochavaTrackeriOS */ = {
 			isa = PBXGroup;
 			children = (
-				CFD611BB2407203D00346042 /* KVATracker.h */,
-				CFD611BC2407203D00346042 /* KochavaTracker.h */,
-				CFD611BD2407203D00346042 /* KVADeeplink.h */,
-				CFD611BE2407203D00346042 /* libKochavaTrackeriOS.a */,
-				CFD611BF2407203D00346042 /* KVATrackerProduct.h */,
+				CF9757A1241058B100015347 /* KVATracker.h */,
+				CF9757A2241058B100015347 /* KochavaTracker.h */,
+				CF9757A3241058B100015347 /* KVADeeplink.h */,
+				CF9757A4241058B100015347 /* libKochavaTrackeriOS.a */,
+				CF9757A5241058B100015347 /* KVATrackerProduct.h */,
 			);
 			path = libKochavaTrackeriOS;
 			sourceTree = "<group>";
 		};
-		CFD611C52407251000346042 /* Frameworks */ = {
+		CF9757A8241058B200015347 /* libKochavaCoreiOS */ = {
 			isa = PBXGroup;
 			children = (
-				CFD611FB24072A4C00346042 /* TealiumVolatileData.framework */,
-				CFD611C62407251100346042 /* TealiumCore.framework */,
-				CFD611C82407251100346042 /* TealiumDelegate.framework */,
-				CFD611C72407251100346042 /* TealiumRemoteCommands.framework */,
-				CFD611C92407251100346042 /* TealiumTagManagement.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CFD611D92407294900346042 /* libKochavaCoreiOS */ = {
-			isa = PBXGroup;
-			children = (
-				CFD611DA2407294900346042 /* KVASendEventFuncProvider.h */,
-				CFD611DB2407294900346042 /* KVAPartner.h */,
-				CFD611DC2407294900346042 /* KVAAsForContextObjectProtocol.h */,
-				CFD611DD2407294900346042 /* libKochavaCoreiOS.a */,
-				CFD611DE2407294900346042 /* KVAConfigureWithObjectProtocol.h */,
-				CFD611DF2407294900346042 /* KVAConsent.h */,
-				CFD611E02407294900346042 /* KVALogLevel.h */,
-				CFD611E12407294900346042 /* KVAContext.h */,
-				CFD611E22407294900346042 /* KVALog.h */,
-				CFD611E32407294900346042 /* KochavaEvent.h */,
-				CFD611E42407294900346042 /* KVASharedPropertyProvider.h */,
-				CFD611E52407294900346042 /* KVASystem.h */,
-				CFD611E62407294900346042 /* KVAProduct.h */,
-				CFD611E72407294900346042 /* KochavaCore.h */,
-				CFD611E82407294900346042 /* KVACoreProduct.h */,
-				CFD611E92407294900346042 /* KVAFromObjectProtocol.h */,
+				CF9757A9241058B200015347 /* KVASendEventFuncProvider.h */,
+				CF9757AA241058B200015347 /* KVAPartner.h */,
+				CF9757AB241058B200015347 /* KVAAsForContextObjectProtocol.h */,
+				CF9757AC241058B200015347 /* libKochavaCoreiOS.a */,
+				CF9757AD241058B200015347 /* KVAConfigureWithObjectProtocol.h */,
+				CF9757AE241058B200015347 /* KVAConsent.h */,
+				CF9757AF241058B200015347 /* KVALogLevel.h */,
+				CF9757B0241058B200015347 /* KVAContext.h */,
+				CF9757B1241058B200015347 /* KVALog.h */,
+				CF9757B2241058B200015347 /* KochavaEvent.h */,
+				CF9757B3241058B200015347 /* KVASharedPropertyProvider.h */,
+				CF9757B4241058B200015347 /* KVASystem.h */,
+				CF9757B5241058B200015347 /* KVAProduct.h */,
+				CF9757B6241058B200015347 /* KochavaCore.h */,
+				CF9757B7241058B200015347 /* KVACoreProduct.h */,
+				CF9757B8241058B200015347 /* KVAFromObjectProtocol.h */,
 			);
 			path = libKochavaCoreiOS;
+			sourceTree = "<group>";
+		};
+		CF9757D32410592A00015347 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF9757E9241059DF00015347 /* TealiumCore.framework */,
+				CF9757E5241059DF00015347 /* TealiumDelegate.framework */,
+				CF9757E7241059DF00015347 /* TealiumRemoteCommands.framework */,
+				CF9757E6241059DF00015347 /* TealiumTagManagement.framework */,
+				CF9757E8241059DF00015347 /* TealiumVolatileData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		CFD611752407172400346042 /* Headers */ = {
+		CF9757752410585300015347 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFD611EF2407294900346042 /* KVAConsent.h in Headers */,
-				CFD611EC2407294900346042 /* KVAAsForContextObjectProtocol.h in Headers */,
-				CFD611F02407294900346042 /* KVALogLevel.h in Headers */,
-				CFD611F82407294900346042 /* KVACoreProduct.h in Headers */,
-				CFD611EE2407294900346042 /* KVAConfigureWithObjectProtocol.h in Headers */,
-				CFD611F12407294900346042 /* KVAContext.h in Headers */,
-				CFD611EA2407294900346042 /* KVASendEventFuncProvider.h in Headers */,
-				CFD611F52407294900346042 /* KVASystem.h in Headers */,
-				CFD611EB2407294900346042 /* KVAPartner.h in Headers */,
-				CFD611F42407294900346042 /* KVASharedPropertyProvider.h in Headers */,
-				CFD611F62407294900346042 /* KVAProduct.h in Headers */,
-				CFD611F92407294900346042 /* KVAFromObjectProtocol.h in Headers */,
-				CFD611F22407294900346042 /* KVALog.h in Headers */,
-				CFD611F32407294900346042 /* KochavaEvent.h in Headers */,
-				CFD611F72407294900346042 /* KochavaCore.h in Headers */,
-				CFD6119F24071C9000346042 /* TealiumKochava.h in Headers */,
-				CFD611C12407203D00346042 /* KochavaTracker.h in Headers */,
-				CFD611C22407203D00346042 /* KVADeeplink.h in Headers */,
-				CFD611C42407203D00346042 /* KVATrackerProduct.h in Headers */,
-				CFD611C02407203D00346042 /* KVATracker.h in Headers */,
+				CF9757C8241058B200015347 /* KVAConsent.h in Headers */,
+				CF9757C5241058B200015347 /* KVAAsForContextObjectProtocol.h in Headers */,
+				CF9757C9241058B200015347 /* KVALogLevel.h in Headers */,
+				CF9757D1241058B200015347 /* KVACoreProduct.h in Headers */,
+				CF9757C7241058B200015347 /* KVAConfigureWithObjectProtocol.h in Headers */,
+				CF9757BD241058B200015347 /* KochavaTracker.h in Headers */,
+				CF9757CA241058B200015347 /* KVAContext.h in Headers */,
+				CF9757C3241058B200015347 /* KVASendEventFuncProvider.h in Headers */,
+				CF9757BE241058B200015347 /* KVADeeplink.h in Headers */,
+				CF9757CE241058B200015347 /* KVASystem.h in Headers */,
+				CF9757C0241058B200015347 /* KVATrackerProduct.h in Headers */,
+				CF9757BC241058B200015347 /* KVATracker.h in Headers */,
+				CF9757C4241058B200015347 /* KVAPartner.h in Headers */,
+				CF9757CD241058B200015347 /* KVASharedPropertyProvider.h in Headers */,
+				CF9757CF241058B200015347 /* KVAProduct.h in Headers */,
+				CF97578B2410585400015347 /* TealiumKochava.h in Headers */,
+				CF9757D2241058B200015347 /* KVAFromObjectProtocol.h in Headers */,
+				CF9757CB241058B200015347 /* KVALog.h in Headers */,
+				CF9757CC241058B200015347 /* KochavaEvent.h in Headers */,
+				CF9757D0241058B200015347 /* KochavaCore.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		CFD611792407172400346042 /* TealiumKochava */ = {
+		CF9757792410585300015347 /* TealiumKochava */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CFD6118E2407172400346042 /* Build configuration list for PBXNativeTarget "TealiumKochava" */;
+			buildConfigurationList = CF97578E2410585400015347 /* Build configuration list for PBXNativeTarget "TealiumKochava" */;
 			buildPhases = (
-				CFD611752407172400346042 /* Headers */,
-				CFD611762407172400346042 /* Sources */,
-				CFD611772407172400346042 /* Frameworks */,
-				CFD611782407172400346042 /* Resources */,
-				CFD611D22407251100346042 /* Embed Frameworks */,
-				CFD611D42407254100346042 /* Carthage */,
+				CF9757752410585300015347 /* Headers */,
+				CF9757762410585300015347 /* Sources */,
+				CF9757772410585300015347 /* Frameworks */,
+				CF9757782410585300015347 /* Resources */,
+				CF9757E12410593900015347 /* Carthage */,
+				CF9757F4241059E000015347 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -309,47 +311,49 @@
 			);
 			name = TealiumKochava;
 			productName = TealiumKochava;
-			productReference = CFD6117A2407172400346042 /* TealiumKochava.framework */;
+			productReference = CF97577A2410585300015347 /* TealiumKochava.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CFD611822407172400346042 /* TealiumKochavaTests */ = {
+		CF9757822410585300015347 /* TealiumKochavaTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CFD611912407172400346042 /* Build configuration list for PBXNativeTarget "TealiumKochavaTests" */;
+			buildConfigurationList = CF9757912410585400015347 /* Build configuration list for PBXNativeTarget "TealiumKochavaTests" */;
 			buildPhases = (
-				CFD6117F2407172400346042 /* Sources */,
-				CFD611802407172400346042 /* Frameworks */,
-				CFD611812407172400346042 /* Resources */,
-				CFD61200240731A000346042 /* CopyFiles */,
+				CF97577F2410585300015347 /* Sources */,
+				CF9757802410585300015347 /* Frameworks */,
+				CF9757812410585300015347 /* Resources */,
+				CF9757F824105A6C00015347 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CFD611862407172400346042 /* PBXTargetDependency */,
+				CF9757862410585300015347 /* PBXTargetDependency */,
 			);
 			name = TealiumKochavaTests;
 			productName = TealiumKochavaTests;
-			productReference = CFD611832407172400346042 /* TealiumKochavaTests.xctest */;
+			productReference = CF9757832410585300015347 /* TealiumKochavaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		CFD611712407172400346042 /* Project object */ = {
+		CF9757712410585300015347 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = Tealium;
 				TargetAttributes = {
-					CFD611792407172400346042 = {
+					CF9757792410585300015347 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
-					CFD611822407172400346042 = {
+					CF9757822410585300015347 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
-			buildConfigurationList = CFD611742407172400346042 /* Build configuration list for PBXProject "TealiumKochava" */;
+			buildConfigurationList = CF9757742410585300015347 /* Build configuration list for PBXProject "TealiumKochava" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -357,26 +361,26 @@
 				en,
 				Base,
 			);
-			mainGroup = CFD611702407172400346042;
-			productRefGroup = CFD6117B2407172400346042 /* Products */;
+			mainGroup = CF9757702410585300015347;
+			productRefGroup = CF97577B2410585300015347 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CFD611792407172400346042 /* TealiumKochava */,
-				CFD611822407172400346042 /* TealiumKochavaTests */,
+				CF9757792410585300015347 /* TealiumKochava */,
+				CF9757822410585300015347 /* TealiumKochavaTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CFD611782407172400346042 /* Resources */ = {
+		CF9757782410585300015347 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFD611812407172400346042 /* Resources */ = {
+		CF9757812410585300015347 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -386,7 +390,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		CFD611D42407254100346042 /* Carthage */ = {
+		CF9757E12410593900015347 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -407,46 +411,46 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CFD611762407172400346042 /* Sources */ = {
+		CF9757762410585300015347 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFD6119C24071C9000346042 /* EnumMap.swift in Sources */,
-				CFD611A024071C9000346042 /* KochavaConstants.swift in Sources */,
-				CFD6119D24071C9000346042 /* TealiumDeeplinkable.swift in Sources */,
-				CFD6119E24071C9000346042 /* KochavaCommand.swift in Sources */,
-				CFD611A124071C9000346042 /* TealiumKochavaTracker.swift in Sources */,
+				CF9757BB241058B200015347 /* TealiumKochavaTracker.swift in Sources */,
+				CF9757C2241058B200015347 /* EnumMap.swift in Sources */,
+				CF9757B9241058B200015347 /* TealiumDeeplinkable.swift in Sources */,
+				CF9757BA241058B200015347 /* KochavaCommand.swift in Sources */,
+				CF9757C1241058B200015347 /* KochavaConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFD6117F2407172400346042 /* Sources */ = {
+		CF97577F2410585300015347 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFD611AB24071CA400346042 /* MockKochavaEvent.swift in Sources */,
-				CFD611AA24071CA400346042 /* TealiumKochavaTrackerTests.swift in Sources */,
-				CFD611AC24071CA400346042 /* MockTealiumKochavaTracker.swift in Sources */,
-				CFD611A924071CA400346042 /* HttpTestHelpers.swift in Sources */,
+				CF97579B2410589900015347 /* HttpTestHelpers.swift in Sources */,
+				CF97579A2410589900015347 /* MockTealiumKochavaTracker.swift in Sources */,
+				CF97579C2410589900015347 /* MockKochavaEvent.swift in Sources */,
+				CF9757992410589900015347 /* TealiumKochavaTrackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CFD611862407172400346042 /* PBXTargetDependency */ = {
+		CF9757862410585300015347 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CFD611792407172400346042 /* TealiumKochava */;
-			targetProxy = CFD611852407172400346042 /* PBXContainerItemProxy */;
+			target = CF9757792410585300015347 /* TealiumKochava */;
+			targetProxy = CF9757852410585300015347 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		CFD6118C2407172400346042 /* Debug */ = {
+		CF97578C2410585400015347 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -509,7 +513,7 @@
 			};
 			name = Debug;
 		};
-		CFD6118D2407172400346042 /* Release */ = {
+		CF97578D2410585400015347 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -566,9 +570,10 @@
 			};
 			name = Release;
 		};
-		CFD6118F2407172400346042 /* Debug */ = {
+		CF97578F2410585400015347 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = XC939GDC9P;
@@ -579,7 +584,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -594,15 +599,17 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tealium.TealiumKochava;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		CFD611902407172400346042 /* Release */ = {
+		CF9757902410585400015347 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = XC939GDC9P;
@@ -613,7 +620,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -628,23 +635,23 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tealium.TealiumKochava;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		CFD611922407172400346042 /* Debug */ = {
+		CF9757922410585400015347 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XC939GDC9P;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -658,23 +665,25 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tealium.TealiumKochavaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/TealiumKochavaTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		CFD611932407172400346042 /* Release */ = {
+		CF9757932410585400015347 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XC939GDC9P;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -688,7 +697,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tealium.TealiumKochavaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/TealiumKochavaTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -697,34 +707,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CFD611742407172400346042 /* Build configuration list for PBXProject "TealiumKochava" */ = {
+		CF9757742410585300015347 /* Build configuration list for PBXProject "TealiumKochava" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CFD6118C2407172400346042 /* Debug */,
-				CFD6118D2407172400346042 /* Release */,
+				CF97578C2410585400015347 /* Debug */,
+				CF97578D2410585400015347 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CFD6118E2407172400346042 /* Build configuration list for PBXNativeTarget "TealiumKochava" */ = {
+		CF97578E2410585400015347 /* Build configuration list for PBXNativeTarget "TealiumKochava" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CFD6118F2407172400346042 /* Debug */,
-				CFD611902407172400346042 /* Release */,
+				CF97578F2410585400015347 /* Debug */,
+				CF9757902410585400015347 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CFD611912407172400346042 /* Build configuration list for PBXNativeTarget "TealiumKochavaTests" */ = {
+		CF9757912410585400015347 /* Build configuration list for PBXNativeTarget "TealiumKochavaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CFD611922407172400346042 /* Debug */,
-				CFD611932407172400346042 /* Release */,
+				CF9757922410585400015347 /* Debug */,
+				CF9757932410585400015347 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = CFD611712407172400346042 /* Project object */;
+	rootObject = CF9757712410585300015347 /* Project object */;
 }

@@ -11,6 +11,6 @@ import UIKit
 public protocol TealiumApplication { }
 extension UIApplication: TealiumApplication { }
 
-protocol TealiumDeeplinkable {
+public protocol TealiumDeepLinkable {
     func application(_ application: TealiumApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool
 }

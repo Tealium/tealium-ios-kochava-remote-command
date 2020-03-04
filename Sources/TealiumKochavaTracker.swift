@@ -31,7 +31,7 @@ public protocol KochavaTrackable {
     func retrieveProperties<T: KochavaEventProtocol>(from cls: T.Type) -> [String]
 }
 
-public class TealiumKochavaTracker: NSObject, KochavaTrackable, TealiumRegistration, TealiumDeeplinkable {    
+public class TealiumKochavaTracker: NSObject, KochavaTrackable, TealiumRegistration, TealiumDeepLinkable {    
 
     weak public var tealium: Tealium?
     

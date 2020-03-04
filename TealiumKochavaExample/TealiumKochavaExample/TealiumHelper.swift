@@ -8,7 +8,7 @@
 
 import Foundation
 import TealiumSwift
-//import TealiumKochava
+import TealK
 
 enum TealiumConfiguration {
     static let account = "tealiummobile"

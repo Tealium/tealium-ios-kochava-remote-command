@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CFD611792407172400346042"
+               BlueprintIdentifier = "CF9757792410585300015347"
                BuildableName = "TealiumKochava.framework"
                BlueprintName = "TealiumKochava"
                ReferencedContainer = "container:TealiumKochava.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CFD611822407172400346042"
+               BlueprintIdentifier = "CF9757822410585300015347"
                BuildableName = "TealiumKochavaTests.xctest"
                BlueprintName = "TealiumKochavaTests"
                ReferencedContainer = "container:TealiumKochava.xcodeproj">
@@ -60,7 +60,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CFD611792407172400346042"
+            BlueprintIdentifier = "CF9757792410585300015347"
             BuildableName = "TealiumKochava.framework"
             BlueprintName = "TealiumKochava"
             ReferencedContainer = "container:TealiumKochava.xcodeproj">
