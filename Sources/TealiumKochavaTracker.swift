@@ -47,7 +47,7 @@ public class TealiumKochavaTracker: NSObject, KochavaTrackable, TealiumRegistrat
         } else {
             KochavaTracker.shared.configure(withParametersDictionary: parameters, delegate: nil)
         }
-        if let sleep = parameters[Kochava.ConfigKey.sleepTracker] as? Bool,
+        if let sleep = parameters[KochavaConstants.ConfigKey.sleepTracker] as? Bool,
             sleep == true {
             sleepTracker(sleep)
         }

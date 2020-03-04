@@ -1,5 +1,5 @@
 //
-//  Kochava.swift
+//  KochavaConstants.swift
 //  TealiumKochava
 //
 //  Created by Christina S on 2/21/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Kochava {
+enum KochavaConstants {
     
     static let commandName = "command_name"
     
@@ -26,8 +26,7 @@ enum Kochava {
         static let kvaSDKVersion = "kva_sdk_version"
     }
     
-    // remove CaseIterable when done testing
-    enum Commands: CaseIterable {
+    enum Commands {
         static let configure = "configure"
         static let sleeptracker = "sleepTracker"
         static let invalidate = "invalidate"
@@ -60,6 +59,7 @@ enum Kochava {
         static let customEventNameString = "customEventNameString"
         static let infoDictionary = "infoDictionary"
         static let infoString = "infoString"
+        static let sleepTracker = "sleep_tracker"
     }
     
 }

@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KochavaTracker.h"
 
 //! Project version number for TealiumKochava.
 FOUNDATION_EXPORT double TealiumKochavaVersionNumber;
@@ -16,5 +15,5 @@ FOUNDATION_EXPORT double TealiumKochavaVersionNumber;
 FOUNDATION_EXPORT const unsigned char TealiumKochavaVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <TealiumKochava/PublicHeader.h>
-
+#import <TealiumKochava/KochavaTracker.h>
 

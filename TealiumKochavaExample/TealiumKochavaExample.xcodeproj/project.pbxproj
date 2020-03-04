@@ -27,11 +27,6 @@
 		CFA6B0812404952D00CA6A07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA6B07D2404952D00CA6A07 /* Main.storyboard */; };
 		CFA6B0862404965D00CA6A07 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B0852404965D00CA6A07 /* DateExtensions.swift */; };
 		CFA6B088240496B200CA6A07 /* Ecommerce.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA6B087240496B200CA6A07 /* Ecommerce.storyboard */; };
-		CFD61208240733D100346042 /* Kochava.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD61203240733D100346042 /* Kochava.swift */; };
-		CFD61209240733D100346042 /* TealiumKochavaTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD61204240733D100346042 /* TealiumKochavaTracker.swift */; };
-		CFD6120A240733D100346042 /* TealiumDeeplinkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD61205240733D100346042 /* TealiumDeeplinkable.swift */; };
-		CFD6120B240733D100346042 /* KochavaCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD61206240733D100346042 /* KochavaCommand.swift */; };
-		CFD6120C240733D100346042 /* EnumMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD61207240733D100346042 /* EnumMap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,11 +54,6 @@
 		CFA6B07E2404952D00CA6A07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CFA6B0852404965D00CA6A07 /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		CFA6B087240496B200CA6A07 /* Ecommerce.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Ecommerce.storyboard; sourceTree = "<group>"; };
-		CFD61203240733D100346042 /* Kochava.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kochava.swift; sourceTree = "<group>"; };
-		CFD61204240733D100346042 /* TealiumKochavaTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TealiumKochavaTracker.swift; sourceTree = "<group>"; };
-		CFD61205240733D100346042 /* TealiumDeeplinkable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TealiumDeeplinkable.swift; sourceTree = "<group>"; };
-		CFD61206240733D100346042 /* KochavaCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KochavaCommand.swift; sourceTree = "<group>"; };
-		CFD61207240733D100346042 /* EnumMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumMap.swift; sourceTree = "<group>"; };
 		CFD6120D2407340B00346042 /* TealiumKochavaExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TealiumKochavaExample-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,7 +98,6 @@
 		CFA6B049240493B400CA6A07 /* TealiumKochavaExample */ = {
 			isa = PBXGroup;
 			children = (
-				CFA6B08B2404A2E900CA6A07 /* Kochava_REMOVE */,
 				CFA6B04A240493B400CA6A07 /* AppDelegate.swift */,
 				CFA6B05F2404950700CA6A07 /* TealiumHelper.swift */,
 				CFA6B05E2404950700CA6A07 /* ProductCell.swift */,
@@ -156,18 +145,6 @@
 				CFA6B0852404965D00CA6A07 /* DateExtensions.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		CFA6B08B2404A2E900CA6A07 /* Kochava_REMOVE */ = {
-			isa = PBXGroup;
-			children = (
-				CFD61207240733D100346042 /* EnumMap.swift */,
-				CFD61203240733D100346042 /* Kochava.swift */,
-				CFD61206240733D100346042 /* KochavaCommand.swift */,
-				CFD61205240733D100346042 /* TealiumDeeplinkable.swift */,
-				CFD61204240733D100346042 /* TealiumKochavaTracker.swift */,
-			);
-			path = Kochava_REMOVE;
 			sourceTree = "<group>";
 		};
 		D9D04B14D121E9E0645749CF /* Pods */ = {
@@ -296,13 +273,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFD61209240733D100346042 /* TealiumKochavaTracker.swift in Sources */,
 				CFA6B0702404951400CA6A07 /* EcommerceMainViewController.swift in Sources */,
 				CFA6B0752404951400CA6A07 /* AccountViewController.swift in Sources */,
 				CFA6B0602404950700CA6A07 /* ProductCell.swift in Sources */,
 				CFA6B04B240493B400CA6A07 /* AppDelegate.swift in Sources */,
 				CFA6B0762404951400CA6A07 /* RegisterViewController.swift in Sources */,
-				CFD61208240733D100346042 /* Kochava.swift in Sources */,
 				CFA6B0732404951400CA6A07 /* CategoryViewController.swift in Sources */,
 				CFA6B0612404950700CA6A07 /* TealiumHelper.swift in Sources */,
 				CFA6B0712404951400CA6A07 /* GamingViewController.swift in Sources */,
@@ -310,11 +285,8 @@
 				CFA6B06D2404951400CA6A07 /* OrderViewController.swift in Sources */,
 				CFA6B0862404965D00CA6A07 /* DateExtensions.swift in Sources */,
 				CFA6B06F2404951400CA6A07 /* ProductViewController.swift in Sources */,
-				CFD6120C240733D100346042 /* EnumMap.swift in Sources */,
-				CFD6120A240733D100346042 /* TealiumDeeplinkable.swift in Sources */,
 				CFA6B06E2404951400CA6A07 /* CheckoutViewController.swift in Sources */,
 				CFA6B0722404951400CA6A07 /* LoginViewController.swift in Sources */,
-				CFD6120B240733D100346042 /* KochavaCommand.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,7 +6,13 @@ target 'TealiumKochavaExample' do
   use_frameworks!
 
   # Pods for TealiumKochavaExample
-  pod "tealium-swift"
-  pod "KochavaTrackeriOS"
+  
+  ### NOTE!!! Update below to TealiumKochava pod
+  pod "TealK"
+  pod 'tealium-swift/TealiumLogger'
+  pod 'tealium-swift/TealiumTagManagement'
+  pod 'tealium-swift/TealiumAppData'
+  pod 'tealium-swift/TealiumDeviceData'
+  pod 'tealium-swift/TealiumLifecycle'
 
 end

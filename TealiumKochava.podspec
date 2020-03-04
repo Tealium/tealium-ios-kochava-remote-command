@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
     s.license      = { :type => "Commercial", :file => "LICENSE.txt" }
     
     # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-    s.authors            = { "Tealium Inc." => "tealium@tealium.com"
+    s.authors            = { "Tealium Inc." => "tealium@tealium.com",
         "christinasund"   => "christina.sund@tealium.com" }
     s.social_media_url   = "https://twitter.com/tealium"
 
@@ -27,8 +27,8 @@ Pod::Spec.new do |s|
     s.source       = { :git => "https://github.com/Tealium/tealium-ios-kochava-remote-command.git", :tag => "#{s.version}" }
 
     # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-    s.ios.source_files      = "Sources/*.{swift}"
-    s.ios.source_files      = "Sources/KochavaiOS/**/*.{h,m}"
+    s.ios.source_files      = "Sources/*.{swift}", "Sources/TealK.h", "Sources/libKochavaTrackeriOS/*.{h}", "Sources/libKochavaCoreiOS/*.{h}"
+    s.vendored_libraries = 'Sources/libKochavaCoreiOS/libKochavaCoreiOS.a', 'Sources/libKochavaTrackeriOS/libKochavaTrackeriOS.a' 
 
     # ――― Dependencies ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
     s.ios.dependency 'tealium-swift/Core'
