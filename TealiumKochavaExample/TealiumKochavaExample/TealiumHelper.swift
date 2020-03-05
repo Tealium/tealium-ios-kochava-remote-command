@@ -25,7 +25,7 @@ class TealiumHelper {
                                environment: TealiumConfiguration.environment)
 
     var tealium: Tealium?
-    var deepLinkHelpers = [TealiumDeeplinkable]()
+    var deepLinkHelpers = [TealiumDeepLinkable]()
     var pushTrackingHelpers = [TealiumRegistration]()
 
     private init() {

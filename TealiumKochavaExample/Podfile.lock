@@ -16,7 +16,7 @@ PODS:
     - tealium-swift/Core
   - tealium-swift/TealiumVolatileData (1.9.1):
     - tealium-swift/Core
-  - TealK (2.2.0):
+  - TealK (2.2.1):
     - tealium-swift/Core
     - tealium-swift/TealiumDelegate
     - tealium-swift/TealiumRemoteCommands
@@ -38,7 +38,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   tealium-swift: bb99ff358f297765346ab98e416196420511a677
-  TealK: 2ec1c2577be72d4debf62325aa2910fd81cf8b16
+  TealK: ed8d4d2d3f61912089acde7c7ee419d12c2a9262
 
 PODFILE CHECKSUM: 6aa35dd687525bec6c7a545bd8b2e5f1916df5d4
 
