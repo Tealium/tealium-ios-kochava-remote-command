@@ -29,7 +29,7 @@ public class KochavaRemoteCommand {
             guard let command = payload[KochavaConstants.commandName] as? String else {
                 return
             }
-            let commands = command.split(separator: ",")
+            let commands = command.split(separator: KochavaConstants.separator)
             let firebaseCommands = commands.map { command in
                 return command.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             }
