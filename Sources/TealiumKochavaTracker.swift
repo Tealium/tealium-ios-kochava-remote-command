@@ -26,7 +26,7 @@ public protocol KochavaTrackable {
     func sendEvent(name: String)
     func sendEvent(name: String, with string: String?)
     func sendEvent(name: String, with dictionary: [String: Any]?)
-    func sendEvent(type: KochavaEventTypeEnum, with data: [String: Any])
+    func sendEvent(type: KochavaEventTypeEnum, with data: KochavaEventKeys?)
     func sendIdentityLink(with info: [AnyHashable: Any])
     func retrieveProperties<T: KochavaEventProtocol>(from cls: T.Type) -> [String]
 }
@@ -61,12 +61,12 @@ public class TealiumKochavaTracker: NSObject, KochavaTrackable, TealiumRegistrat
         KochavaTracker.shared.invalidate()
     }
     
-    public func sendEvent(type: KochavaEventTypeEnum, with data: [String: Any]) {
+    public func sendEvent(type: KochavaEventTypeEnum, with data: KochavaEventKeys?) {
         if let event = KochavaEvent(eventTypeEnum: type) {
             let properties = retrieveProperties(from: KochavaEvent.self)
-            let _ = data.filter { properties.contains($0.key) }.forEach {
-                event.setValue($0.value, forKey: $0.key)
-            }
+            KochavaEventKeys.lookup.mapPayload(data.dictionary ?? [:])
+                .filter { properties.contains($0.key) }
+                .forEach { event.setValue($0.value, forKey: $0.key) }
             KochavaTracker.shared.send(event)
         }
     }
@@ -119,8 +119,7 @@ public class TealiumKochavaTracker: NSObject, KochavaTrackable, TealiumRegistrat
     
     // MARK: Enhanced Deeplinking - Example
     // https://support.kochava.com/sdk-integration/ios-sdk-integration/ios-using-the-sdk/#collapseEnhancedDeeplinking
-
-    func application(_ application: TealiumApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+    public func application(_ application: TealiumApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         let url = userActivity.webpageURL
         KVADeeplink.process(withURL: url) { deeplink in
             if let destination = deeplink.destinationString,
@@ -134,27 +133,6 @@ public class TealiumKochavaTracker: NSObject, KochavaTrackable, TealiumRegistrat
             }
         }
         return true
-    }
-    
-    // MARK: Helper Methods
-    public func retrieveProperties<T: KochavaEventProtocol>(from cls: T.Type) -> [String] {
-        var count = UInt32()
-        var propertyNames = [String]()
-        
-        guard let properties : UnsafeMutablePointer <objc_property_t> = class_copyPropertyList(cls, &count) else {
-            return []
-        }
-    
-        for i in 0..<Int(count) {
-            let property : objc_property_t = properties[i]
-            guard let propertyName = NSString(utf8String: property_getName(property)) as String? else {
-                print("Tealium Kochava: Couldn't unwrap property name for \(property)")
-                break
-            }
-
-            propertyNames.append(propertyName)
-        }
-        return propertyNames
     }
     
 }
@@ -171,4 +149,46 @@ extension TealiumKochavaTracker: KochavaTrackerDelegate {
     }
 }
 
+// MARK: Helper Methods
+extension Dictionary where Key == String, Value == String {
 
+    /// Maps the payload recieved from a tracking call to the data specific to the third party vendor specified for the remote command. A lookup dictionary is used to determine the mapping.
+    /// - Parameter payload: `[String: Any]` from tracking call
+    /// - Parameter self: `[String: String]` `mappings` key from JSON file definition
+    public func mapPayload(_ payload: [String: Any]) -> [String: Any] {
+        return self.reduce(into: [String: Any]()) { result, dictionary in
+            if payload[dictionary.key] != nil {
+                result[dictionary.value] = payload[dictionary.key]
+            }
+        }
+    }
+}
+
+extension TealiumKochavaTracker {
+    public func retrieveProperties<T: KochavaEventProtocol>(from cls: T.Type) -> [String] {
+        var count = UInt32()
+        var propertyNames = [String]()
+        
+        guard let properties : UnsafeMutablePointer <objc_property_t> = class_copyPropertyList(cls, &count) else {
+            return []
+        }
+    
+        for i in 0..<Int(count) {
+            let property : objc_property_t = properties[i]
+            guard let propertyName = NSString(utf8String: property_getName(property)) as String? else {
+                print("Tealium Kochava: Couldn't unwrap property name for \(property)")
+                break
+            }
+            propertyNames.append(propertyName)
+        }
+        
+        return propertyNames
+    }
+}
+
+extension Encodable {
+  var dictionary: [String: Any]? {
+    guard let data = try? JSONEncoder().encode(self) else { return nil }
+    return (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)).flatMap { $0 as? [String: Any] }
+  }
+}

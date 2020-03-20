@@ -11,6 +11,8 @@ import Foundation
 enum KochavaConstants {
     
     static let commandName = "command_name"
+    static let separator: Character = ","
+    static let errorPrefix = "Tealium Kochava: "
     
     enum ConfigKey {
         static let command = "command_name"
@@ -53,13 +55,6 @@ enum KochavaConstants {
         case consentgranted
         case subscribe
         case starttrial
-    }
-    
-    enum EventKeys {
-        static let customEventNameString = "customEventNameString"
-        static let infoDictionary = "infoDictionary"
-        static let infoString = "infoString"
-        static let sleepTracker = "sleep_tracker"
     }
     
 }

@@ -8,11 +8,11 @@ target 'TealiumKochavaExample' do
   # Pods for TealiumKochavaExample
   
   ### NOTE!!! Update below to TealiumKochava pod
-  pod "TealK"
-  pod 'tealium-swift/TealiumLogger'
-  pod 'tealium-swift/TealiumTagManagement'
-  pod 'tealium-swift/TealiumAppData'
-  pod 'tealium-swift/TealiumDeviceData'
-  pod 'tealium-swift/TealiumLifecycle'
+  pod 'TealiumKochava', :path=> '/Users/christina/Projects/work-repos/github/tealium-ios-kochava-remote-command'
+  pod 'tealium-swift/TealiumLogger', '~> 1.9'
+  pod 'tealium-swift/TealiumTagManagement', '~> 1.9'
+  pod 'tealium-swift/TealiumAppData', '~> 1.9'
+  pod 'tealium-swift/TealiumDeviceData', '~> 1.9'
+  pod 'tealium-swift/TealiumLifecycle', '~> 1.9'
 
 end

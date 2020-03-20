@@ -8,7 +8,7 @@
 
 import Foundation
 import TealiumSwift
-import TealK
+import TealiumKochava
 
 enum TealiumConfiguration {
     static let account = "tealiummobile"
@@ -40,7 +40,7 @@ class TealiumHelper {
                 }
                 // MARK: Kochava
                 let tealKochavaTracker = TealiumKochavaTracker()
-                let kochavaCommand = KochavaCommand(tealKochavaTracker: tealKochavaTracker).remoteCommand()
+                let kochavaCommand = KochavaRemoteCommand(tealKochavaTracker: tealKochavaTracker).remoteCommand()
                 remoteCommands.add(kochavaCommand)
                 // Optional Push Message Tracking and Enhanced Deeplinking
                 self.deepLinkHelpers.append(tealKochavaTracker)

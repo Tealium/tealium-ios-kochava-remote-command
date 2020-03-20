@@ -14,7 +14,7 @@
 		CF97579B2410589900015347 /* HttpTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757972410589900015347 /* HttpTestHelpers.swift */; };
 		CF97579C2410589900015347 /* MockKochavaEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757982410589900015347 /* MockKochavaEvent.swift */; };
 		CF9757B9241058B200015347 /* TealiumDeeplinkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97579D241058B100015347 /* TealiumDeeplinkable.swift */; };
-		CF9757BA241058B200015347 /* KochavaCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97579E241058B100015347 /* KochavaCommand.swift */; };
+		CF9757BA241058B200015347 /* KochavaRemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97579E241058B100015347 /* KochavaRemoteCommand.swift */; };
 		CF9757BB241058B200015347 /* TealiumKochavaTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97579F241058B100015347 /* TealiumKochavaTracker.swift */; };
 		CF9757BC241058B200015347 /* KVATracker.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757A1241058B100015347 /* KVATracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF9757BD241058B200015347 /* KochavaTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757A2241058B100015347 /* KochavaTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -53,6 +53,7 @@
 		CF9757F724105A6800015347 /* libKochavaTrackeriOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9757A4241058B100015347 /* libKochavaTrackeriOS.a */; };
 		CF97580124105ADF00015347 /* TealiumCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CF9757E9241059DF00015347 /* TealiumCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF97580224105ADF00015347 /* TealiumRemoteCommands.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CF9757E7241059DF00015347 /* TealiumRemoteCommands.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF9F2E052425190A00564C46 /* KochavaEventKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9F2E042425190A00564C46 /* KochavaEventKeys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,7 +107,7 @@
 		CF9757972410589900015347 /* HttpTestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTestHelpers.swift; sourceTree = "<group>"; };
 		CF9757982410589900015347 /* MockKochavaEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockKochavaEvent.swift; sourceTree = "<group>"; };
 		CF97579D241058B100015347 /* TealiumDeeplinkable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TealiumDeeplinkable.swift; sourceTree = "<group>"; };
-		CF97579E241058B100015347 /* KochavaCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KochavaCommand.swift; sourceTree = "<group>"; };
+		CF97579E241058B100015347 /* KochavaRemoteCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KochavaRemoteCommand.swift; sourceTree = "<group>"; };
 		CF97579F241058B100015347 /* TealiumKochavaTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TealiumKochavaTracker.swift; sourceTree = "<group>"; };
 		CF9757A1241058B100015347 /* KVATracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVATracker.h; sourceTree = "<group>"; };
 		CF9757A2241058B100015347 /* KochavaTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KochavaTracker.h; sourceTree = "<group>"; };
@@ -136,6 +137,7 @@
 		CF9757E7241059DF00015347 /* TealiumRemoteCommands.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumRemoteCommands.framework; path = Carthage/Build/iOS/TealiumRemoteCommands.framework; sourceTree = "<group>"; };
 		CF9757E8241059DF00015347 /* TealiumVolatileData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumVolatileData.framework; path = Carthage/Build/iOS/TealiumVolatileData.framework; sourceTree = "<group>"; };
 		CF9757E9241059DF00015347 /* TealiumCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumCore.framework; path = Carthage/Build/iOS/TealiumCore.framework; sourceTree = "<group>"; };
+		CF9F2E042425190A00564C46 /* KochavaEventKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KochavaEventKeys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,11 +192,12 @@
 			children = (
 				CF9757A0241058B100015347 /* libKochavaTrackeriOS */,
 				CF9757A8241058B200015347 /* libKochavaCoreiOS */,
-				CF9757A7241058B100015347 /* EnumMap.swift */,
-				CF97579E241058B100015347 /* KochavaCommand.swift */,
-				CF9757A6241058B100015347 /* KochavaConstants.swift */,
-				CF97579D241058B100015347 /* TealiumDeeplinkable.swift */,
+				CF97579E241058B100015347 /* KochavaRemoteCommand.swift */,
 				CF97579F241058B100015347 /* TealiumKochavaTracker.swift */,
+				CF9757A6241058B100015347 /* KochavaConstants.swift */,
+				CF9F2E042425190A00564C46 /* KochavaEventKeys.swift */,
+				CF97579D241058B100015347 /* TealiumDeeplinkable.swift */,
+				CF9757A7241058B100015347 /* EnumMap.swift */,
 				CF97577D2410585300015347 /* TealiumKochava.h */,
 				CF97577E2410585300015347 /* Info.plist */,
 			);
@@ -420,10 +423,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF9F2E052425190A00564C46 /* KochavaEventKeys.swift in Sources */,
 				CF9757BB241058B200015347 /* TealiumKochavaTracker.swift in Sources */,
 				CF9757C2241058B200015347 /* EnumMap.swift in Sources */,
 				CF9757B9241058B200015347 /* TealiumDeeplinkable.swift in Sources */,
-				CF9757BA241058B200015347 /* KochavaCommand.swift in Sources */,
+				CF9757BA241058B200015347 /* KochavaRemoteCommand.swift in Sources */,
 				CF9757C1241058B200015347 /* KochavaConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
     # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
     s.name         = "TealiumKochava"
     s.module_name  = "TealiumKochava"
-    s.version      = "0.0.1"
+    s.version      = "1.0.0"
     s.summary      = "Tealium Swift and Kochava integration"
     s.description  = <<-DESC
     Tealium's integration with Kochava for iOS.
@@ -31,10 +31,10 @@ Pod::Spec.new do |s|
     s.vendored_libraries = 'Sources/libKochavaCoreiOS/libKochavaCoreiOS.a', 'Sources/libKochavaTrackeriOS/libKochavaTrackeriOS.a' 
 
     # ――― Dependencies ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-    s.ios.dependency 'tealium-swift/Core'
-    s.ios.dependency 'tealium-swift/TealiumRemoteCommands'
-    s.ios.dependency 'tealium-swift/TealiumDelegate'
-    s.ios.dependency 'tealium-swift/TealiumTagManagement'
-    s.ios.dependency 'tealium-swift/TealiumVolatileData'
+    s.ios.dependency 'tealium-swift/Core', '~> 1.9'
+    s.ios.dependency 'tealium-swift/TealiumRemoteCommands', '~> 1.9'
+    s.ios.dependency 'tealium-swift/TealiumDelegate', '~> 1.9'
+    s.ios.dependency 'tealium-swift/TealiumTagManagement', '~> 1.9'
+    s.ios.dependency 'tealium-swift/TealiumVolatileData', '~> 1.9'
 
 end

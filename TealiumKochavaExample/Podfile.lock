@@ -16,30 +16,33 @@ PODS:
     - tealium-swift/Core
   - tealium-swift/TealiumVolatileData (1.9.1):
     - tealium-swift/Core
-  - TealK (2.2.1):
-    - tealium-swift/Core
-    - tealium-swift/TealiumDelegate
-    - tealium-swift/TealiumRemoteCommands
-    - tealium-swift/TealiumTagManagement
-    - tealium-swift/TealiumVolatileData
+  - TealiumKochava (1.0.0):
+    - tealium-swift/Core (~> 1.9)
+    - tealium-swift/TealiumDelegate (~> 1.9)
+    - tealium-swift/TealiumRemoteCommands (~> 1.9)
+    - tealium-swift/TealiumTagManagement (~> 1.9)
+    - tealium-swift/TealiumVolatileData (~> 1.9)
 
 DEPENDENCIES:
-  - tealium-swift/TealiumAppData
-  - tealium-swift/TealiumDeviceData
-  - tealium-swift/TealiumLifecycle
-  - tealium-swift/TealiumLogger
-  - tealium-swift/TealiumTagManagement
-  - TealK
+  - tealium-swift/TealiumAppData (~> 1.9)
+  - tealium-swift/TealiumDeviceData (~> 1.9)
+  - tealium-swift/TealiumLifecycle (~> 1.9)
+  - tealium-swift/TealiumLogger (~> 1.9)
+  - tealium-swift/TealiumTagManagement (~> 1.9)
+  - TealiumKochava (from `/Users/christina/Projects/work-repos/github/tealium-ios-kochava-remote-command`)
 
 SPEC REPOS:
   trunk:
     - tealium-swift
-    - TealK
+
+EXTERNAL SOURCES:
+  TealiumKochava:
+    :path: "/Users/christina/Projects/work-repos/github/tealium-ios-kochava-remote-command"
 
 SPEC CHECKSUMS:
   tealium-swift: bb99ff358f297765346ab98e416196420511a677
-  TealK: ed8d4d2d3f61912089acde7c7ee419d12c2a9262
+  TealiumKochava: a046f3415761353c78bccd54a84a17b5f7e84ae3
 
-PODFILE CHECKSUM: 6aa35dd687525bec6c7a545bd8b2e5f1916df5d4
+PODFILE CHECKSUM: d17f4a308ccd42f3003ab8a89cc00d7a88ea3fad
 
-COCOAPODS: 1.9.0
+COCOAPODS: 1.9.1
