@@ -56,7 +56,7 @@ public class KochavaRemoteCommand {
             case KochavaConstants.Commands.configure:
                 var config = [AnyHashable: Any]()
                 guard let appGUID = payload[KochavaConstants.ConfigKey.apiKey] else {
-                    print("\(KochavaConstants.errorPrefix)An App GUID is required to configure Kochava.")
+                    print("\(KochavaConstants.errorPrefix)`app_guid` is required to configure Kochava.")
                     return
                 }
                 config[kKVAParamAppGUIDStringKey] = appGUID
@@ -108,7 +108,7 @@ public class KochavaRemoteCommand {
                 }
             case KochavaConstants.Commands.custom:
                 guard let eventName = kochavaEventData?.customEventNameString else {
-                    print("\(KochavaConstants.errorPrefix)`customEventNameString` is required for custom events.")
+                    print("\(KochavaConstants.errorPrefix)`custom_event_name` is required for custom events.")
                     return
                 }
                 if let infoDictionary = kochavaEventData?.infoDictionary {
