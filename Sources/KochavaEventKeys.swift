@@ -220,7 +220,7 @@ public struct KochavaEventKeys: Codable {
         "referral_from": "referralFromString",
         "registration_method": "registrationMethodString",
         "search_term": "searchTermString",
-        "search_results": "resultsString",
+        "results": "resultsString",
         "score": "scoreString",
         "spatial_x": "spatialXDoubleNumber",
         "spatial_y": "spatialYDoubleNumber",

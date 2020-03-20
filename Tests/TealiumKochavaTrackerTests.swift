@@ -14,11 +14,11 @@ class TealiumKochavaTrackerTests: XCTestCase {
 
     var mockTealiumKochavaTracker = MockTealiumKochavaTracker()
     var tealKochavaTracker = TealiumKochavaTracker()
-    var kochavaCommand: KochavaCommand!
+    var kochavaCommand: KochavaRemoteCommand!
     var remoteCommand: TealiumRemoteCommand!
 
     override func setUp() {
-        kochavaCommand = KochavaCommand(tealKochavaTracker: mockTealiumKochavaTracker)
+        kochavaCommand = KochavaRemoteCommand(tealKochavaTracker: mockTealiumKochavaTracker)
         remoteCommand = kochavaCommand.remoteCommand()
     }
 
@@ -64,7 +64,7 @@ class TealiumKochavaTrackerTests: XCTestCase {
 
         if let response = HttpTestHelpers.createRemoteCommandResponse(commandId: "kochava", payload: payload) {
             remoteCommand.remoteCommandCompletion(response)
-            XCTAssertEqual(1, self.mockTealiumKochavaTracker.sleepCount)
+            XCTAssertEqual(1, self.mockTealiumKochavaTracker.sleepTrackerCount)
         }
 
         expect.fulfill()
@@ -88,7 +88,7 @@ class TealiumKochavaTrackerTests: XCTestCase {
     func testSendCustomEventWithOutData() {
         let expect = expectation(description: "Kochava configure(parameters:) method run")
         let payload: [String: Any] = ["command_name": "custom",
-            "customEventNameString": "someEventName"]
+            "custom_event_name": "someEventName"]
 
         if let response = HttpTestHelpers.createRemoteCommandResponse(commandId: "kochava", payload: payload) {
             remoteCommand.remoteCommandCompletion(response)
@@ -102,7 +102,7 @@ class TealiumKochavaTrackerTests: XCTestCase {
     func testSendEventTypeEnumWithStandardData() {
         let expect = expectation(description: "Kochava configure(parameters:) method run")
         let payload: [String: Any] = ["command_name": "addtocart",
-            "contentIdString": "123sdf"]
+            "content_id": "123sdf"]
 
         if let response = HttpTestHelpers.createRemoteCommandResponse(commandId: "kochava", payload: payload) {
             remoteCommand.remoteCommandCompletion(response)
@@ -116,8 +116,8 @@ class TealiumKochavaTrackerTests: XCTestCase {
     func testSendCustomEventWithInfoString() {
         let expect = expectation(description: "Kochava configure(parameters:) method run")
         let payload: [String: Any] = ["command_name": "custom",
-            "customEventNameString": "someEventName",
-            "infoString": "blahBlah"]
+            "custom_event_name": "someEventName",
+            "info_string": "blahBlah"]
 
         if let response = HttpTestHelpers.createRemoteCommandResponse(commandId: "kochava", payload: payload) {
             remoteCommand.remoteCommandCompletion(response)
@@ -131,8 +131,8 @@ class TealiumKochavaTrackerTests: XCTestCase {
     func testSendCustomEventWithInfoDictionary() {
         let expect = expectation(description: "Kochava configure(parameters:) method run")
         let payload: [String: Any] = ["command_name": "custom",
-            "customEventNameString": "someEventName",
-            "infoDictionary": ["blahBlah": "test123", "tacos": "cheetos"]]
+            "custom_event_name": "someEventName",
+            "info_dictionary": ["blahBlah": "test123", "tacos": "cheetos"]]
 
         if let response = HttpTestHelpers.createRemoteCommandResponse(commandId: "kochava", payload: payload) {
             remoteCommand.remoteCommandCompletion(response)
@@ -184,12 +184,100 @@ class TealiumKochavaTrackerTests: XCTestCase {
         XCTAssertEqual(expected, actual)
     }
     
+    func testMapPayload() {
+        let testEventParams: [String: Any] = [
+        "action": "testaction",
+        "ad_campaign_id": "1234",
+        "ad_campaign_name": "summer",
+        "ad_device_type": "iphone",
+        "ad_group_id": "123rtg",
+        "ad_group_name": "cool kids",
+        "ad_mediation_name": "mmm not sure",
+        "ad_network_name": "annoying",
+        "placement": "in yo face",
+        "ad_size": "medium",
+        "ad_type": "all the same",
+        "from_apple_watch": false,
+        "checkout_as_guest": "true",
+        "completed": 1,
+        "content_id": "123dfg",
+        "content_type": "product",
+        "currency": "USD",
+        "item_added_from": "registry",
+        "level": "10",
+        "max_rating_value": 5.0,
+        "name": "cheetos",
+        "order_id": "123lkj",
+        "quantity": 1,
+        "origin": "store",
+        "price": 10.00,
+        "rating_value": 5.0,
+        "receipt_id": "abc123",
+        "referral_from": "seth",
+        "registration_method": "myspace",
+        "search_term": "hot cheetos",
+        "results": "50000",
+        "score": "99999999999",
+        "some_other_non_kochava_key1": "hello there1",
+        "some_other_non_kochava_key2": "hello there2",
+        "some_other_non_kochava_key3": "hello there3",
+        "some_other_non_kochava_key4": "hello there4"]
+        
+        let expected: [String: Any] = [
+        "actionString": "testaction",
+        "adCampaignIdString": "1234",
+        "adCampaignNameString": "summer",
+        "adDeviceTypeString": "iphone",
+        "adGroupIdString": "123rtg",
+        "adGroupNameString": "cool kids",
+        "adMediationNameString": "mmm not sure",
+        "adNetworkNameString": "annoying",
+        "adPlacementString": "in yo face",
+        "adSizeString": "medium",
+        "adTypeString": "all the same",
+        "appleWatchBool": false,
+        "checkoutAsGuestString": "true",
+        "completedBoolNumber": 1,
+        "contentIdString": "123dfg",
+        "contentTypeString": "product",
+        "currencyString": "USD",
+        "itemAddedFromString": "registry",
+        "levelString": "10",
+        "maxRatingValueDoubleNumber": 5.0,
+        "nameString": "cheetos",
+        "orderIdString": "123lkj",
+        "quantityDoubleNumber": 1,
+        "originString": "store",
+        "priceDoubleNumber": 10.00,
+        "ratingValueDoubleNumber": 5.0,
+        "receiptIdString": "abc123",
+        "referralFromString": "seth",
+        "registrationMethodString": "myspace",
+        "searchTermString": "hot cheetos",
+        "resultsString": "50000",
+        "scoreString": "99999999999"]
+        
+        let mapped = KochavaEventKeys.lookup.mapPayload(testEventParams)
+        
+        XCTAssertEqual(expected.count, mapped.count)
+        
+        XCTAssert(NSDictionary(dictionary: mapped).isEqual(to: expected))
+    }
+    
     func testSendEventWhenUnrecognizedVarsAreInPayload() {
         let data: [String: Any] = ["nameString": "stuff", "orderIdString": "abc123", "quantityDoubleNumber": 2.0, "priceDoubleNumber": 27.99, "currencyString": "USD", "contentIdString": "234", "micky": "mouse", "daffy": "duck", "dictionary": ["stuff": "yep", "moreStuff": "doubleYep", "moreNested": ["true": "dat"]], "weird": 235.56, "hmm": "{\"1\":\"2\"}", "isCool": true, "uhhh": 123, "specialChars": "$$%^NK@!%)#$@*%AG*DF*@&# 4234!$Q)*(($)(&(!&*~#*!(#*!@)~!*_%(_) )*(GS(FDG&SDFG(FG+__#@+@+@++#+#+##++%$++^^@_#_$()'''33'3'3"]
         
-        tealKochavaTracker.sendEvent(type: .purchase, with: data)
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: data),
+            let decoded = try? JSONDecoder().decode(KochavaEventKeys.self, from: jsonData) else {
+                XCTFail("\(KochavaConstants.errorPrefix) could not encode/decode payload.")
+                return
+        }
+        
+        tealKochavaTracker.sendEvent(type: .purchase, with: decoded)
         
         XCTAssertTrue(true)
     }
 
 }
+
+

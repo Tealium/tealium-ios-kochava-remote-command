@@ -18,12 +18,11 @@ protocol MockKochavaTrackerDelegate: class {
 
 
 class MockTealiumKochavaTracker: KochavaTrackable {
-    
-    
+ 
     var configureWithAttributionDelegateCount = 0
     var configureWithoutAttributionDelegateCount = 0
     var configureWithSleepCount = 0
-    var sleepCount = 0
+    var sleepTrackerCount = 0
     var invalidateCount = 0
     var sendEventCount = 0
     var sendEventWithStandardDataCount = 0
@@ -48,7 +47,7 @@ class MockTealiumKochavaTracker: KochavaTrackable {
     }
     
     func sleepTracker(_ sleep: Bool) {
-        sleepCount += 1
+        sleepTrackerCount += 1
     }
     
     func invalidate() {
@@ -67,7 +66,7 @@ class MockTealiumKochavaTracker: KochavaTrackable {
         sendEventWithInfoDictionaryCount += 1
     }
     
-    func sendEvent(type: KochavaEventTypeEnum, with data: [String : Any]) {
+    func sendEvent(type: KochavaEventTypeEnum, with data: KochavaEventKeys?) {
         sendEventWithStandardDataCount += 1
         incrementSpecificEvent(type)
     }
