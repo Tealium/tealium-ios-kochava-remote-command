@@ -30,23 +30,14 @@ public class KochavaRemoteCommand {
                 return
             }
             let commands = command.split(separator: KochavaConstants.separator)
-            let firebaseCommands = commands.map { command in
+            let kochavaCommands = commands.map { command in
                 return command.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             }
-            self.parseCommands(firebaseCommands, payload: payload)
+            self.parseCommands(kochavaCommands, payload: payload)
         }
     }
 
     func parseCommands(_ commands: [String], payload: [String: Any]) {
-        guard let tealKochavaTracker = tealKochavaTracker,
-            let command = payload[KochavaConstants.ConfigKey.command] as? String else {
-                return
-        }
-
-        let commands = command.split(separator: ",")
-        let kochavaCommands = commands.map { command in
-            return command.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        }
 
         let kochavaEventData = eventData(with: payload)
 
