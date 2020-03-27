@@ -16,7 +16,7 @@ import Foundation
 
 public class KochavaRemoteCommand {
 
-    var tealKochavaTracker: KochavaTrackable?
+    var tealKochavaTracker: KochavaTrackable
 
     public init(tealKochavaTracker: KochavaTrackable = TealiumKochavaTracker()) {
         self.tealKochavaTracker = tealKochavaTracker
@@ -41,7 +41,7 @@ public class KochavaRemoteCommand {
 
         let kochavaEventData = eventData(with: payload)
 
-        kochavaCommands.forEach { command in
+        commands.forEach { command in
             let lowercasedCommand = command.lowercased()
             switch lowercasedCommand {
             case KochavaConstants.Commands.configure:
