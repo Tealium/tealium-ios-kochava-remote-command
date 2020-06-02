@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		092B7054660B20D19EC4A390 /* Pods_TealiumKochavaExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FCF45B7BC7934EB9C0E1028 /* Pods_TealiumKochavaExample.framework */; };
 		CFA6B04B240493B400CA6A07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B04A240493B400CA6A07 /* AppDelegate.swift */; };
 		CFA6B04D240493B400CA6A07 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B04C240493B400CA6A07 /* SceneDelegate.swift */; };
 		CFA6B054240493B700CA6A07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFA6B053240493B700CA6A07 /* Assets.xcassets */; };
@@ -27,12 +26,13 @@
 		CFA6B0812404952D00CA6A07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA6B07D2404952D00CA6A07 /* Main.storyboard */; };
 		CFA6B0862404965D00CA6A07 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B0852404965D00CA6A07 /* DateExtensions.swift */; };
 		CFA6B088240496B200CA6A07 /* Ecommerce.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA6B087240496B200CA6A07 /* Ecommerce.storyboard */; };
+		E6A5A2652C0A7C6127FB4EFA /* Pods_TealiumKochavaExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4369B06C95AA1AE6A50DE1F0 /* Pods_TealiumKochavaExample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3867AD7793430A5EBAD89563 /* Pods-TealiumKochavaExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TealiumKochavaExample.debug.xcconfig"; path = "Target Support Files/Pods-TealiumKochavaExample/Pods-TealiumKochavaExample.debug.xcconfig"; sourceTree = "<group>"; };
-		4FCF45B7BC7934EB9C0E1028 /* Pods_TealiumKochavaExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TealiumKochavaExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		52A3FB571276180F5F6DBD8F /* Pods-TealiumKochavaExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TealiumKochavaExample.release.xcconfig"; path = "Target Support Files/Pods-TealiumKochavaExample/Pods-TealiumKochavaExample.release.xcconfig"; sourceTree = "<group>"; };
+		22D5F78939D338AE6FA913E8 /* Pods-TealiumKochavaExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TealiumKochavaExample.debug.xcconfig"; path = "Target Support Files/Pods-TealiumKochavaExample/Pods-TealiumKochavaExample.debug.xcconfig"; sourceTree = "<group>"; };
+		354DDC806AF168CAE74F51C3 /* Pods-TealiumKochavaExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TealiumKochavaExample.release.xcconfig"; path = "Target Support Files/Pods-TealiumKochavaExample/Pods-TealiumKochavaExample.release.xcconfig"; sourceTree = "<group>"; };
+		4369B06C95AA1AE6A50DE1F0 /* Pods_TealiumKochavaExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TealiumKochavaExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA6B047240493B400CA6A07 /* TealiumKochavaExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TealiumKochavaExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA6B04A240493B400CA6A07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFA6B04C240493B400CA6A07 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,17 +61,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				092B7054660B20D19EC4A390 /* Pods_TealiumKochavaExample.framework in Frameworks */,
+				E6A5A2652C0A7C6127FB4EFA /* Pods_TealiumKochavaExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BFF9AF879EBAA346241FC102 /* Frameworks */ = {
+		70611134008C6E960E556C78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4FCF45B7BC7934EB9C0E1028 /* Pods_TealiumKochavaExample.framework */,
+				4369B06C95AA1AE6A50DE1F0 /* Pods_TealiumKochavaExample.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -82,7 +82,7 @@
 				CFA6B049240493B400CA6A07 /* TealiumKochavaExample */,
 				CFA6B048240493B400CA6A07 /* Products */,
 				D9D04B14D121E9E0645749CF /* Pods */,
-				BFF9AF879EBAA346241FC102 /* Frameworks */,
+				70611134008C6E960E556C78 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,8 +148,8 @@
 		D9D04B14D121E9E0645749CF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3867AD7793430A5EBAD89563 /* Pods-TealiumKochavaExample.debug.xcconfig */,
-				52A3FB571276180F5F6DBD8F /* Pods-TealiumKochavaExample.release.xcconfig */,
+				22D5F78939D338AE6FA913E8 /* Pods-TealiumKochavaExample.debug.xcconfig */,
+				354DDC806AF168CAE74F51C3 /* Pods-TealiumKochavaExample.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -161,11 +161,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CFA6B05B240493B700CA6A07 /* Build configuration list for PBXNativeTarget "TealiumKochavaExample" */;
 			buildPhases = (
-				16A7B001E2696F594E145B8F /* [CP] Check Pods Manifest.lock */,
+				E3CA758BE34661D2A0FF648D /* [CP] Check Pods Manifest.lock */,
 				CFA6B043240493B400CA6A07 /* Sources */,
 				CFA6B044240493B400CA6A07 /* Frameworks */,
 				CFA6B045240493B400CA6A07 /* Resources */,
-				210C55DB1665CD6E3FE8D29E /* [CP] Embed Pods Frameworks */,
+				F82307BF80EB67145934606A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -225,7 +225,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		16A7B001E2696F594E145B8F /* [CP] Check Pods Manifest.lock */ = {
+		E3CA758BE34661D2A0FF648D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -247,7 +247,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		210C55DB1665CD6E3FE8D29E /* [CP] Embed Pods Frameworks */ = {
+		F82307BF80EB67145934606A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -434,7 +434,7 @@
 		};
 		CFA6B05C240493B700CA6A07 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3867AD7793430A5EBAD89563 /* Pods-TealiumKochavaExample.debug.xcconfig */;
+			baseConfigurationReference = 22D5F78939D338AE6FA913E8 /* Pods-TealiumKochavaExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -454,7 +454,7 @@
 		};
 		CFA6B05D240493B700CA6A07 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52A3FB571276180F5F6DBD8F /* Pods-TealiumKochavaExample.release.xcconfig */;
+			baseConfigurationReference = 354DDC806AF168CAE74F51C3 /* Pods-TealiumKochavaExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

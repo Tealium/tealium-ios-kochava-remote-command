@@ -151,10 +151,6 @@ extension TealiumKochavaTracker: KochavaTrackerDelegate {
 
 // MARK: Helper Methods
 extension Dictionary where Key == String, Value == String {
-
-    /// Maps the payload recieved from a tracking call to the data specific to the third party vendor specified for the remote command. A lookup dictionary is used to determine the mapping.
-    /// - Parameter payload: `[String: Any]` from tracking call
-    /// - Parameter self: `[String: String]` `mappings` key from JSON file definition
     public func mapPayload(_ payload: [String: Any]) -> [String: Any] {
         return self.reduce(into: [String: Any]()) { result, dictionary in
             if payload[dictionary.key] != nil {

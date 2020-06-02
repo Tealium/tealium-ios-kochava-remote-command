@@ -7,31 +7,31 @@
 //
 
 import Foundation
-#if COCOAPODS
-    import TealiumSwift
-#else
-    import TealiumRemoteCommands
-    import TealiumVolatileData
-#endif
+import TealiumIOS
 
-public class KochavaRemoteCommand {
+@objc
+public class KochavaRemoteCommand: NSObject {
 
     var tealKochavaTracker: KochavaTrackable
 
+    @objc
     public init(tealKochavaTracker: KochavaTrackable = TealiumKochavaTracker()) {
         self.tealKochavaTracker = tealKochavaTracker
     }
 
-    public func remoteCommand() -> TealiumRemoteCommand {
-        return TealiumRemoteCommand(commandId: "kochava", description: "Kochava Remote Command") { response in
-            let payload = response.payload().stringsToBools
-            guard let command = payload[KochavaConstants.commandName] as? String else {
+    @objc
+    public func remoteCommand() -> TEALRemoteCommandResponseBlock {
+        return { response in
+
+            guard var payload = response?.requestPayload as? [String: Any],
+                let command = payload[KochavaConstants.commandName] as? String else {
                 return
             }
             let commands = command.split(separator: KochavaConstants.separator)
             let kochavaCommands = commands.map { command in
                 return command.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             }
+            payload = payload.stringsToBools
             self.parseCommands(kochavaCommands, payload: payload)
         }
     }
@@ -55,13 +55,13 @@ public class KochavaRemoteCommand {
                 if let shouldSendDeviceId = payload[.sendDeviceId] as? Bool,
                     shouldSendDeviceId == true,
                     let kochavaDeviceIdString = KochavaTracker.shared.deviceIdString() {
-                    tealKochavaTracker.tealium?.volatileData()?.add(data: [KochavaConstants.ConfigKey.kvaDeviceID.rawValue: kochavaDeviceIdString])
+                    tealKochavaTracker.tealium?.addVolatileDataSources([KochavaConstants.ConfigKey.kvaDeviceID.rawValue: kochavaDeviceIdString])
                 }
 
                 if let shouldSendSdkVersion = payload[.sendSDKVersion] as? Bool,
                     shouldSendSdkVersion == true,
                     let sdkVersionString = KochavaTracker.shared.sdkVersionString() {
-                    tealKochavaTracker.tealium?.volatileData()?.add(data: [KochavaConstants.ConfigKey.kvaSDKVersion.rawValue: sdkVersionString])
+                    tealKochavaTracker.tealium?.addVolatileDataSources([KochavaConstants.ConfigKey.kvaSDKVersion.rawValue: sdkVersionString])
                 }
 
                 if let identityLink = payload[.identityLinks] as? [String: String] {
@@ -94,35 +94,24 @@ public class KochavaRemoteCommand {
                     tealKochavaTracker.sendIdentityLink(with: identityLink)
                 }
             case .custom:
-                let kochavaEventData = eventData(with: payload)
-                guard let eventName = kochavaEventData?.customEventNameString else {
+                guard let eventName = payload[.customEventNameString] as? String else {
                     print("\(KochavaConstants.errorPrefix)`custom_event_name` is required for custom events.")
                     return
                 }
-                if let infoDictionary = kochavaEventData?.infoDictionary {
-                    return tealKochavaTracker.sendEvent(name: eventName, with: infoDictionary)
+                if let infoDictionary = payload[.infoDictionary] as? [String: Any] {
+                    return tealKochavaTracker.sendEvent(name: eventName, dictionary: infoDictionary)
                 }
-                guard let infoString = kochavaEventData?.infoString else {
+                guard let infoString = payload[.infoString] as? String else {
                     return tealKochavaTracker.sendEvent(name: eventName)
                 }
-                return tealKochavaTracker.sendEvent(name: eventName, with: infoString)
+                return tealKochavaTracker.sendEvent(name: eventName, string: infoString)
             default:
-                let kochavaEventData = eventData(with: payload)
                 if let kochavaEventName = KochavaConstants.Events(rawValue: command.lowercased()) {
-                    tealKochavaTracker.sendEvent(type: kochavaEvent[kochavaEventName], with: kochavaEventData)
+                    tealKochavaTracker.sendEvent(type: kochavaEvent[kochavaEventName], dictionary: payload)
                 }
                 break
             }
         }
-    }
-
-    func eventData(with payload: [String: Any]) -> KochavaEventKeys? {
-        guard let jsonData = try? JSONSerialization.data(withJSONObject: payload),
-            let decoded = try? JSONDecoder().decode(KochavaEventKeys.self, from: jsonData) else {
-                print("\(KochavaConstants.errorPrefix) could not encode/decode payload.")
-                return nil
-        }
-        return decoded
     }
 
     let kochavaEvent = EnumMap<KochavaConstants.Events, KochavaEventTypeEnum> { command in
@@ -165,6 +154,8 @@ public class KochavaRemoteCommand {
             return KochavaEventTypeEnum.startTrial
         }
     }
+    
+    
 
 }
 
@@ -184,6 +175,14 @@ fileprivate extension Dictionary where Key == String, Value == Any {
 
 fileprivate extension Dictionary where Key: ExpressibleByStringLiteral {
     subscript(key: KochavaConstants.ConfigKey) -> Value? {
+        get {
+            return self[key.rawValue as! Key]
+        }
+        set {
+            self[key.rawValue as! Key] = newValue
+        }
+    }
+    subscript(key: KochavaConstants.EventKeys) -> Value? {
         get {
             return self[key.rawValue as! Key]
         }

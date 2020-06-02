@@ -27,7 +27,7 @@ class TealiumKochavaTrackerTests: XCTestCase {
     func testConfigureWithAttributionDelegate() {
         let expect = expectation(description: "Kochava configure(parameters:) method run")
         let payload: [String: Any] = ["command_name": "configure",
-            "app_guid": "test", "retrieve_attribution_data": true]
+            "app_guid": "test", "retrieve_attribution_data": "true"]
 
         if let response = HttpTestHelpers.createRemoteCommandResponse(commandId: "kochava", payload: payload) {
             remoteCommand.remoteCommandCompletion(response)
@@ -60,7 +60,7 @@ class TealiumKochavaTrackerTests: XCTestCase {
     func testConfigureWithSleep() {
         let expect = expectation(description: "Kochava configure(parameters:) method run")
         let payload: [String: Any] = ["command_name": "configure",
-            "app_guid": "test", "sleep_tracker": true]
+            "app_guid": "test", "sleep_tracker": "true"]
 
         if let response = HttpTestHelpers.createRemoteCommandResponse(commandId: "kochava", payload: payload) {
             remoteCommand.remoteCommandCompletion(response)
@@ -197,7 +197,7 @@ class TealiumKochavaTrackerTests: XCTestCase {
         "placement": "in yo face",
         "ad_size": "medium",
         "ad_type": "all the same",
-        "from_apple_watch": false,
+        "from_apple_watch": "false",
         "checkout_as_guest": "true",
         "completed": 1,
         "content_id": "123dfg",
@@ -235,7 +235,7 @@ class TealiumKochavaTrackerTests: XCTestCase {
         "adPlacementString": "in yo face",
         "adSizeString": "medium",
         "adTypeString": "all the same",
-        "appleWatchBool": false,
+        "appleWatchBool": "false",
         "checkoutAsGuestString": "true",
         "completedBoolNumber": 1,
         "contentIdString": "123dfg",
@@ -265,7 +265,7 @@ class TealiumKochavaTrackerTests: XCTestCase {
     }
     
     func testSendEventWhenUnrecognizedVarsAreInPayload() {
-        let data: [String: Any] = ["nameString": "stuff", "orderIdString": "abc123", "quantityDoubleNumber": 2.0, "priceDoubleNumber": 27.99, "currencyString": "USD", "contentIdString": "234", "micky": "mouse", "daffy": "duck", "dictionary": ["stuff": "yep", "moreStuff": "doubleYep", "moreNested": ["true": "dat"]], "weird": 235.56, "hmm": "{\"1\":\"2\"}", "isCool": true, "uhhh": 123, "specialChars": "$$%^NK@!%)#$@*%AG*DF*@&# 4234!$Q)*(($)(&(!&*~#*!(#*!@)~!*_%(_) )*(GS(FDG&SDFG(FG+__#@+@+@++#+#+##++%$++^^@_#_$()'''33'3'3"]
+        let data: [String: Any] = ["nameString": "stuff", "orderIdString": "abc123", "quantityDoubleNumber": 2.0, "priceDoubleNumber": 27.99, "currencyString": "USD", "contentIdString": "234", "micky": "mouse", "daffy": "duck", "dictionary": ["stuff": "yep", "moreStuff": "doubleYep", "moreNested": ["true": "dat"]], "weird": 235.56, "hmm": "{\"1\":\"2\"}", "isCool": "true", "uhhh": 123, "specialChars": "$$%^NK@!%)#$@*%AG*DF*@&# 4234!$Q)*(($)(&(!&*~#*!(#*!@)~!*_%(_) )*(GS(FDG&SDFG(FG+__#@+@+@++#+#+##++%$++^^@_#_$()'''33'3'3"]
         
         guard let jsonData = try? JSONSerialization.data(withJSONObject: data),
             let decoded = try? JSONDecoder().decode(KochavaEventKeys.self, from: jsonData) else {

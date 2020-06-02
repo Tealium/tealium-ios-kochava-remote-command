@@ -1,9 +1,9 @@
 //
-//  TealiumDeeplinkable.swift
-//  json-rc-test
+//  TealiumDeepLinkable.swift
+//  TealiumKochava
 //
 //  Created by Christina S on 2/24/20.
-//  Copyright © 2020 Schelly. All rights reserved.
+//  Copyright © 2020 Tealium. All rights reserved.
 //
 
 import UIKit

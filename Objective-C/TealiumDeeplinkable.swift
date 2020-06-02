@@ -1,9 +1,9 @@
 //
-//  TealiumDeeplinkable.swift
-//  json-rc-test
+//  TealiumDeepLinkable.swift
+//  TealiumKochava
 //
 //  Created by Christina S on 2/24/20.
-//  Copyright © 2020 Schelly. All rights reserved.
+//  Copyright © 2020 Tealium. All rights reserved.
 //
 
 import UIKit
@@ -11,6 +11,6 @@ import UIKit
 public protocol TealiumApplication { }
 extension UIApplication: TealiumApplication { }
 
-protocol TealiumDeeplinkable {
+protocol TealiumDeepLinkable {
     func application(_ application: TealiumApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool
 }

@@ -13,7 +13,7 @@
 		CF97579A2410589900015347 /* MockTealiumKochavaTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757962410589900015347 /* MockTealiumKochavaTracker.swift */; };
 		CF97579B2410589900015347 /* HttpTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757972410589900015347 /* HttpTestHelpers.swift */; };
 		CF97579C2410589900015347 /* MockKochavaEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757982410589900015347 /* MockKochavaEvent.swift */; };
-		CF9757B9241058B200015347 /* TealiumDeeplinkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97579D241058B100015347 /* TealiumDeeplinkable.swift */; };
+		CF9757B9241058B200015347 /* TealiumDeepLinkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97579D241058B100015347 /* TealiumDeepLinkable.swift */; };
 		CF9757BA241058B200015347 /* KochavaRemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97579E241058B100015347 /* KochavaRemoteCommand.swift */; };
 		CF9757BB241058B200015347 /* TealiumKochavaTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97579F241058B100015347 /* TealiumKochavaTracker.swift */; };
 		CF9757BC241058B200015347 /* KVATracker.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757A1241058B100015347 /* KVATracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -106,7 +106,7 @@
 		CF9757962410589900015347 /* MockTealiumKochavaTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTealiumKochavaTracker.swift; sourceTree = "<group>"; };
 		CF9757972410589900015347 /* HttpTestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTestHelpers.swift; sourceTree = "<group>"; };
 		CF9757982410589900015347 /* MockKochavaEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockKochavaEvent.swift; sourceTree = "<group>"; };
-		CF97579D241058B100015347 /* TealiumDeeplinkable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TealiumDeeplinkable.swift; sourceTree = "<group>"; };
+		CF97579D241058B100015347 /* TealiumDeepLinkable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TealiumDeepLinkable.swift; sourceTree = "<group>"; };
 		CF97579E241058B100015347 /* KochavaRemoteCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KochavaRemoteCommand.swift; sourceTree = "<group>"; };
 		CF97579F241058B100015347 /* TealiumKochavaTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TealiumKochavaTracker.swift; sourceTree = "<group>"; };
 		CF9757A1241058B100015347 /* KVATracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVATracker.h; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 				CF97579F241058B100015347 /* TealiumKochavaTracker.swift */,
 				CF9757A6241058B100015347 /* KochavaConstants.swift */,
 				CF9F2E042425190A00564C46 /* KochavaEventKeys.swift */,
-				CF97579D241058B100015347 /* TealiumDeeplinkable.swift */,
+				CF97579D241058B100015347 /* TealiumDeepLinkable.swift */,
 				CF9757A7241058B100015347 /* EnumMap.swift */,
 				CF97577D2410585300015347 /* TealiumKochava.h */,
 				CF97577E2410585300015347 /* Info.plist */,
@@ -426,7 +426,7 @@
 				CF9F2E052425190A00564C46 /* KochavaEventKeys.swift in Sources */,
 				CF9757BB241058B200015347 /* TealiumKochavaTracker.swift in Sources */,
 				CF9757C2241058B200015347 /* EnumMap.swift in Sources */,
-				CF9757B9241058B200015347 /* TealiumDeeplinkable.swift in Sources */,
+				CF9757B9241058B200015347 /* TealiumDeepLinkable.swift in Sources */,
 				CF9757BA241058B200015347 /* KochavaRemoteCommand.swift in Sources */,
 				CF9757C1241058B200015347 /* KochavaConstants.swift in Sources */,
 			);

@@ -12,7 +12,7 @@ enum KochavaConstants {
     
     static let commandName = "command_name"
     static let separator: Character = ","
-    static let errorPrefix = "Tealium Kochava: "
+    static let errorPrefix = "Kochava Error: "
     
     enum ConfigKey: String {
         case command = "command_name"
@@ -28,7 +28,7 @@ enum KochavaConstants {
         case kvaSDKVersion = "kva_sdk_version"
     }
     
-    enum Commands: String {
+    enum Commands: String  {
         case configure = "configure"
         case sleeptracker = "sleepTracker"
         case invalidate = "invalidate"
@@ -55,6 +55,12 @@ enum KochavaConstants {
         case consentgranted
         case subscribe
         case starttrial
+    }
+
+    enum EventKeys: String {
+        case customEventNameString = "customEventNameString"
+        case infoDictionary = "infoDictionary"
+        case infoString = "infoString"
     }
     
 }

@@ -1,1 +1,1 @@
-github "tealium/tealium-swift"
+github "tealium/tealium-swift" ~> 1.9
