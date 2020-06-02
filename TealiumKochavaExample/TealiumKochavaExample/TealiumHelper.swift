@@ -1,9 +1,9 @@
 //
 //  TealiumHelper.swift
-//  RemoteCommandModules
+//  TealiumKochavaExample
 //
-//  Created by Christina Sund on 6/18/19.
-//  Copyright © 2019 Christina. All rights reserved.
+//  Created by Christina S on 6/18/19.
+//  Copyright © 2019 Tealium. All rights reserved.
 //
 
 import Foundation

@@ -1,9 +1,9 @@
 //
 //  RegisterViewController.swift
-//  TealiumFirebaseExample
+//  TealiumKochavaExample
 //
-//  Created by Christina Sund on 7/18/19.
-//  Copyright © 2019 Christina. All rights reserved.
+//  Created by Christina S on 7/18/19.
+//  Copyright © 2019 Tealium. All rights reserved.
 //
 
 import UIKit
