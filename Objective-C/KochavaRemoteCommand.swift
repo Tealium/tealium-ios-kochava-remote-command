@@ -98,16 +98,15 @@ public class KochavaRemoteCommand: NSObject {
                     print("\(KochavaConstants.errorPrefix)`custom_event_name` is required for custom events.")
                     return
                 }
-                if let infoDictionary = payload[.infoDictionary] as? [String: Any] {
-                    return tealKochavaTracker.sendEvent(name: eventName, dictionary: infoDictionary)
+                guard let infoDictionary = payload[.infoDictionary] as? String else {
+                    tealKochavaTracker.sendEvent(name: eventName)
+                    return
                 }
-                guard let infoString = payload[.infoString] as? String else {
-                    return tealKochavaTracker.sendEvent(name: eventName)
-                }
-                return tealKochavaTracker.sendEvent(name: eventName, string: infoString)
+                tealKochavaTracker.sendEvent(name: eventName, string: infoDictionary)
+                return
             default:
-                if let kochavaEventName = KochavaConstants.Events(rawValue: command.lowercased()) {
-                    tealKochavaTracker.sendEvent(type: kochavaEvent[kochavaEventName], dictionary: payload)
+                if let event = KochavaConstants.Events(rawValue: command.lowercased()) {
+                    tealKochavaTracker.sendEvent(type: KochavaEventTypeEnum(event), with: kochavaEventData)
                 }
                 break
             }
@@ -188,6 +187,49 @@ fileprivate extension Dictionary where Key: ExpressibleByStringLiteral {
         }
         set {
             self[key.rawValue as! Key] = newValue
+        }
+    }
+}
+
+extension KochavaEventTypeEnum {
+    init(_ eventType: KochavaConstants.Events) {
+        switch eventType {
+        case .addtocart:
+            self = KochavaEventTypeEnum.addToCart
+        case .addtowishlist:
+            self = KochavaEventTypeEnum.addToWishList
+        case .achievement:
+            self = KochavaEventTypeEnum.achievement
+        case .levelcomplete:
+            self = KochavaEventTypeEnum.levelComplete
+        case .purchase:
+            self = KochavaEventTypeEnum.purchase
+        case .checkoutstart:
+            self = KochavaEventTypeEnum.checkoutStart
+        case .rating:
+            self = KochavaEventTypeEnum.rating
+        case .search:
+            self = KochavaEventTypeEnum.search
+        case .tutorialcomplete:
+            self = KochavaEventTypeEnum.tutorialComplete
+        case .view:
+            self = KochavaEventTypeEnum.view
+        case .adview:
+            self = KochavaEventTypeEnum.adView
+        case .adclick:
+            self = KochavaEventTypeEnum.adClick
+        case .pushrecieved:
+            self = KochavaEventTypeEnum.pushReceived
+        case .pushopened:
+            self = KochavaEventTypeEnum.pushOpened
+        case .consentgranted:
+            self = KochavaEventTypeEnum.consentGranted
+        case .subscribe:
+            self = KochavaEventTypeEnum.subscribe
+        case .registrationcomplete:
+            self = KochavaEventTypeEnum.registrationComplete
+        case .starttrial:
+            self = KochavaEventTypeEnum.startTrial
         }
     }
 }

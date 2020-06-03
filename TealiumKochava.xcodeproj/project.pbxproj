@@ -22,7 +22,6 @@
 		CF9757BF241058B200015347 /* libKochavaTrackeriOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9757A4241058B100015347 /* libKochavaTrackeriOS.a */; };
 		CF9757C0241058B200015347 /* KVATrackerProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757A5241058B100015347 /* KVATrackerProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF9757C1241058B200015347 /* KochavaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757A6241058B100015347 /* KochavaConstants.swift */; };
-		CF9757C2241058B200015347 /* EnumMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757A7241058B100015347 /* EnumMap.swift */; };
 		CF9757C3241058B200015347 /* KVASendEventFuncProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757A9241058B200015347 /* KVASendEventFuncProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF9757C4241058B200015347 /* KVAPartner.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757AA241058B200015347 /* KVAPartner.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF9757C5241058B200015347 /* KVAAsForContextObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9757AB241058B200015347 /* KVAAsForContextObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -115,7 +114,6 @@
 		CF9757A4241058B100015347 /* libKochavaTrackeriOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libKochavaTrackeriOS.a; sourceTree = "<group>"; };
 		CF9757A5241058B100015347 /* KVATrackerProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVATrackerProduct.h; sourceTree = "<group>"; };
 		CF9757A6241058B100015347 /* KochavaConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KochavaConstants.swift; sourceTree = "<group>"; };
-		CF9757A7241058B100015347 /* EnumMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumMap.swift; sourceTree = "<group>"; };
 		CF9757A9241058B200015347 /* KVASendEventFuncProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVASendEventFuncProvider.h; sourceTree = "<group>"; };
 		CF9757AA241058B200015347 /* KVAPartner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAPartner.h; sourceTree = "<group>"; };
 		CF9757AB241058B200015347 /* KVAAsForContextObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAAsForContextObjectProtocol.h; sourceTree = "<group>"; };
@@ -197,7 +195,6 @@
 				CF9757A6241058B100015347 /* KochavaConstants.swift */,
 				CF9F2E042425190A00564C46 /* KochavaEventKeys.swift */,
 				CF97579D241058B100015347 /* TealiumDeepLinkable.swift */,
-				CF9757A7241058B100015347 /* EnumMap.swift */,
 				CF97577D2410585300015347 /* TealiumKochava.h */,
 				CF97577E2410585300015347 /* Info.plist */,
 			);
@@ -425,7 +422,6 @@
 			files = (
 				CF9F2E052425190A00564C46 /* KochavaEventKeys.swift in Sources */,
 				CF9757BB241058B200015347 /* TealiumKochavaTracker.swift in Sources */,
-				CF9757C2241058B200015347 /* EnumMap.swift in Sources */,
 				CF9757B9241058B200015347 /* TealiumDeepLinkable.swift in Sources */,
 				CF9757BA241058B200015347 /* KochavaRemoteCommand.swift in Sources */,
 				CF9757C1241058B200015347 /* KochavaConstants.swift in Sources */,
