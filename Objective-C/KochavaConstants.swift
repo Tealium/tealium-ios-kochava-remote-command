@@ -14,7 +14,7 @@ enum KochavaConstants {
     static let separator: Character = ","
     static let errorPrefix = "Kochava Error: "
     
-    enum ConfigKey: String {
+    enum Keys: String {
         case command = "command_name"
         case apiKey = "app_guid"
         case logLevel = "log_level"
@@ -26,6 +26,9 @@ enum KochavaConstants {
         case sleepTracker = "sleep_tracker"
         case kvaDeviceID = "kva_device_id"
         case kvaSDKVersion = "kva_sdk_version"
+        case customEventNameString = "custom_event_name"
+        case eventPayload = "event_parameters"
+        case infoDictionary = "info_dictionary"
     }
     
     enum Commands: String  {
@@ -56,13 +59,61 @@ enum KochavaConstants {
         case subscribe
         case starttrial
     }
-
-    enum EventKeys: String {
-        case customEventNameString = "customEventNameString"
-        case infoDictionary = "infoDictionary"
-        case infoString = "infoString"
-    }
     
+    static let eventParameters = [
+        "action": "actionString",
+        "ad_campaign_id": "adCampaignIdString",
+        "ad_campaign_name": "adCampaignNameString",
+        "ad_device_type": "adDeviceTypeString",
+        "ad_group_id": "adGroupIdString",
+        "ad_group_name": "adGroupNameString",
+        "ad_mediation_name": "adMediationNameString",
+        "ad_network_name": "adNetworkNameString",
+        "placement": "adPlacementString",
+        "ad_size": "adSizeString",
+        "ad_type": "adTypeString",
+        "from_apple_watch": "appleWatchBool",
+        "apple_watch_id": "appleWatchIdString",
+        "app_store_receipt_encoded": "appStoreReceiptBase64EncodedString",
+        "checkout_as_guest": "checkoutAsGuestString",
+        "completed": "completedBoolNumber",
+        "content_id": "contentIdString",
+        "content_type": "contentTypeString",
+        "currency": "currencyString",
+        "custom_event_name": "customEventNameString",
+        "date_now": "dateString",
+        "description": "descriptionString",
+        "destination": "destinationString",
+        "duration": "durationTimeIntervalNumber",
+        "end_date": "endDateString",
+        "info_dictionary": "infoDictionary",
+        "info_string": "infoString",
+        "item_added_from": "itemAddedFromString",
+        "level": "levelString",
+        "max_rating_value": "maxRatingValueDoubleNumber",
+        "name": "nameString",
+        "order_id": "orderIdString",
+        "quantity": "quantityDoubleNumber",
+        "origin": "originString",
+        "price": "priceDoubleNumber",
+        "rating_value": "ratingValueDoubleNumber",
+        "receipt_id": "receiptIdString",
+        "referral_from": "referralFromString",
+        "registration_method": "registrationMethodString",
+        "search_term": "searchTermString",
+        "results": "resultsString",
+        "score": "scoreString",
+        "spatial_x": "spatialXDoubleNumber",
+        "spatial_y": "spatialYDoubleNumber",
+        "spatial_z": "spatialZDoubleNumber",
+        "start_date": "startDateString",
+        "success": "successString",
+        "user_id": "userIdString",
+        "uri": "uriString",
+        "user_name": "userNameString",
+        "validated": "validatedString"
+    ]
+
 }
 
 
