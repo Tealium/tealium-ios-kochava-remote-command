@@ -40,7 +40,6 @@ public class KochavaRemoteCommand {
     func parseCommands(_ commands: [String], payload: [String: Any]) {
         commands.forEach { command in
             let commandName = KochavaConstants.Commands(rawValue: command.lowercased())
-            let eventPayload = payload[.eventPayload]
             switch commandName {
             case .configure:
                 var config = [AnyHashable: Any]()
