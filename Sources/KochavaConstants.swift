@@ -27,6 +27,7 @@ enum KochavaConstants {
         case kvaDeviceID = "kva_device_id"
         case kvaSDKVersion = "kva_sdk_version"
         case customEventNameString = "custom_event_name"
+        case eventPayload = "event_parameters"
         case infoDictionary = "info_dictionary"
     }
     

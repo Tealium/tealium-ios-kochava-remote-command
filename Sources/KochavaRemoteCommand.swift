@@ -40,6 +40,7 @@ public class KochavaRemoteCommand {
     func parseCommands(_ commands: [String], payload: [String: Any]) {
         commands.forEach { command in
             let commandName = KochavaConstants.Commands(rawValue: command.lowercased())
+            let eventPayload = payload[.eventPayload]
             switch commandName {
             case .configure:
                 var config = [AnyHashable: Any]()
@@ -102,7 +103,8 @@ public class KochavaRemoteCommand {
                     }
                     return
                 }
-                guard let infoDictionary = payload[.infoDictionary] as? [String: Any] else {
+                guard let eventPayload = payload[.eventPayload] as? [String: Any],
+                    let infoDictionary = eventPayload[.infoDictionary] as? [String: Any] else {
                     tealKochavaTracker.sendEvent(name: eventName)
                     return
                 }
@@ -110,11 +112,11 @@ public class KochavaRemoteCommand {
                 return
             default:
                 if let event = KochavaConstants.Events(rawValue: command.lowercased()) {
-                    guard let infoDictionary = payload[.infoDictionary] as? [String: Any] else {
+                    guard let eventPayload = payload[.eventPayload] as? [String: Any] else {
                         tealKochavaTracker.sendEvent(type: KochavaEventTypeEnum(event))
                         return
                     }
-                    tealKochavaTracker.sendEvent(type: KochavaEventTypeEnum(event), with: infoDictionary)
+                    tealKochavaTracker.sendEvent(type: KochavaEventTypeEnum(event), with: eventPayload)
                 }
                 break
             }
