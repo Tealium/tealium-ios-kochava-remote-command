@@ -24,10 +24,10 @@ class MockTealiumKochavaTracker: KochavaTrackable {
     var configureWithSleepCount = 0
     var sleepTrackerCount = 0
     var invalidateCount = 0
-    var sendEventCount = 0
-    var sendEventWithStandardDataCount = 0
-    var sendEventWithInfoStringCount = 0
-    var sendEventWithInfoDictionaryCount = 0
+    var sendCustomEventNoDictionaryCount = 0
+    var sendCustomEventWithDictionaryCount = 0
+    var sendEventTypeEnumNoDictionary = 0
+    var sendEventTypeEnumWithDictionary = 0
     var sendIdentityLinkCount = 0
     var eventLookup = [String: Int]()
     var attributionDelegateRunCount = 0
@@ -55,19 +55,20 @@ class MockTealiumKochavaTracker: KochavaTrackable {
     }
     
     func sendEvent(name: String) {
-        sendEventCount += 1
+        sendCustomEventNoDictionaryCount += 1
     }
     
-    func sendEvent(name: String, with string: String?) {
-        sendEventWithInfoStringCount += 1
+    func sendEvent(name: String, with dictionary: [String : Any]) {
+        sendCustomEventWithDictionaryCount += 1
     }
     
-    func sendEvent(name: String, with dictionary: [String : Any]?) {
-        sendEventWithInfoDictionaryCount += 1
+    func sendEvent(type: KochavaEventTypeEnum) {
+        sendEventTypeEnumNoDictionary += 1
+        incrementSpecificEvent(type)
     }
     
-    func sendEvent(type: KochavaEventTypeEnum, with data: KochavaEventKeys?) {
-        sendEventWithStandardDataCount += 1
+    func sendEvent(type: KochavaEventTypeEnum, with dictionary: [String: Any]) {
+        sendEventTypeEnumWithDictionary += 1
         incrementSpecificEvent(type)
     }
     

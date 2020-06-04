@@ -17,6 +17,7 @@ import Foundation
 public class KochavaRemoteCommand {
 
     var tealKochavaTracker: KochavaTrackable
+    var loggingEnabled = false
 
     public init(tealKochavaTracker: KochavaTrackable = TealiumKochavaTracker()) {
         self.tealKochavaTracker = tealKochavaTracker
@@ -24,7 +25,7 @@ public class KochavaRemoteCommand {
 
     public func remoteCommand() -> TealiumRemoteCommand {
         return TealiumRemoteCommand(commandId: "kochava", description: "Kochava Remote Command") { response in
-            let payload = response.payload().stringsToBools
+            let payload = response.payload()
             guard let command = payload[KochavaConstants.commandName] as? String else {
                 return
             }
@@ -42,106 +43,88 @@ public class KochavaRemoteCommand {
             switch commandName {
             case .configure:
                 var config = [AnyHashable: Any]()
-                guard let appGUID = payload[KochavaConstants.ConfigKey.apiKey] else {
-                    print("\(KochavaConstants.errorPrefix)`app_guid` is required to configure Kochava.")
+                if let logLevel = payload[.logLevel] as? String {
+                    if logLevel == "debug" || logLevel == "warn" {
+                        loggingEnabled = true
+                    }
+                    config[kKVAParamLogLevelEnumKey] = logLevel.capitalized
+                }
+                guard let appGUID = payload[.apiKey] else {
+                    if loggingEnabled {
+                        print("\(KochavaConstants.errorPrefix)`app_guid` is required to configure Kochava.")
+                    }
                     return
                 }
                 config[kKVAParamAppGUIDStringKey] = appGUID
-
-                if let logLevel = payload[.logLevel] as? String {
-                    config[kKVAParamLogLevelEnumKey] = logLevel.capitalized
-                }
-
                 if let shouldSendDeviceId = payload[.sendDeviceId] as? Bool,
                     shouldSendDeviceId == true,
                     let kochavaDeviceIdString = KochavaTracker.shared.deviceIdString() {
-                    tealKochavaTracker.tealium?.volatileData()?.add(data: [KochavaConstants.ConfigKey.kvaDeviceID.rawValue: kochavaDeviceIdString])
+                    let deviceId = [KochavaConstants.Keys.kvaDeviceID.rawValue: kochavaDeviceIdString]
+                    tealKochavaTracker.tealium?.volatileData()?.add(data: deviceId)
                 }
-
                 if let shouldSendSdkVersion = payload[.sendSDKVersion] as? Bool,
                     shouldSendSdkVersion == true,
                     let sdkVersionString = KochavaTracker.shared.sdkVersionString() {
-                    tealKochavaTracker.tealium?.volatileData()?.add(data: [KochavaConstants.ConfigKey.kvaSDKVersion.rawValue: sdkVersionString])
+                    let sdkVersion = [KochavaConstants.Keys.kvaSDKVersion.rawValue: sdkVersionString]
+                    tealKochavaTracker.tealium?.volatileData()?.add(data: sdkVersion)
                 }
-
                 if let identityLink = payload[.identityLinks] as? [String: String] {
                     config[kKVAParamIdentityLinkDictionaryKey] = identityLink
                 }
-
                 if let attribution = payload[.retrieveAttributionData] as? Bool, attribution == true {
                     config[kKVAParamRetrieveAttributionBoolKey] = true
                 }
-
                 if let limitAdTracking = payload[.limitAdTracking] as? Bool {
                     config[kKVAParamAppLimitAdTrackingBoolKey] = limitAdTracking
                 }
-
                 tealKochavaTracker.configure(with: config)
-
                 if let sleepTracker = payload[.sleepTracker] as? Bool {
                     tealKochavaTracker.sleepTracker(sleepTracker)
                 }
             case .sleeptracker:
                 guard let sleepTracker = payload[.sleepTracker] as? Bool else {
-                    print("\(KochavaConstants.errorPrefix)`sleep_tracker` mapping is required in order to toggle sleep.")
+                    if loggingEnabled {
+                        print("\(KochavaConstants.errorPrefix)`sleep_tracker` mapping is required in order to toggle sleep.")
+                    }
                     return
                 }
                 tealKochavaTracker.sleepTracker(sleepTracker)
             case .invalidate:
                 tealKochavaTracker.invalidate()
             case .sendidentitylink:
-                if let identityLink = payload[KochavaConstants.ConfigKey.identityLinks] as? [String: String] {
+                if let identityLink = payload[.identityLinks] as? [String: String] {
                     tealKochavaTracker.sendIdentityLink(with: identityLink)
                 }
             case .custom:
-                let kochavaEventData = eventData(with: payload)
-                guard let eventName = kochavaEventData?.customEventNameString else {
-                    print("\(KochavaConstants.errorPrefix)`custom_event_name` is required for custom events.")
+                guard let eventName = payload[.customEventNameString] as? String else {
+                    if loggingEnabled {
+                        print("\(KochavaConstants.errorPrefix)`custom_event_name` is required for custom events.")
+                    }
                     return
                 }
-                guard let infoDictionary = kochavaEventData?.infoDictionary else {
+                guard let infoDictionary = payload[.infoDictionary] as? [String: Any] else {
                     tealKochavaTracker.sendEvent(name: eventName)
                     return
                 }
                 tealKochavaTracker.sendEvent(name: eventName, with: infoDictionary)
                 return
             default:
-                let kochavaEventData = eventData(with: payload)
                 if let event = KochavaConstants.Events(rawValue: command.lowercased()) {
-                    tealKochavaTracker.sendEvent(type: KochavaEventTypeEnum(event), with: kochavaEventData)
+                    guard let infoDictionary = payload[.infoDictionary] as? [String: Any] else {
+                        tealKochavaTracker.sendEvent(type: KochavaEventTypeEnum(event))
+                        return
+                    }
+                    tealKochavaTracker.sendEvent(type: KochavaEventTypeEnum(event), with: infoDictionary)
                 }
                 break
             }
         }
     }
 
-    func eventData(with payload: [String: Any]) -> KochavaEventKeys? {
-        guard let jsonData = try? JSONSerialization.data(withJSONObject: payload),
-            let decoded = try? JSONDecoder().decode(KochavaEventKeys.self, from: jsonData) else {
-                print("\(KochavaConstants.errorPrefix) could not encode/decode payload.")
-                return nil
-        }
-        return decoded
-    }
-
-}
-
-fileprivate extension Dictionary where Key == String, Value == Any {
-    var stringsToBools: [String: Any] {
-        self.reduce(into: [String: Any]()) { result, dictionary in
-            guard let value = dictionary.value as? String,
-                value == "true" || value == "false" else {
-                    result[dictionary.key] = dictionary.value
-                    return
-            }
-            let boolValue = Bool(value)
-            result[dictionary.key] = boolValue
-        }
-    }
 }
 
 fileprivate extension Dictionary where Key: ExpressibleByStringLiteral {
-    subscript(key: KochavaConstants.ConfigKey) -> Value? {
+    subscript(key: KochavaConstants.Keys) -> Value? {
         get {
             return self[key.rawValue as! Key]
         }

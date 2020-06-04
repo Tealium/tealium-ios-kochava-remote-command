@@ -27,7 +27,7 @@ class TealiumKochavaTrackerTests: XCTestCase {
     func testConfigureWithAttributionDelegate() {
         let expect = expectation(description: "Kochava configure(parameters:) method run")
         let payload: [String: Any] = ["command_name": "configure",
-            "app_guid": "test", "retrieve_attribution_data": "true"]
+            "app_guid": "test", "retrieve_attribution_data": true]
 
         if let response = HttpTestHelpers.createRemoteCommandResponse(commandId: "kochava", payload: payload) {
             remoteCommand.remoteCommandCompletion(response)
@@ -60,7 +60,7 @@ class TealiumKochavaTrackerTests: XCTestCase {
     func testConfigureWithSleep() {
         let expect = expectation(description: "Kochava configure(parameters:) method run")
         let payload: [String: Any] = ["command_name": "configure",
-            "app_guid": "test", "sleep_tracker": "true"]
+            "app_guid": "test", "sleep_tracker": true]
 
         if let response = HttpTestHelpers.createRemoteCommandResponse(commandId: "kochava", payload: payload) {
             remoteCommand.remoteCommandCompletion(response)
@@ -85,43 +85,41 @@ class TealiumKochavaTrackerTests: XCTestCase {
         wait(for: [expect], timeout: 2.0)
     }
 
-    func testSendCustomEventWithOutData() {
+    func testSendCustomEventWithOutDictionary() {
         let expect = expectation(description: "Kochava configure(parameters:) method run")
         let payload: [String: Any] = ["command_name": "custom",
             "custom_event_name": "someEventName"]
 
         if let response = HttpTestHelpers.createRemoteCommandResponse(commandId: "kochava", payload: payload) {
             remoteCommand.remoteCommandCompletion(response)
-            XCTAssertEqual(1, self.mockTealiumKochavaTracker.sendEventCount)
+            XCTAssertEqual(1, self.mockTealiumKochavaTracker.sendCustomEventNoDictionaryCount)
+        }
+
+        expect.fulfill()
+        wait(for: [expect], timeout: 2.0)
+    }
+    
+    func testSendEventTypeEnumWithoutDictionary() {
+        let expect = expectation(description: "Kochava configure(parameters:) method run")
+        let payload: [String: Any] = ["command_name": "achievement"]
+
+        if let response = HttpTestHelpers.createRemoteCommandResponse(commandId: "kochava", payload: payload) {
+            remoteCommand.remoteCommandCompletion(response)
+            XCTAssertEqual(1, self.mockTealiumKochavaTracker.sendEventTypeEnumNoDictionary)
         }
 
         expect.fulfill()
         wait(for: [expect], timeout: 2.0)
     }
 
-    func testSendEventTypeEnumWithStandardData() {
+    func testSendEventTypeEnumWithDictionary() {
         let expect = expectation(description: "Kochava configure(parameters:) method run")
         let payload: [String: Any] = ["command_name": "addtocart",
-            "content_id": "123sdf"]
+                                      "info_dictionary": ["content_id": "123sdf"]]
 
         if let response = HttpTestHelpers.createRemoteCommandResponse(commandId: "kochava", payload: payload) {
             remoteCommand.remoteCommandCompletion(response)
-            XCTAssertEqual(1, self.mockTealiumKochavaTracker.sendEventWithStandardDataCount)
-        }
-
-        expect.fulfill()
-        wait(for: [expect], timeout: 2.0)
-    }
-
-    func testSendCustomEventWithInfoString() {
-        let expect = expectation(description: "Kochava configure(parameters:) method run")
-        let payload: [String: Any] = ["command_name": "custom",
-            "custom_event_name": "someEventName",
-            "info_string": "blahBlah"]
-
-        if let response = HttpTestHelpers.createRemoteCommandResponse(commandId: "kochava", payload: payload) {
-            remoteCommand.remoteCommandCompletion(response)
-            XCTAssertEqual(1, self.mockTealiumKochavaTracker.sendEventWithInfoStringCount)
+            XCTAssertEqual(1, self.mockTealiumKochavaTracker.sendEventTypeEnumWithDictionary)
         }
 
         expect.fulfill()
@@ -136,7 +134,7 @@ class TealiumKochavaTrackerTests: XCTestCase {
 
         if let response = HttpTestHelpers.createRemoteCommandResponse(commandId: "kochava", payload: payload) {
             remoteCommand.remoteCommandCompletion(response)
-            XCTAssertEqual(1, self.mockTealiumKochavaTracker.sendEventWithInfoDictionaryCount)
+            XCTAssertEqual(1, self.mockTealiumKochavaTracker.sendCustomEventWithDictionaryCount)
         }
 
         expect.fulfill()
@@ -177,7 +175,37 @@ class TealiumKochavaTrackerTests: XCTestCase {
         expect.fulfill()
         wait(for: [expect], timeout: 2.0)
     }
+    
+    func testLoggingEnabledSetToTrue() {
+        let expect = expectation(description: "Kochava configure(parameters:) method run")
+        let payload: [String: Any] = ["command_name": "configure,sendidentitylink",
+            "app_guid": "test",
+            "log_level": "debug"]
+        XCTAssertFalse(kochavaCommand.loggingEnabled) // Should be false initially
+        if let response = HttpTestHelpers.createRemoteCommandResponse(commandId: "kochava", payload: payload) {
+            remoteCommand.remoteCommandCompletion(response)
+            XCTAssertTrue(kochavaCommand.loggingEnabled)
+        }
 
+        expect.fulfill()
+        wait(for: [expect], timeout: 2.0)
+    }
+    
+    func testLoggingEnabledNotSetToTrue() {
+        let expect = expectation(description: "Kochava configure(parameters:) method run")
+        let payload: [String: Any] = ["command_name": "configure,sendidentitylink",
+            "app_guid": "test",
+            "log_level": "info"]
+        XCTAssertFalse(kochavaCommand.loggingEnabled) // Should be false initially
+        if let response = HttpTestHelpers.createRemoteCommandResponse(commandId: "kochava", payload: payload) {
+            remoteCommand.remoteCommandCompletion(response)
+            XCTAssertFalse(kochavaCommand.loggingEnabled)
+        }
+
+        expect.fulfill()
+        wait(for: [expect], timeout: 2.0)
+    }
+    
     func testRetrieveProperties() {
         let expected = ["firstName", "lastName", "companyName", "address", "city", "county", "state", "zip", "phone1", "phone2", "email", "web"]
         let actual = tealKochavaTracker.retrieveProperties(from: MockKochavaEvent.self)
@@ -257,7 +285,7 @@ class TealiumKochavaTrackerTests: XCTestCase {
         "resultsString": "50000",
         "scoreString": "99999999999"]
         
-        let mapped = KochavaEventKeys.lookup.mapPayload(testEventParams)
+        let mapped = KochavaConstants.eventParameters.map(testEventParams)
         
         XCTAssertEqual(expected.count, mapped.count)
         
@@ -267,13 +295,9 @@ class TealiumKochavaTrackerTests: XCTestCase {
     func testSendEventWhenUnrecognizedVarsAreInPayload() {
         let data: [String: Any] = ["nameString": "stuff", "orderIdString": "abc123", "quantityDoubleNumber": 2.0, "priceDoubleNumber": 27.99, "currencyString": "USD", "contentIdString": "234", "micky": "mouse", "daffy": "duck", "dictionary": ["stuff": "yep", "moreStuff": "doubleYep", "moreNested": ["true": "dat"]], "weird": 235.56, "hmm": "{\"1\":\"2\"}", "isCool": "true", "uhhh": 123, "specialChars": "$$%^NK@!%)#$@*%AG*DF*@&# 4234!$Q)*(($)(&(!&*~#*!(#*!@)~!*_%(_) )*(GS(FDG&SDFG(FG+__#@+@+@++#+#+##++%$++^^@_#_$()'''33'3'3"]
         
-        guard let jsonData = try? JSONSerialization.data(withJSONObject: data),
-            let decoded = try? JSONDecoder().decode(KochavaEventKeys.self, from: jsonData) else {
-                XCTFail("\(KochavaConstants.errorPrefix) could not encode/decode payload.")
-                return
-        }
+        let mapped = KochavaConstants.eventParameters.map(data)
         
-        tealKochavaTracker.sendEvent(type: .purchase, with: decoded)
+        tealKochavaTracker.sendEvent(type: .purchase, with: mapped)
         
         XCTAssertTrue(true)
     }

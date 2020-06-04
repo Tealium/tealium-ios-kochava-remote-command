@@ -1,6 +1,6 @@
 //
 //  HttpTestHelpers.swift
-//  TealiumBraze
+//  TealiumKochava
 //
 //  Created by Jonathan Wong on 8/8/19.
 //  Copyright © 2019 Jonathan Wong. All rights reserved.

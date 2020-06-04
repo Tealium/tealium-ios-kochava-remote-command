@@ -1,8 +1,8 @@
 //
 //  MockKochavaEvent.swift
-//  regular-rc-testTests
+//  TealiumKochava
 //
-//  Created by Christina S on 2/25/20.
+//  Created by Christina S on 6/3/20.
 //  Copyright © 2020 Tealium. All rights reserved.
 //
 
@@ -40,4 +40,3 @@ class MockKochavaEvent: NSObject, KochavaEventProtocol {
         self.web = ""
     }
 }
-
