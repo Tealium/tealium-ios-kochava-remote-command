@@ -1,0 +1,17 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'TealiumKochavaExample' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for TealiumKochavaExample
+  
+  pod 'TealiumKochava', :path=> '../'
+  pod 'tealium-swift/TealiumLogger', '~> 1.9'
+  pod 'tealium-swift/TealiumTagManagement', '~> 1.9'
+  pod 'tealium-swift/TealiumAppData', '~> 1.9'
+  pod 'tealium-swift/TealiumDeviceData', '~> 1.9'
+  pod 'tealium-swift/TealiumLifecycle', '~> 1.9'
+
+end
