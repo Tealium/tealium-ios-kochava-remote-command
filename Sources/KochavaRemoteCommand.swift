@@ -43,46 +43,46 @@ public class KochavaRemoteCommand {
             switch commandName {
             case .configure:
                 var config = [AnyHashable: Any]()
-                if let logLevel = payload[.logLevel] as? String {
+                if let logLevel = payload[KochavaConstants.Keys.logLevel] as? String {
                     if logLevel == "debug" || logLevel == "warn" {
                         loggingEnabled = true
                     }
                     config[kKVAParamLogLevelEnumKey] = logLevel.capitalized
                 }
-                guard let appGUID = payload[.apiKey] else {
+                guard let appGUID = payload[KochavaConstants.Keys.apiKey] else {
                     if loggingEnabled {
                         print("\(KochavaConstants.errorPrefix)`app_guid` is required to configure Kochava.")
                     }
                     return
                 }
                 config[kKVAParamAppGUIDStringKey] = appGUID
-                if let shouldSendDeviceId = payload[.sendDeviceId] as? Bool,
+                if let shouldSendDeviceId = payload[KochavaConstants.Keys.sendDeviceId] as? Bool,
                     shouldSendDeviceId == true,
                     let kochavaDeviceIdString = KochavaTracker.shared.deviceIdString() {
-                    let deviceId = [KochavaConstants.Keys.kvaDeviceID.rawValue: kochavaDeviceIdString]
+                    let deviceId = [KochavaConstants.Keys.kvaDeviceID: kochavaDeviceIdString]
                     tealKochavaTracker.tealium?.volatileData()?.add(data: deviceId)
                 }
-                if let shouldSendSdkVersion = payload[.sendSDKVersion] as? Bool,
+                if let shouldSendSdkVersion = payload[KochavaConstants.Keys.sendSDKVersion] as? Bool,
                     shouldSendSdkVersion == true,
                     let sdkVersionString = KochavaTracker.shared.sdkVersionString() {
-                    let sdkVersion = [KochavaConstants.Keys.kvaSDKVersion.rawValue: sdkVersionString]
+                    let sdkVersion = [KochavaConstants.Keys.kvaSDKVersion: sdkVersionString]
                     tealKochavaTracker.tealium?.volatileData()?.add(data: sdkVersion)
                 }
-                if let identityLink = payload[.identityLinks] as? [String: String] {
+                if let identityLink = payload[KochavaConstants.Keys.identityLinks] as? [String: String] {
                     config[kKVAParamIdentityLinkDictionaryKey] = identityLink
                 }
-                if let attribution = payload[.retrieveAttributionData] as? Bool, attribution == true {
+                if let attribution = payload[KochavaConstants.Keys.retrieveAttributionData] as? Bool, attribution == true {
                     config[kKVAParamRetrieveAttributionBoolKey] = true
                 }
-                if let limitAdTracking = payload[.limitAdTracking] as? Bool {
+                if let limitAdTracking = payload[KochavaConstants.Keys.limitAdTracking] as? Bool {
                     config[kKVAParamAppLimitAdTrackingBoolKey] = limitAdTracking
                 }
                 tealKochavaTracker.configure(with: config)
-                if let sleepTracker = payload[.sleepTracker] as? Bool {
+                if let sleepTracker = payload[KochavaConstants.Keys.sleepTracker] as? Bool {
                     tealKochavaTracker.sleepTracker(sleepTracker)
                 }
             case .sleeptracker:
-                guard let sleepTracker = payload[.sleepTracker] as? Bool else {
+                guard let sleepTracker = payload[KochavaConstants.Keys.sleepTracker] as? Bool else {
                     if loggingEnabled {
                         print("\(KochavaConstants.errorPrefix)`sleep_tracker` mapping is required in order to toggle sleep.")
                     }
@@ -92,18 +92,18 @@ public class KochavaRemoteCommand {
             case .invalidate:
                 tealKochavaTracker.invalidate()
             case .sendidentitylink:
-                if let identityLink = payload[.identityLinks] as? [String: String] {
+                if let identityLink = payload[KochavaConstants.Keys.identityLinks] as? [String: String] {
                     tealKochavaTracker.sendIdentityLink(with: identityLink)
                 }
             case .custom:
-                guard let eventName = payload[.customEventNameString] as? String else {
+                guard let eventName = payload[KochavaConstants.Keys.customEventNameString] as? String else {
                     if loggingEnabled {
                         print("\(KochavaConstants.errorPrefix)`custom_event_name` is required for custom events.")
                     }
                     return
                 }
-                guard let eventPayload = payload[.eventPayload] as? [String: Any],
-                    let infoDictionary = eventPayload[.infoDictionary] as? [String: Any] else {
+                guard let eventPayload = payload[KochavaConstants.Keys.eventPayload] as? [String: Any],
+                    let infoDictionary = eventPayload[KochavaConstants.Keys.infoDictionary] as? [String: Any] else {
                     tealKochavaTracker.sendEvent(name: eventName)
                     return
                 }
@@ -111,7 +111,7 @@ public class KochavaRemoteCommand {
                 return
             default:
                 if let event = KochavaConstants.Events(rawValue: command.lowercased()) {
-                    guard let eventPayload = payload[.eventPayload] as? [String: Any] else {
+                    guard let eventPayload = payload[KochavaConstants.Keys.eventPayload] as? [String: Any] else {
                         tealKochavaTracker.sendEvent(type: KochavaEventTypeEnum(event))
                         return
                     }
@@ -122,17 +122,6 @@ public class KochavaRemoteCommand {
         }
     }
 
-}
-
-fileprivate extension Dictionary where Key: ExpressibleByStringLiteral {
-    subscript(key: KochavaConstants.Keys) -> Value? {
-        get {
-            return self[key.rawValue as! Key]
-        }
-        set {
-            self[key.rawValue as! Key] = newValue
-        }
-    }
 }
 
 extension KochavaEventTypeEnum {
