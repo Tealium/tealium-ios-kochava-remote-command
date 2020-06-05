@@ -13,6 +13,7 @@ import TealiumIOS
 public class KochavaRemoteCommand: NSObject {
 
     var tealKochavaTracker: KochavaTrackable
+    var loggingEnabled = false
 
     @objc
     public init(tealKochavaTracker: KochavaTrackable = TealiumKochavaTracker()) {
@@ -22,8 +23,7 @@ public class KochavaRemoteCommand: NSObject {
     @objc
     public func remoteCommand() -> TEALRemoteCommandResponseBlock {
         return { response in
-
-            guard var payload = response?.requestPayload as? [String: Any],
+            guard let payload = response?.requestPayload as? [String: Any],
                 let command = payload[KochavaConstants.commandName] as? String else {
                 return
             }
@@ -31,7 +31,6 @@ public class KochavaRemoteCommand: NSObject {
             let kochavaCommands = commands.map { command in
                 return command.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             }
-            payload = payload.stringsToBools
             self.parseCommands(kochavaCommands, payload: payload)
         }
     }
@@ -42,152 +41,126 @@ public class KochavaRemoteCommand: NSObject {
             switch commandName {
             case .configure:
                 var config = [AnyHashable: Any]()
-                guard let appGUID = payload[KochavaConstants.ConfigKey.apiKey] else {
-                    print("\(KochavaConstants.errorPrefix)`app_guid` is required to configure Kochava.")
+                if let logLevel = payload[KochavaConstants.Keys.logLevel] as? String {
+                    if logLevel == "debug" || logLevel == "warn" {
+                        loggingEnabled = true
+                    }
+                    config[kKVAParamLogLevelEnumKey] = logLevel.capitalized
+                }
+                guard let appGUID = payload[KochavaConstants.Keys.apiKey] else {
+                    if loggingEnabled {
+                        print("\(KochavaConstants.errorPrefix)`app_guid` is required to configure Kochava.")
+                    }
                     return
                 }
                 config[kKVAParamAppGUIDStringKey] = appGUID
-
-                if let logLevel = payload[.logLevel] as? String {
-                    config[kKVAParamLogLevelEnumKey] = logLevel.capitalized
-                }
-
-                if let shouldSendDeviceId = payload[.sendDeviceId] as? Bool,
+                if let shouldSendDeviceId = payload[KochavaConstants.Keys.sendDeviceId] as? Bool,
                     shouldSendDeviceId == true,
                     let kochavaDeviceIdString = KochavaTracker.shared.deviceIdString() {
-                    tealKochavaTracker.tealium?.addVolatileDataSources([KochavaConstants.ConfigKey.kvaDeviceID.rawValue: kochavaDeviceIdString])
+                    let deviceId = [KochavaConstants.Keys.kvaDeviceID: kochavaDeviceIdString]
+                    tealKochavaTracker.tealium?.addVolatileDataSources(deviceId)
                 }
-
-                if let shouldSendSdkVersion = payload[.sendSDKVersion] as? Bool,
+                if let shouldSendSdkVersion = payload[KochavaConstants.Keys.sendSDKVersion] as? Bool,
                     shouldSendSdkVersion == true,
                     let sdkVersionString = KochavaTracker.shared.sdkVersionString() {
-                    tealKochavaTracker.tealium?.addVolatileDataSources([KochavaConstants.ConfigKey.kvaSDKVersion.rawValue: sdkVersionString])
+                    let sdkVersion = [KochavaConstants.Keys.kvaSDKVersion: sdkVersionString]
+                    tealKochavaTracker.tealium?.addVolatileDataSources(sdkVersion)
                 }
-
-                if let identityLink = payload[.identityLinks] as? [String: String] {
+                if let identityLink = payload[KochavaConstants.Keys.identityLinks] as? [String: String] {
                     config[kKVAParamIdentityLinkDictionaryKey] = identityLink
                 }
-
-                if let attribution = payload[.retrieveAttributionData] as? Bool, attribution == true {
+                if let attribution = payload[KochavaConstants.Keys.retrieveAttributionData] as? Bool, attribution == true {
                     config[kKVAParamRetrieveAttributionBoolKey] = true
                 }
-
-                if let limitAdTracking = payload[.limitAdTracking] as? Bool {
+                if let limitAdTracking = payload[KochavaConstants.Keys.limitAdTracking] as? Bool {
                     config[kKVAParamAppLimitAdTrackingBoolKey] = limitAdTracking
                 }
-
                 tealKochavaTracker.configure(with: config)
-
-                if let sleepTracker = payload[.sleepTracker] as? Bool {
+                if let sleepTracker = payload[KochavaConstants.Keys.sleepTracker] as? Bool {
                     tealKochavaTracker.sleepTracker(sleepTracker)
                 }
             case .sleeptracker:
-                guard let sleepTracker = payload[.sleepTracker] as? Bool else {
-                    print("\(KochavaConstants.errorPrefix)`sleep_tracker` mapping is required in order to toggle sleep.")
+                guard let sleepTracker = payload[KochavaConstants.Keys.sleepTracker] as? Bool else {
+                    if loggingEnabled {
+                        print("\(KochavaConstants.errorPrefix)`sleep_tracker` mapping is required in order to toggle sleep.")
+                    }
                     return
                 }
                 tealKochavaTracker.sleepTracker(sleepTracker)
             case .invalidate:
                 tealKochavaTracker.invalidate()
             case .sendidentitylink:
-                if let identityLink = payload[KochavaConstants.ConfigKey.identityLinks] as? [String: String] {
+                if let identityLink = payload[KochavaConstants.Keys.identityLinks] as? [String: String] {
                     tealKochavaTracker.sendIdentityLink(with: identityLink)
                 }
             case .custom:
-                guard let eventName = payload[.customEventNameString] as? String else {
-                    print("\(KochavaConstants.errorPrefix)`custom_event_name` is required for custom events.")
+                guard let eventName = payload[KochavaConstants.Keys.customEventNameString] as? String else {
+                    if loggingEnabled {
+                        print("\(KochavaConstants.errorPrefix)`custom_event_name` is required for custom events.")
+                    }
                     return
                 }
-                if let infoDictionary = payload[.infoDictionary] as? [String: Any] {
-                    return tealKochavaTracker.sendEvent(name: eventName, dictionary: infoDictionary)
+                guard let eventPayload = payload[KochavaConstants.Keys.eventPayload] as? [String: Any],
+                    let infoDictionary = eventPayload[KochavaConstants.Keys.infoDictionary] as? [String: Any] else {
+                    tealKochavaTracker.sendEvent(name: eventName)
+                    return
                 }
-                guard let infoString = payload[.infoString] as? String else {
-                    return tealKochavaTracker.sendEvent(name: eventName)
-                }
-                return tealKochavaTracker.sendEvent(name: eventName, string: infoString)
+                tealKochavaTracker.sendEvent(name: eventName, with: infoDictionary)
+                return
             default:
-                if let kochavaEventName = KochavaConstants.Events(rawValue: command.lowercased()) {
-                    tealKochavaTracker.sendEvent(type: kochavaEvent[kochavaEventName], dictionary: payload)
+                if let event = KochavaConstants.Events(rawValue: command.lowercased()) {
+                    guard let eventPayload = payload[KochavaConstants.Keys.eventPayload] as? [String: Any] else {
+                        tealKochavaTracker.sendEvent(type: KochavaEventTypeEnum(event))
+                        return
+                    }
+                    tealKochavaTracker.sendEvent(type: KochavaEventTypeEnum(event), with: eventPayload)
                 }
                 break
             }
         }
     }
 
-    let kochavaEvent = EnumMap<KochavaConstants.Events, KochavaEventTypeEnum> { command in
-        switch command {
+}
+
+extension KochavaEventTypeEnum {
+    init(_ eventType: KochavaConstants.Events) {
+        switch eventType {
         case .addtocart:
-            return KochavaEventTypeEnum.addToCart
+            self = KochavaEventTypeEnum.addToCart
         case .addtowishlist:
-            return KochavaEventTypeEnum.addToWishList
+            self = KochavaEventTypeEnum.addToWishList
         case .achievement:
-            return KochavaEventTypeEnum.achievement
+            self = KochavaEventTypeEnum.achievement
         case .levelcomplete:
-            return KochavaEventTypeEnum.levelComplete
+            self = KochavaEventTypeEnum.levelComplete
         case .purchase:
-            return KochavaEventTypeEnum.purchase
+            self = KochavaEventTypeEnum.purchase
         case .checkoutstart:
-            return KochavaEventTypeEnum.checkoutStart
+            self = KochavaEventTypeEnum.checkoutStart
         case .rating:
-            return KochavaEventTypeEnum.rating
+            self = KochavaEventTypeEnum.rating
         case .search:
-            return KochavaEventTypeEnum.search
+            self = KochavaEventTypeEnum.search
         case .tutorialcomplete:
-            return KochavaEventTypeEnum.tutorialComplete
+            self = KochavaEventTypeEnum.tutorialComplete
         case .view:
-            return KochavaEventTypeEnum.view
+            self = KochavaEventTypeEnum.view
         case .adview:
-            return KochavaEventTypeEnum.adView
+            self = KochavaEventTypeEnum.adView
         case .adclick:
-            return KochavaEventTypeEnum.adClick
+            self = KochavaEventTypeEnum.adClick
         case .pushrecieved:
-            return KochavaEventTypeEnum.pushReceived
+            self = KochavaEventTypeEnum.pushReceived
         case .pushopened:
-            return KochavaEventTypeEnum.pushOpened
+            self = KochavaEventTypeEnum.pushOpened
         case .consentgranted:
-            return KochavaEventTypeEnum.consentGranted
+            self = KochavaEventTypeEnum.consentGranted
         case .subscribe:
-            return KochavaEventTypeEnum.subscribe
+            self = KochavaEventTypeEnum.subscribe
         case .registrationcomplete:
-            return KochavaEventTypeEnum.registrationComplete
+            self = KochavaEventTypeEnum.registrationComplete
         case .starttrial:
-            return KochavaEventTypeEnum.startTrial
-        }
-    }
-    
-    
-
-}
-
-fileprivate extension Dictionary where Key == String, Value == Any {
-    var stringsToBools: [String: Any] {
-        self.reduce(into: [String: Any]()) { result, dictionary in
-            guard let value = dictionary.value as? String,
-                value == "true" || value == "false" else {
-                    result[dictionary.key] = dictionary.value
-                    return
-            }
-            let boolValue = Bool(value)
-            result[dictionary.key] = boolValue
-        }
-    }
-}
-
-fileprivate extension Dictionary where Key: ExpressibleByStringLiteral {
-    subscript(key: KochavaConstants.ConfigKey) -> Value? {
-        get {
-            return self[key.rawValue as! Key]
-        }
-        set {
-            self[key.rawValue as! Key] = newValue
-        }
-    }
-    subscript(key: KochavaConstants.EventKeys) -> Value? {
-        get {
-            return self[key.rawValue as! Key]
-        }
-        set {
-            self[key.rawValue as! Key] = newValue
+            self = KochavaEventTypeEnum.startTrial
         }
     }
 }

@@ -29,7 +29,7 @@ class TealiumHelper {
     var pushTrackingHelpers = [TealiumRegistration]()
 
     private init() {
-        config.logLevel = .verbose
+        config.logLevel = .none
         config.shouldUseRemotePublishSettings = false
 
         tealium = Tealium(config: config,
