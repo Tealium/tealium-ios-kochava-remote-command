@@ -2,7 +2,6 @@
 //  TealiumHelper.swift
 //  TealiumKochavaExample
 //
-//  Created by Christina S on 6/18/19.
 //  Copyright © 2019 Tealium. All rights reserved.
 //
 
@@ -21,32 +20,34 @@ class TealiumHelper {
     static let shared = TealiumHelper()
 
     let config = TealiumConfig(account: TealiumConfiguration.account,
-                               profile: TealiumConfiguration.profile,
-                               environment: TealiumConfiguration.environment)
+        profile: TealiumConfiguration.profile,
+        environment: TealiumConfiguration.environment)
 
     var tealium: Tealium?
     var deepLinkHelpers = [TealiumDeepLinkable]()
-    var pushTrackingHelpers = [TealiumRegistration]()
-
+    var pushMessagingHelpers = [TealiumRegistration]()
+    
     private init() {
-        config.logLevel = .none
         config.shouldUseRemotePublishSettings = false
-
-        tealium = Tealium(config: config,
-            enableCompletion: { [weak self] _ in
-                guard let self = self else { return }
-                guard let remoteCommands = self.tealium?.remoteCommands() else {
-                    return
-                }
-                // MARK: Kochava
-                let tealKochavaTracker = TealiumKochavaTracker()
-                let kochavaCommand = KochavaRemoteCommand(tealKochavaTracker: tealKochavaTracker).remoteCommand()
-                remoteCommands.add(kochavaCommand)
-                // Optional Push Message Tracking and Enhanced Deeplinking
-                self.deepLinkHelpers.append(tealKochavaTracker)
-                self.pushTrackingHelpers.append(tealKochavaTracker)
-            })
-
+        config.batchingEnabled = false
+        config.remoteAPIEnabled = true
+        config.logLevel = .info
+        config.collectors = [Collectors.Lifecycle]
+        config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
+                
+        tealium = Tealium(config: config) { [weak self] _ in
+            guard let self = self,
+                  let remoteCommands = self.tealium?.remoteCommands else {
+                return
+            }
+            // MARK: Kochava JSON Remote Command
+            let kochavaInstance = KochavaInstance()
+            let kochavaRemoteCommand = KochavaRemoteCommand(kochavaInstance: kochavaInstance, type: .remote(url: "https://tags.tiqcdn.com/dle/tealiummobile/demo/kochava.json"))
+            remoteCommands.add(kochavaRemoteCommand)
+            // Optional Push Message Tracking and Enhanced Deeplinking
+            self.deepLinkHelpers.append(kochavaInstance)
+            self.pushMessagingHelpers.append(kochavaInstance)
+        }
     }
 
 
@@ -55,7 +56,8 @@ class TealiumHelper {
     }
 
     class func trackView(title: String, data: [String: Any]?) {
-        TealiumHelper.shared.tealium?.track(title: title, data: data, completion: nil)
+        let tealiumView = TealiumView(title, dataLayer: data)
+        TealiumHelper.shared.tealium?.track(tealiumView)
     }
 
     class func trackScreen(_ view: UIViewController, name: String) {
@@ -63,7 +65,8 @@ class TealiumHelper {
     }
 
     class func trackEvent(title: String, data: [String: Any]?) {
-        TealiumHelper.shared.tealium?.track(title: title, data: data, completion: nil)
+        let tealiumEvent = TealiumEvent(title, dataLayer: data)
+        TealiumHelper.shared.tealium?.track(tealiumEvent)
     }
 
 }

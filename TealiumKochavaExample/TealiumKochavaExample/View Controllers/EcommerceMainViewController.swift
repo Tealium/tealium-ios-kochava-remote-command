@@ -2,7 +2,6 @@
 //  EcommerceMainViewController.swift
 //  TealiumKochavaExample
 //
-//  Created by Christina S on 7/19/19.
 //  Copyright © 2019 Tealium. All rights reserved.
 //
 

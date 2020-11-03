@@ -2,85 +2,67 @@
 //  KochavaRemoteCommand.swift
 //  TealiumKochava
 //
-//  Created by Christina S on 2/21/20.
 //  Copyright © 2020 Tealium. All rights reserved.
 //
 
 import Foundation
+import KochavaTracker
 #if COCOAPODS
     import TealiumSwift
 #else
     import TealiumRemoteCommands
-    import TealiumVolatileData
 #endif
 
-public class KochavaRemoteCommand {
 
-    var tealKochavaTracker: KochavaTrackable
+public class KochavaRemoteCommand: RemoteCommand {
+
+    var kochavaInstance: KochavaCommand?
     var loggingEnabled = false
 
-    public init(tealKochavaTracker: KochavaTrackable = TealiumKochavaTracker()) {
-        self.tealKochavaTracker = tealKochavaTracker
+    public init(kochavaInstance: KochavaCommand = KochavaInstance(), type: RemoteCommandType = .webview) {
+        self.kochavaInstance = kochavaInstance
+        weak var weakSelf: KochavaRemoteCommand?
+        super.init(commandId: KochavaConstants.commandId,
+                   description: KochavaConstants.description,
+            type: type,
+            completion: { response in
+                guard let payload = response.payload else {
+                    return
+                }
+                weakSelf?.processRemoteCommand(with: payload)
+            })
+        weakSelf = self
     }
 
-    public func remoteCommand() -> TealiumRemoteCommand {
-        return TealiumRemoteCommand(commandId: "kochava", description: "Kochava Remote Command") { response in
-            let payload = response.payload()
-            guard let command = payload[KochavaConstants.commandName] as? String else {
+    func processRemoteCommand(with payload: [String: Any]) {
+        guard var kochavaInstance = kochavaInstance,
+            let command = payload[KochavaConstants.commandName] as? String else {
                 return
-            }
-            let commands = command.split(separator: KochavaConstants.separator)
-            let kochavaCommands = commands.map { command in
-                return command.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-            }
-            self.parseCommands(kochavaCommands, payload: payload)
         }
-    }
-
-    func parseCommands(_ commands: [String], payload: [String: Any]) {
-        commands.forEach { command in
-            let commandName = KochavaConstants.Commands(rawValue: command.lowercased())
-            switch commandName {
-            case .configure:
-                var config = [AnyHashable: Any]()
+        let commands = command.split(separator: KochavaConstants.separator)
+        let kochavaCommands = commands.map { command in
+            return command.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        }
+        kochavaCommands.forEach {
+            let command = KochavaConstants.Commands(rawValue: $0.lowercased())
+            switch command {
+            case .initialize:
                 if let logLevel = payload[KochavaConstants.Keys.logLevel] as? String {
                     if logLevel == "debug" || logLevel == "warn" {
                         loggingEnabled = true
                     }
-                    config[kKVAParamLogLevelEnumKey] = logLevel.capitalized
+                    kochavaInstance.logLevel = logLevel
                 }
-                guard let appGUID = payload[KochavaConstants.Keys.apiKey] else {
+                guard let appGuid = payload[KochavaConstants.Keys.appGuid] as? String else {
                     if loggingEnabled {
                         print("\(KochavaConstants.errorPrefix)`app_guid` is required to configure Kochava.")
                     }
                     return
                 }
-                config[kKVAParamAppGUIDStringKey] = appGUID
-                if let shouldSendDeviceId = payload[KochavaConstants.Keys.sendDeviceId] as? Bool,
-                    shouldSendDeviceId == true,
-                    let kochavaDeviceIdString = KochavaTracker.shared.deviceIdString() {
-                    let deviceId = [KochavaConstants.Keys.kvaDeviceID: kochavaDeviceIdString]
-                    tealKochavaTracker.tealium?.volatileData()?.add(data: deviceId)
+                if let attEnabled = payload[KochavaConstants.Keys.attEnabled] as? Bool {
+                    kochavaInstance.attEnabled = attEnabled
                 }
-                if let shouldSendSdkVersion = payload[KochavaConstants.Keys.sendSDKVersion] as? Bool,
-                    shouldSendSdkVersion == true,
-                    let sdkVersionString = KochavaTracker.shared.sdkVersionString() {
-                    let sdkVersion = [KochavaConstants.Keys.kvaSDKVersion: sdkVersionString]
-                    tealKochavaTracker.tealium?.volatileData()?.add(data: sdkVersion)
-                }
-                if let identityLink = payload[KochavaConstants.Keys.identityLinks] as? [String: String] {
-                    config[kKVAParamIdentityLinkDictionaryKey] = identityLink
-                }
-                if let attribution = payload[KochavaConstants.Keys.retrieveAttributionData] as? Bool, attribution == true {
-                    config[kKVAParamRetrieveAttributionBoolKey] = true
-                }
-                if let limitAdTracking = payload[KochavaConstants.Keys.limitAdTracking] as? Bool {
-                    config[kKVAParamAppLimitAdTrackingBoolKey] = limitAdTracking
-                }
-                tealKochavaTracker.configure(with: config)
-                if let sleepTracker = payload[KochavaConstants.Keys.sleepTracker] as? Bool {
-                    tealKochavaTracker.sleepTracker(sleepTracker)
-                }
+                kochavaInstance.initialize(with: payload, appGuid: appGuid)
             case .sleeptracker:
                 guard let sleepTracker = payload[KochavaConstants.Keys.sleepTracker] as? Bool else {
                     if loggingEnabled {
@@ -88,12 +70,12 @@ public class KochavaRemoteCommand {
                     }
                     return
                 }
-                tealKochavaTracker.sleepTracker(sleepTracker)
+                kochavaInstance.sleepTracker(sleepTracker)
             case .invalidate:
-                tealKochavaTracker.invalidate()
+                kochavaInstance.invalidate()
             case .sendidentitylink:
                 if let identityLink = payload[KochavaConstants.Keys.identityLinks] as? [String: String] {
-                    tealKochavaTracker.sendIdentityLink(with: identityLink)
+                    kochavaInstance.sendIdentityLink(with: identityLink)
                 }
             case .custom:
                 guard let eventName = payload[KochavaConstants.Keys.customEventNameString] as? String else {
@@ -102,20 +84,35 @@ public class KochavaRemoteCommand {
                     }
                     return
                 }
-                guard let eventPayload = payload[KochavaConstants.Keys.eventPayload] as? [String: Any],
-                    let infoDictionary = eventPayload[KochavaConstants.Keys.infoDictionary] as? [String: Any] else {
-                    tealKochavaTracker.sendEvent(name: eventName)
+                // TiQ
+                if let eventPayload = payload[KochavaConstants.Keys.eventPayload] as? [String: Any] {
+                    kochavaInstance.sendCustom(event: eventName, with: eventPayload)
+                    return
+                // JSON
+                } else if let customParameters = payload[KochavaConstants.Keys.custom] as? [String: Any] {
+                    kochavaInstance.sendCustom(event: eventName, with: customParameters)
                     return
                 }
-                tealKochavaTracker.sendEvent(name: eventName, with: infoDictionary)
+                kochavaInstance.sendCustom(event: eventName)
                 return
             default:
-                if let event = KochavaConstants.Events(rawValue: command.lowercased()) {
-                    guard let eventPayload = payload[KochavaConstants.Keys.eventPayload] as? [String: Any] else {
-                        tealKochavaTracker.sendEvent(type: KochavaEventTypeEnum(event))
+                if let event = KochavaConstants.Events(rawValue: $0.lowercased()) {
+                    // TIQ
+                    if let eventPayload = payload[KochavaConstants.Keys.eventPayload] as? [String: Any] {
+                        kochavaInstance.send(event: KVAEvent.create(with: event), with: eventPayload)
                         return
+                    // JSON
+                    } else if var eventPayload = payload[KochavaConstants.Keys.event] as? [String: Any] {
+                        if let customParameters = payload[KochavaConstants.Keys.custom] as? [String: Any] {
+                            eventPayload[KochavaConstants.Keys.infoDictionary] = customParameters
+                        }
+                        kochavaInstance.send(event: KVAEvent.create(with: event), with: eventPayload)
+                        return
+                    } else if var customParameters = payload[KochavaConstants.Keys.custom] as? [String: Any] {
+                        customParameters[KochavaConstants.Keys.infoDictionary] = customParameters
+                        kochavaInstance.send(event: KVAEvent.create(with: event), with: customParameters)
                     }
-                    tealKochavaTracker.sendEvent(type: KochavaEventTypeEnum(event), with: eventPayload)
+                    kochavaInstance.send(event: KVAEvent.create(with: event))
                 }
                 break
             }
@@ -124,46 +121,69 @@ public class KochavaRemoteCommand {
 
 }
 
-extension KochavaEventTypeEnum {
-    init(_ eventType: KochavaConstants.Events) {
-        switch eventType {
-        case .addtocart:
-            self = KochavaEventTypeEnum.addToCart
-        case .addtowishlist:
-            self = KochavaEventTypeEnum.addToWishList
-        case .achievement:
-            self = KochavaEventTypeEnum.achievement
-        case .levelcomplete:
-            self = KochavaEventTypeEnum.levelComplete
-        case .purchase:
-            self = KochavaEventTypeEnum.purchase
-        case .checkoutstart:
-            self = KochavaEventTypeEnum.checkoutStart
-        case .rating:
-            self = KochavaEventTypeEnum.rating
-        case .search:
-            self = KochavaEventTypeEnum.search
-        case .tutorialcomplete:
-            self = KochavaEventTypeEnum.tutorialComplete
-        case .view:
-            self = KochavaEventTypeEnum.view
-        case .adview:
-            self = KochavaEventTypeEnum.adView
-        case .adclick:
-            self = KochavaEventTypeEnum.adClick
-        case .pushrecieved:
-            self = KochavaEventTypeEnum.pushReceived
-        case .pushopened:
-            self = KochavaEventTypeEnum.pushOpened
-        case .consentgranted:
-            self = KochavaEventTypeEnum.consentGranted
-        case .subscribe:
-            self = KochavaEventTypeEnum.subscribe
-        case .registrationcomplete:
-            self = KochavaEventTypeEnum.registrationComplete
-        case .starttrial:
-            self = KochavaEventTypeEnum.startTrial
+
+extension KVALogLevel {
+    static func from(string: String) -> KVALogLevel {
+        switch string {
+        case "never":
+            return .never
+        case "error":
+            return .error
+        case "warn":
+            return .warn
+        case "info":
+            return .info
+        case "debug":
+            return .debug
+        case "trace":
+            return .trace
+        case "always":
+            return .always
+        default:
+            return .never
         }
     }
 }
 
+extension KVAEvent {
+    static func create(with event: KochavaConstants.Events) -> KVAEvent {
+        switch event {
+        case .addtocart:
+            return KVAEvent(type: .addToCart)
+        case .addtowishlist:
+            return KVAEvent(type: .addToWishList)
+        case .achievement:
+            return KVAEvent(type: .achievement)
+        case .levelcomplete:
+            return KVAEvent(type: .levelComplete)
+        case .purchase:
+            return KVAEvent(type: .purchase)
+        case .checkoutstart:
+            return KVAEvent(type: .checkoutStart)
+        case .rating:
+            return KVAEvent(type: .rating)
+        case .search:
+            return KVAEvent(type: .search)
+        case .tutorialcomplete:
+            return KVAEvent(type: .tutorialComplete)
+        case .view:
+            return KVAEvent(type: .view)
+        case .adview:
+            return KVAEvent(type: .adView)
+        case .adclick:
+            return KVAEvent(type: .adClick)
+        case .pushrecieved:
+            return KVAEvent(type: .pushReceived)
+        case .pushopened:
+            return KVAEvent(type: .pushOpened)
+        case .consentgranted:
+            return KVAEvent(type: .consentGranted)
+        case .subscribe:
+            return KVAEvent(type: .subscribe)
+        case .registrationcomplete:
+            return KVAEvent(type: .registrationComplete)
+        case .starttrial:
+            return KVAEvent(type: .startTrial)
+        }
+    }
+}

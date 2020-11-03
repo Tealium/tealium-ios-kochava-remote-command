@@ -2,7 +2,6 @@
 //  AccountViewController.swift
 //  TealiumKochavaExample
 //
-//  Created by Christina S on 7/18/19.
 //  Copyright © 2019 Tealium. All rights reserved.
 //
 
@@ -34,7 +33,7 @@ class AccountViewController: UIViewController {
     }
     
     @IBAction func showOfferTapped(_ sender: UIButton) {
-        TealiumHelper.trackEvent(title: "adview", data: [AccountViewController.productId: ["12"], AccountViewController.productQuantity: ["1"], AccountViewController.productName: ["vacuum"], AccountViewController.productCategory: ["household"]])
+        TealiumHelper.trackEvent(title: "show_offers", data: ["campaign_id": "abc123", "ad_network_name": "netName", "campaign": "hello"])
         offersImage.image = UIImage(named: "bank")
         let ac = UIAlertController(title: "Offers", message: "You have a new offer, please shop and get 10% off a vacuum! This will be applied at checkout when you purchase this item.", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))

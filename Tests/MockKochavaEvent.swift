@@ -1,8 +1,7 @@
 //
 //  MockKochavaEvent.swift
-//  TealiumKochava
+//  TealiumKochavaTests
 //
-//  Created by Christina S on 6/3/20.
 //  Copyright © 2020 Tealium. All rights reserved.
 //
 

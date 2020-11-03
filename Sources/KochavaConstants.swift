@@ -2,7 +2,6 @@
 //  KochavaConstants.swift
 //  TealiumKochava
 //
-//  Created by Christina S on 2/21/20.
 //  Copyright © 2020 Tealium. All rights reserved.
 //
 
@@ -10,30 +9,31 @@ import Foundation
 
 enum KochavaConstants {
     
+    static let commandId = "kochava"
+    static let description = "Kochava Remote Command"
     static let commandName = "command_name"
     static let separator: Character = ","
     static let errorPrefix = "Tealium Kochava: "
     
     enum Keys {
         static let command = "command_name"
-        static let apiKey = "app_guid"
+        static let appGuid = "app_guid"
         static let logLevel = "log_level"
-        static let retrieveAttributionData = "retrieve_attribution_data"
         static let identityLinks = "identity_link_ids"
+        static let attEnabled = "app_tracking_transparency_enabled"
         static let limitAdTracking = "limit_ad_tracking"
-        static let sendDeviceId = "send_device_id"
-        static let sendSDKVersion = "send_sdk_version"
         static let sleepTracker = "sleep_tracker"
-        static let kvaDeviceID = "kva_device_id"
-        static let kvaSDKVersion = "kva_sdk_version"
         static let customEventNameString = "custom_event_name"
         static let eventPayload = "event_parameters"
         static let infoDictionary = "info_dictionary"
+        static let configParams = "configuration_params"
+        static let custom = "custom"
+        static let event = "event"
     }
     
     enum Commands: String {
-        case configure = "configure"
-        case sleeptracker = "sleepTracker"
+        case initialize = "initialize"
+        case sleeptracker = "sleeptracker"
         case invalidate = "invalidate"
         case sendidentitylink = "sendidentitylink"
         case custom = "custom"
@@ -113,6 +113,7 @@ enum KochavaConstants {
         "user_name": "userNameString",
         "validated": "validatedString"
     ]
+    
 
 }
 
