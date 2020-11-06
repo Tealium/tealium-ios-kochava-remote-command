@@ -64,14 +64,18 @@ public class KochavaInstance: KochavaCommand, TealiumRegistration, TealiumDeepLi
     }
     
     public func initialize(with payload: [String: Any], appGuid: String) {
-        if let appLimitAdTracking = payload[KochavaConstants.Keys.limitAdTracking] as? Bool {
+        if let appLimitAdTracking = payload[KochavaConstants.Keys.limitAdTracking] as? Int {
+            limitAdTracking = appLimitAdTracking.toBool
+        } else if let appLimitAdTracking = payload[KochavaConstants.Keys.limitAdTracking] as? Bool {
             limitAdTracking = appLimitAdTracking
         }
         start(with: appGuid)
         if let identityLink = payload[KochavaConstants.Keys.identityLinks] as? [String: String] {
             sendIdentityLink(with: identityLink)
         }
-        if let sleep = payload[KochavaConstants.Keys.sleepTracker] as? Bool {
+        if let sleep = payload[KochavaConstants.Keys.sleepTracker] as? Int {
+            sleepTracker(sleep.toBool)
+        } else if let sleep = payload[KochavaConstants.Keys.sleepTracker] as? Bool {
             sleepTracker(sleep)
         }
     }

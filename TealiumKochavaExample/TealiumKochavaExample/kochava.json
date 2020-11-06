@@ -4,6 +4,10 @@
     "log_level": "debug",
     "app_tracking_transparency_enabled": false,
     "limit_ad_tracking": true,
+    "identity_link_ids": {
+        "userID": "CUST123",
+        "userName": "Bob"
+    }
   },
   "mappings": {
       "event_title": "custom_event_name",

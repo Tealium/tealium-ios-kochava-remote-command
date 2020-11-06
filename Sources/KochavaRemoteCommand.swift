@@ -59,12 +59,17 @@ public class KochavaRemoteCommand: RemoteCommand {
                     }
                     return
                 }
-                if let attEnabled = payload[KochavaConstants.Keys.attEnabled] as? Bool {
+                if let attEnabled = payload[KochavaConstants.Keys.attEnabled] as? Int {
+                    kochavaInstance.attEnabled = attEnabled.toBool
+                } else if let attEnabled = payload[KochavaConstants.Keys.attEnabled] as? Bool {
                     kochavaInstance.attEnabled = attEnabled
                 }
                 kochavaInstance.initialize(with: payload, appGuid: appGuid)
             case .sleeptracker:
                 guard let sleepTracker = payload[KochavaConstants.Keys.sleepTracker] as? Bool else {
+                    if let sleepTracker = payload[KochavaConstants.Keys.sleepTracker] as? Int {
+                        return kochavaInstance.sleepTracker(sleepTracker.toBool)
+                    }
                     if loggingEnabled {
                         print("\(KochavaConstants.errorPrefix)`sleep_tracker` mapping is required in order to toggle sleep.")
                     }
@@ -119,6 +124,12 @@ public class KochavaRemoteCommand: RemoteCommand {
         }
     }
 
+}
+
+extension Int {
+    var toBool: Bool {
+        self == 0 ? false : true
+    }
 }
 
 
