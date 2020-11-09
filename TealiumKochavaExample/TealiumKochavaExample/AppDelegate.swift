@@ -2,7 +2,6 @@
 //  AppDelegate.swift
 //  TealiumKochavaExample
 //
-//  Created by Christina S on 2/24/20.
 //  Copyright © 2020 Tealium. All rights reserved.
 //
 
@@ -34,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let deviceTokenString = String(format: "%@", deviceToken as CVarArg)
         
         // Use remote command to register push token
-        tealiumHelper?.pushTrackingHelpers.forEach {
+        tealiumHelper?.pushMessagingHelpers.forEach {
             $0.registerPushToken(deviceTokenString)
         }
     }
@@ -56,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
         // Use remote command to log push notification receipt/open
-        tealiumHelper?.pushTrackingHelpers.forEach {
+        tealiumHelper?.pushMessagingHelpers.forEach {
             $0.application(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: completionHandler)
         }
     }
@@ -80,7 +79,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         // Use remote command to log push notification receipt/open
-        tealiumHelper?.pushTrackingHelpers.forEach {
+        tealiumHelper?.pushMessagingHelpers.forEach {
             $0.userNotificationCenter(center, didReceive: response, withCompletionHandler: completionHandler)
         }
         

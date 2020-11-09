@@ -25,16 +25,12 @@ Pod::Spec.new do |s|
 
     # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
     s.source       = { :git => "https://github.com/Tealium/tealium-ios-kochava-remote-command.git", :tag => "#{s.version}" }
-
-    # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-    s.ios.source_files      = "Sources/*.{swift}", "Sources/TealiumKochava.h", "Sources/libKochavaTrackeriOS/*.{h}", "Sources/libKochavaCoreiOS/*.{h}"
-    s.vendored_libraries = 'Sources/libKochavaCoreiOS/libKochavaCoreiOS.a', 'Sources/libKochavaTrackeriOS/libKochavaTrackeriOS.a' 
+    s.source_files   = "Sources/*.swift"
 
     # ――― Dependencies ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-    s.ios.dependency 'tealium-swift/Core', '~> 1.9'
-    s.ios.dependency 'tealium-swift/TealiumRemoteCommands', '~> 1.9'
-    s.ios.dependency 'tealium-swift/TealiumDelegate', '~> 1.9'
-    s.ios.dependency 'tealium-swift/TealiumTagManagement', '~> 1.9'
-    s.ios.dependency 'tealium-swift/TealiumVolatileData', '~> 1.9'
+    s.ios.dependency "tealium-swift/Core", "~> 2.1"
+    s.ios.dependency "tealium-swift/RemoteCommands", "~> 2.1"
+    s.ios.dependency "tealium-swift/TagManagement", "~> 2.1"
+    s.vendored_frameworks = "Frameworks/KochavaTracker.xcframework", "Frameworks/KochavaCore.xcframework"
 
 end

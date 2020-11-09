@@ -1,34 +1,18 @@
 PODS:
-  - tealium-swift/Core (1.9.4)
-  - tealium-swift/TealiumAppData (1.9.4):
+  - tealium-swift/Core (2.1.1)
+  - tealium-swift/Lifecycle (2.1.1):
     - tealium-swift/Core
-  - tealium-swift/TealiumDelegate (1.9.4):
+  - tealium-swift/RemoteCommands (2.1.1):
     - tealium-swift/Core
-  - tealium-swift/TealiumDeviceData (1.9.4):
-    - tealium-swift/Core
-  - tealium-swift/TealiumLifecycle (1.9.4):
-    - tealium-swift/Core
-  - tealium-swift/TealiumLogger (1.9.4):
-    - tealium-swift/Core
-  - tealium-swift/TealiumRemoteCommands (1.9.4):
-    - tealium-swift/Core
-  - tealium-swift/TealiumTagManagement (1.9.4):
-    - tealium-swift/Core
-  - tealium-swift/TealiumVolatileData (1.9.4):
+  - tealium-swift/TagManagement (2.1.1):
     - tealium-swift/Core
   - TealiumKochava (1.0.0):
-    - tealium-swift/Core (~> 1.9)
-    - tealium-swift/TealiumDelegate (~> 1.9)
-    - tealium-swift/TealiumRemoteCommands (~> 1.9)
-    - tealium-swift/TealiumTagManagement (~> 1.9)
-    - tealium-swift/TealiumVolatileData (~> 1.9)
+    - tealium-swift/Core (~> 2.1)
+    - tealium-swift/RemoteCommands (~> 2.1)
+    - tealium-swift/TagManagement (~> 2.1)
 
 DEPENDENCIES:
-  - tealium-swift/TealiumAppData (~> 1.9)
-  - tealium-swift/TealiumDeviceData (~> 1.9)
-  - tealium-swift/TealiumLifecycle (~> 1.9)
-  - tealium-swift/TealiumLogger (~> 1.9)
-  - tealium-swift/TealiumTagManagement (~> 1.9)
+  - tealium-swift/Lifecycle (~> 2.1)
   - TealiumKochava (from `../`)
 
 SPEC REPOS:
@@ -40,9 +24,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  tealium-swift: c478175eadd99de290a65c5c2cc38a7bb86ac28c
-  TealiumKochava: a046f3415761353c78bccd54a84a17b5f7e84ae3
+  tealium-swift: 3a84e53361711d1ecc56ac98efa9fe9576d64c27
+  TealiumKochava: 276b76efe762c462aaa72efbe6895e959e12e82e
 
-PODFILE CHECKSUM: 57d34ee2952cac63d08d7fca97394d82a0dd925c
+PODFILE CHECKSUM: 94adf9e1311074f5f01d08bf45a290382722008b
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.0
