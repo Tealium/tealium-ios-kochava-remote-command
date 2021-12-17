@@ -18,6 +18,9 @@ public class KochavaRemoteCommand: RemoteCommand {
 
     var kochavaInstance: KochavaCommand?
     var loggingEnabled = false
+    override public var version: String? {
+        return KochavaConstants.version
+    }
 
     public init(kochavaInstance: KochavaCommand = KochavaInstance(), type: RemoteCommandType = .webview) {
         self.kochavaInstance = kochavaInstance

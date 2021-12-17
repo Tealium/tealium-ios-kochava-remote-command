@@ -1,10 +1,14 @@
 PODS:
-  - tealium-swift/Core (2.1.1)
-  - tealium-swift/Lifecycle (2.1.1):
+  - tealium-swift/Attribution (2.5.1):
     - tealium-swift/Core
-  - tealium-swift/RemoteCommands (2.1.1):
+  - tealium-swift/Collect (2.5.1):
     - tealium-swift/Core
-  - tealium-swift/TagManagement (2.1.1):
+  - tealium-swift/Core (2.5.1)
+  - tealium-swift/Lifecycle (2.5.1):
+    - tealium-swift/Core
+  - tealium-swift/RemoteCommands (2.5.1):
+    - tealium-swift/Core
+  - tealium-swift/TagManagement (2.5.1):
     - tealium-swift/Core
   - TealiumKochava (1.0.0):
     - tealium-swift/Core (~> 2.1)
@@ -12,21 +16,27 @@ PODS:
     - tealium-swift/TagManagement (~> 2.1)
 
 DEPENDENCIES:
-  - tealium-swift/Lifecycle (~> 2.1)
+  - tealium-swift/Attribution (from `https://github.com/Tealium/tealium-swift.git`, branch `mt-779`)
+  - tealium-swift/Collect (from `https://github.com/Tealium/tealium-swift.git`, branch `mt-779`)
+  - tealium-swift/Lifecycle (from `https://github.com/Tealium/tealium-swift.git`, branch `mt-779`)
   - TealiumKochava (from `../`)
 
-SPEC REPOS:
-  trunk:
-    - tealium-swift
-
 EXTERNAL SOURCES:
+  tealium-swift:
+    :branch: mt-779
+    :git: https://github.com/Tealium/tealium-swift.git
   TealiumKochava:
     :path: "../"
 
+CHECKOUT OPTIONS:
+  tealium-swift:
+    :commit: db174d69eb581f944268257038cfde8b54fc4b43
+    :git: https://github.com/Tealium/tealium-swift.git
+
 SPEC CHECKSUMS:
-  tealium-swift: 3a84e53361711d1ecc56ac98efa9fe9576d64c27
-  TealiumKochava: 276b76efe762c462aaa72efbe6895e959e12e82e
+  tealium-swift: a7c0f2b6bff641abb1818efbcf22598c99af0517
+  TealiumKochava: 6874e75cea72d8c65352b0bb8d2dcbd6e640cc36
 
-PODFILE CHECKSUM: 94adf9e1311074f5f01d08bf45a290382722008b
+PODFILE CHECKSUM: ca259dc6689070211eebad93f5a3db55c66c449b
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1

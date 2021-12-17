@@ -14,7 +14,7 @@ import KochavaTracker
     import TealiumRemoteCommands
 #endif
 
-public protocol KochavaEventProtocol: class { }
+public protocol KochavaEventProtocol: AnyObject { }
 extension KVAEvent: KochavaEventProtocol { }
 
 public protocol KochavaCommand {
