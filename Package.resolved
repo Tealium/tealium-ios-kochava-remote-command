@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "KochavaCore",
+        "repositoryURL": "https://github.com/Kochava/Apple-SwiftPackage-KochavaCore",
+        "state": {
+          "branch": null,
+          "revision": "0eced016bd137bee58335768d84d0f5e7346d523",
+          "version": "5.1.0"
+        }
+      },
+      {
+        "package": "KochavaTracker",
+        "repositoryURL": "https://github.com/Kochava/Apple-SwiftPackage-KochavaTracker",
+        "state": {
+          "branch": null,
+          "revision": "0bda886269f65e0151dff88d9707163df051c308",
+          "version": "5.1.0"
+        }
+      },
+      {
+        "package": "TealiumSwift",
+        "repositoryURL": "https://github.com/tealium/tealium-swift",
+        "state": {
+          "branch": null,
+          "revision": "9bd74f09c780862de61101bd147b1c6b232f98ce",
+          "version": "2.5.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

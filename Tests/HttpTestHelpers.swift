@@ -62,6 +62,10 @@ class HttpTestHelpers {
             }
         case .JSON:
             return JSONRemoteCommandResponse(with: payload)
+#if !SWIFT_PACKAGE
+        @unknown default:
+            break
+#endif
         }
         print("Could not create Remote Command Response description from stubs provided")
         return nil
