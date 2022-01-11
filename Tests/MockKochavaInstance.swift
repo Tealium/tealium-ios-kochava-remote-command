@@ -94,12 +94,15 @@ class MockKochavaInstance: KochavaCommand {
         sendIdentityLinkCount += 1
     }
     
-    func incrementSpecificEvent(_ name: KVAEvent) {
-        guard eventLookup[name.eventNameString()] != nil else {
-            eventLookup[name.eventNameString()] = 1
+    func incrementSpecificEvent(_ event: KVAEvent) {
+        guard let nameString = event.eventType?.nameString else {
             return
         }
-        eventLookup[name.eventNameString()]! += 1
+        guard eventLookup[nameString] != nil else {
+            eventLookup[nameString] = 1
+            return
+        }
+        eventLookup[nameString]! += 1
     }
     
     func retrieveProperties<T>(from cls: T.Type) -> [String] where T : KochavaEventProtocol {
