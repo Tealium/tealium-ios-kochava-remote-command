@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		151C9B61278D8BF100CE7D6E /* KochavaTracker.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151C9B60278D8BF100CE7D6E /* KochavaTracker.xcframework */; };
+		151C9B62278D8BF100CE7D6E /* KochavaTracker.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151C9B60278D8BF100CE7D6E /* KochavaTracker.xcframework */; };
 		CF60E51824887043006D2DAD /* MockKochavaEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF60E51624887020006D2DAD /* MockKochavaEvent.swift */; };
-		CF89C40B2550BA7D008B1F04 /* KochavaTracker.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF89C4062550BA7D008B1F04 /* KochavaTracker.xcframework */; };
+		CF89C40B2550BA7D008B1F04 /* KochavaCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF89C4062550BA7D008B1F04 /* KochavaCore.xcframework */; };
 		CF89C40C2550BA7D008B1F04 /* TealiumCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF89C4072550BA7D008B1F04 /* TealiumCore.xcframework */; };
-		CF89C40D2550BA7D008B1F04 /* TealiumTagManagement.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF89C4082550BA7D008B1F04 /* TealiumTagManagement.xcframework */; };
 		CF89C40E2550BA7D008B1F04 /* TealiumRemoteCommands.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF89C4092550BA7D008B1F04 /* TealiumRemoteCommands.xcframework */; };
-		CF89C40F2550BA7D008B1F04 /* KochavaCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF89C40A2550BA7D008B1F04 /* KochavaCore.xcframework */; };
 		CF89C4102550BAF2008B1F04 /* TealiumCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF89C4072550BA7D008B1F04 /* TealiumCore.xcframework */; };
 		CF89C4112550BAF2008B1F04 /* TealiumRemoteCommands.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF89C4092550BA7D008B1F04 /* TealiumRemoteCommands.xcframework */; };
 		CF9757842410585300015347 /* TealiumKochava.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF97577A2410585300015347 /* TealiumKochava.framework */; };
@@ -58,12 +58,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		151C9B60278D8BF100CE7D6E /* KochavaTracker.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = KochavaTracker.xcframework; path = Carthage/Build/KochavaTracker.xcframework; sourceTree = SOURCE_ROOT; };
 		CF60E51624887020006D2DAD /* MockKochavaEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockKochavaEvent.swift; sourceTree = "<group>"; };
-		CF89C4062550BA7D008B1F04 /* KochavaTracker.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = KochavaTracker.xcframework; sourceTree = "<group>"; };
-		CF89C4072550BA7D008B1F04 /* TealiumCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TealiumCore.xcframework; sourceTree = "<group>"; };
-		CF89C4082550BA7D008B1F04 /* TealiumTagManagement.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TealiumTagManagement.xcframework; sourceTree = "<group>"; };
-		CF89C4092550BA7D008B1F04 /* TealiumRemoteCommands.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TealiumRemoteCommands.xcframework; sourceTree = "<group>"; };
-		CF89C40A2550BA7D008B1F04 /* KochavaCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = KochavaCore.xcframework; sourceTree = "<group>"; };
+		CF89C4062550BA7D008B1F04 /* KochavaCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = KochavaCore.xcframework; path = ../Carthage/Build/KochavaCore.xcframework; sourceTree = "<group>"; };
+		CF89C4072550BA7D008B1F04 /* TealiumCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TealiumCore.xcframework; path = ../Carthage/Build/TealiumCore.xcframework; sourceTree = "<group>"; };
+		CF89C4092550BA7D008B1F04 /* TealiumRemoteCommands.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TealiumRemoteCommands.xcframework; path = ../Carthage/Build/TealiumRemoteCommands.xcframework; sourceTree = "<group>"; };
 		CF97577A2410585300015347 /* TealiumKochava.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TealiumKochava.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF97577D2410585300015347 /* TealiumKochava.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TealiumKochava.h; sourceTree = "<group>"; };
 		CF97577E2410585300015347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,11 +82,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF89C40D2550BA7D008B1F04 /* TealiumTagManagement.xcframework in Frameworks */,
 				CF89C40E2550BA7D008B1F04 /* TealiumRemoteCommands.xcframework in Frameworks */,
-				CF89C40F2550BA7D008B1F04 /* KochavaCore.xcframework in Frameworks */,
 				CF89C40C2550BA7D008B1F04 /* TealiumCore.xcframework in Frameworks */,
-				CF89C40B2550BA7D008B1F04 /* KochavaTracker.xcframework in Frameworks */,
+				151C9B61278D8BF100CE7D6E /* KochavaTracker.xcframework in Frameworks */,
+				CF89C40B2550BA7D008B1F04 /* KochavaCore.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +95,7 @@
 			files = (
 				CF89C4102550BAF2008B1F04 /* TealiumCore.xcframework in Frameworks */,
 				CF89C4112550BAF2008B1F04 /* TealiumRemoteCommands.xcframework in Frameworks */,
+				151C9B62278D8BF100CE7D6E /* KochavaTracker.xcframework in Frameworks */,
 				CF9757842410585300015347 /* TealiumKochava.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -107,11 +106,10 @@
 		CF89C4052550BA7D008B1F04 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CF89C4062550BA7D008B1F04 /* KochavaTracker.xcframework */,
+				CF89C4062550BA7D008B1F04 /* KochavaCore.xcframework */,
 				CF89C4072550BA7D008B1F04 /* TealiumCore.xcframework */,
-				CF89C4082550BA7D008B1F04 /* TealiumTagManagement.xcframework */,
 				CF89C4092550BA7D008B1F04 /* TealiumRemoteCommands.xcframework */,
-				CF89C40A2550BA7D008B1F04 /* KochavaCore.xcframework */,
+				151C9B60278D8BF100CE7D6E /* KochavaTracker.xcframework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
