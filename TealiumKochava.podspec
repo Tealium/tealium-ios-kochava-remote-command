@@ -21,7 +21,6 @@ Pod::Spec.new do |s|
     # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
     s.swift_version = "5.0"
     s.platform     = :ios, "11.0"
-    s.ios.deployment_target = "11.0"    
 
     # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
     s.source       = { :git => "https://github.com/Tealium/tealium-ios-kochava-remote-command.git", :tag => "#{s.version}" }
@@ -29,8 +28,9 @@ Pod::Spec.new do |s|
 
     # ――― Dependencies ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
     s.ios.dependency "tealium-swift/Core", "~> 2.6"
-    s.ios.dependency "tealium-swift/RemoteCommands", "~> 2.6"
     s.ios.dependency "tealium-swift/TagManagement", "~> 2.6"
-    s.vendored_frameworks = "Frameworks/KochavaTracker.xcframework", "Frameworks/KochavaCore.xcframework"
+    s.ios.dependency "Apple-Cocoapod-KochavaTracker", "~> 5.1"
+    s.ios.dependency "Apple-Cocoapod-KochavaCore", "~> 5.1"
+    
 
 end

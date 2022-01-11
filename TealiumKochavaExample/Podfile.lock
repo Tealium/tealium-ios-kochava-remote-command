@@ -1,42 +1,38 @@
 PODS:
-  - tealium-swift/Attribution (2.5.1):
-    - tealium-swift/Core
-  - tealium-swift/Collect (2.5.1):
-    - tealium-swift/Core
+  - Apple-Cocoapod-KochavaCore (5.1.0)
+  - Apple-Cocoapod-KochavaTracker (5.1.0):
+    - Apple-Cocoapod-KochavaCore (~> 5.1.0)
   - tealium-swift/Core (2.5.1)
   - tealium-swift/Lifecycle (2.5.1):
     - tealium-swift/Core
   - tealium-swift/RemoteCommands (2.5.1):
     - tealium-swift/Core
-  - tealium-swift/TagManagement (2.5.1):
-    - tealium-swift/Core
-  - TealiumKochava (1.0.0):
-    - tealium-swift/Core (~> 2.1)
-    - tealium-swift/RemoteCommands (~> 2.1)
-    - tealium-swift/TagManagement (~> 2.1)
+  - TealiumKochava (1.1.0):
+    - Apple-Cocoapod-KochavaCore (~> 5.1)
+    - Apple-Cocoapod-KochavaTracker (~> 5.1)
+    - tealium-swift/Core (~> 2.5)
+    - tealium-swift/RemoteCommands (~> 2.5)
 
 DEPENDENCIES:
-  - tealium-swift/Attribution (from `https://github.com/Tealium/tealium-swift.git`, branch `mt-779`)
-  - tealium-swift/Collect (from `https://github.com/Tealium/tealium-swift.git`, branch `mt-779`)
-  - tealium-swift/Lifecycle (from `https://github.com/Tealium/tealium-swift.git`, branch `mt-779`)
+  - tealium-swift/Lifecycle (~> 2.5)
   - TealiumKochava (from `../`)
 
+SPEC REPOS:
+  trunk:
+    - Apple-Cocoapod-KochavaCore
+    - Apple-Cocoapod-KochavaTracker
+    - tealium-swift
+
 EXTERNAL SOURCES:
-  tealium-swift:
-    :branch: mt-779
-    :git: https://github.com/Tealium/tealium-swift.git
   TealiumKochava:
     :path: "../"
 
-CHECKOUT OPTIONS:
-  tealium-swift:
-    :commit: db174d69eb581f944268257038cfde8b54fc4b43
-    :git: https://github.com/Tealium/tealium-swift.git
-
 SPEC CHECKSUMS:
+  Apple-Cocoapod-KochavaCore: b6dd9883c28d6d151de674dee571f28c0244a6fb
+  Apple-Cocoapod-KochavaTracker: 00ce9d493f3676288147a73e73850e0ef14597c9
   tealium-swift: a7c0f2b6bff641abb1818efbcf22598c99af0517
-  TealiumKochava: 6874e75cea72d8c65352b0bb8d2dcbd6e640cc36
+  TealiumKochava: 2eb37010359f3dd1a0d3fef852105dea4019b213
 
-PODFILE CHECKSUM: ca259dc6689070211eebad93f5a3db55c66c449b
+PODFILE CHECKSUM: 1123a3009ebb0d77f4cd5fc6d5c9fd76f0e5eab2
 
 COCOAPODS: 1.10.1
