@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.5
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -12,9 +12,9 @@ let package = Package(
         .library(name: "TealiumKochava", targets: ["TealiumKochava"]),
     ],
     dependencies: [
-        .package(name: "TealiumSwift", url: "https://github.com/tealium/tealium-swift", from: "2.6.0"),
-        .package(name: "KochavaTracker", url: "https://github.com/Kochava/Apple-SwiftPackage-KochavaTracker", from: "5.1.0"),
-        .package(name: "KochavaCore", url: "https://github.com/Kochava/Apple-SwiftPackage-KochavaCore", from: "5.1.0")
+        .package(name: "TealiumSwift", url: "https://github.com/tealium/tealium-swift", .upToNextMajor(from: "2.6.0")),
+        .package(name: "KochavaTracker", url: "https://github.com/Kochava/Apple-SwiftPackage-KochavaTracker", .upToNextMajor(from: "5.1.0")),
+        .package(name: "KochavaCore", url: "https://github.com/Kochava/Apple-SwiftPackage-KochavaCore", .upToNextMajor(from: "5.1.0"))
     ],
     targets: [
         .target(
