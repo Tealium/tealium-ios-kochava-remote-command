@@ -33,7 +33,7 @@ class TealiumHelper {
         config.remoteAPIEnabled = true
         config.logLevel = .info
         config.collectors = [Collectors.Lifecycle]
-        config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
+        config.dispatchers = [Dispatchers.RemoteCommands]
                 
         tealium = Tealium(config: config) { [weak self] _ in
             guard let self = self,
