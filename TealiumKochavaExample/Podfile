@@ -9,5 +9,6 @@ target 'TealiumKochavaExample' do
   
   pod 'TealiumKochava', :path=> '../'
   pod 'tealium-swift/Lifecycle', '~> 2.6'
+  pod 'tealium-swift/TagManagement', '~> 2.6'
 
 end
