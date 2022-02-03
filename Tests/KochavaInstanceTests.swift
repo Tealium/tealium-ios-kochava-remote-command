@@ -315,7 +315,9 @@ class KochavaInstanceTests: XCTestCase {
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
             kochavaCommand.completion(response)
             eventNames.forEach {
-                XCTAssert(1 == self.mockKochavaInstance.eventLookup[$0.eventNameString()], "🐙\($0.eventNameString())")
+                let name = $0.eventType?.nameString
+                XCTAssertNotNil(name)
+                XCTAssert(1 == self.mockKochavaInstance.eventLookup[name!], "🐙\(name!)")
             }
         }
 

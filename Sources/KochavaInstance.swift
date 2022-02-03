@@ -14,7 +14,7 @@ import KochavaTracker
     import TealiumRemoteCommands
 #endif
 
-public protocol KochavaEventProtocol: class { }
+public protocol KochavaEventProtocol: AnyObject { }
 extension KVAEvent: KochavaEventProtocol { }
 
 public protocol KochavaCommand {
@@ -123,10 +123,11 @@ public class KochavaInstance: KochavaCommand, TealiumRegistration, TealiumDeepLi
     // MARK: Push Notification Tracking
     // https://support.kochava.com/sdk-integration/ios-sdk-integration/ios-push-notification/
     public func registerPushToken(_ token: String) {
-        guard let kvaToken = KVAPushNotificationsToken.kva_fromObject(token) else {
+        
+        guard let kvaToken = KVAPushNotificationsToken.kva_from(object: token) else {
             return
         }
-        KVATracker.shared.pushNotifications.addToken(kvaToken)
+        KVATracker.shared.pushNotifications.register(token: kvaToken)
     }
     
     public func application(_ application: UIApplication,
