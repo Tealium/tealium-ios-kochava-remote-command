@@ -19,7 +19,6 @@
 		CF97578B2410585400015347 /* TealiumKochava.h in Headers */ = {isa = PBXBuildFile; fileRef = CF97577D2410585300015347 /* TealiumKochava.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF9757992410589900015347 /* KochavaInstanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757952410589900015347 /* KochavaInstanceTests.swift */; };
 		CF97579A2410589900015347 /* MockKochavaInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757962410589900015347 /* MockKochavaInstance.swift */; };
-		CF97579B2410589900015347 /* HttpTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757972410589900015347 /* HttpTestHelpers.swift */; };
 		CF9757BA241058B200015347 /* KochavaRemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97579E241058B100015347 /* KochavaRemoteCommand.swift */; };
 		CF9757BB241058B200015347 /* KochavaInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97579F241058B100015347 /* KochavaInstance.swift */; };
 		CF9757C1241058B200015347 /* KochavaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757A6241058B100015347 /* KochavaConstants.swift */; };
@@ -62,16 +61,15 @@
 		15E5546F278DDEBC0044D9F2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15E55472278DDEC70044D9F2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF60E51624887020006D2DAD /* MockKochavaEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockKochavaEvent.swift; sourceTree = "<group>"; };
-		CF89C4062550BA7D008B1F04 /* KochavaCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = KochavaCore.xcframework; path = ../Carthage/Build/KochavaCore.xcframework; sourceTree = "<group>"; };
-		CF89C4072550BA7D008B1F04 /* TealiumCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TealiumCore.xcframework; path = ../Carthage/Build/TealiumCore.xcframework; sourceTree = "<group>"; };
-		CF89C4092550BA7D008B1F04 /* TealiumRemoteCommands.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TealiumRemoteCommands.xcframework; path = ../Carthage/Build/TealiumRemoteCommands.xcframework; sourceTree = "<group>"; };
+		CF89C4062550BA7D008B1F04 /* KochavaCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = KochavaCore.xcframework; path = Carthage/Build/KochavaCore.xcframework; sourceTree = SOURCE_ROOT; };
+		CF89C4072550BA7D008B1F04 /* TealiumCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TealiumCore.xcframework; path = Carthage/Build/TealiumCore.xcframework; sourceTree = SOURCE_ROOT; };
+		CF89C4092550BA7D008B1F04 /* TealiumRemoteCommands.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TealiumRemoteCommands.xcframework; path = Carthage/Build/TealiumRemoteCommands.xcframework; sourceTree = SOURCE_ROOT; };
 		CF97577A2410585300015347 /* TealiumKochava.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TealiumKochava.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF97577D2410585300015347 /* TealiumKochava.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TealiumKochava.h; sourceTree = "<group>"; };
 		CF9757832410585300015347 /* TealiumKochavaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TealiumKochavaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF9757942410589800015347 /* TealiumKochavaTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TealiumKochavaTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF9757952410589900015347 /* KochavaInstanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KochavaInstanceTests.swift; sourceTree = "<group>"; };
 		CF9757962410589900015347 /* MockKochavaInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockKochavaInstance.swift; sourceTree = "<group>"; };
-		CF9757972410589900015347 /* HttpTestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTestHelpers.swift; sourceTree = "<group>"; };
 		CF97579E241058B100015347 /* KochavaRemoteCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KochavaRemoteCommand.swift; sourceTree = "<group>"; };
 		CF97579F241058B100015347 /* KochavaInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KochavaInstance.swift; sourceTree = "<group>"; };
 		CF9757A6241058B100015347 /* KochavaConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KochavaConstants.swift; sourceTree = "<group>"; };
@@ -103,6 +101,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15AE1C6929A51FAD005DA723 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF89C4062550BA7D008B1F04 /* KochavaCore.xcframework */,
+				CF89C4072550BA7D008B1F04 /* TealiumCore.xcframework */,
+				CF89C4092550BA7D008B1F04 /* TealiumRemoteCommands.xcframework */,
+				151C9B60278D8BF100CE7D6E /* KochavaTracker.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		15E5546E278DDEBC0044D9F2 /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,23 +128,12 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
-		CF89C4052550BA7D008B1F04 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				CF89C4062550BA7D008B1F04 /* KochavaCore.xcframework */,
-				CF89C4072550BA7D008B1F04 /* TealiumCore.xcframework */,
-				CF89C4092550BA7D008B1F04 /* TealiumRemoteCommands.xcframework */,
-				151C9B60278D8BF100CE7D6E /* KochavaTracker.xcframework */,
-			);
-			path = Frameworks;
-			sourceTree = "<group>";
-		};
 		CF9757702410585300015347 = {
 			isa = PBXGroup;
 			children = (
 				CF97577C2410585300015347 /* Sources */,
 				CF9757872410585300015347 /* Tests */,
-				CF89C4052550BA7D008B1F04 /* Frameworks */,
+				15AE1C6929A51FAD005DA723 /* Frameworks */,
 				CF97577B2410585300015347 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -165,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				15E55471278DDEC70044D9F2 /* Support */,
-				CF9757972410589900015347 /* HttpTestHelpers.swift */,
 				CF60E51624887020006D2DAD /* MockKochavaEvent.swift */,
 				CF9757962410589900015347 /* MockKochavaInstance.swift */,
 				CF9757952410589900015347 /* KochavaInstanceTests.swift */,
@@ -297,7 +294,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF97579B2410589900015347 /* HttpTestHelpers.swift in Sources */,
 				CF97579A2410589900015347 /* MockKochavaInstance.swift in Sources */,
 				CF60E51824887043006D2DAD /* MockKochavaEvent.swift in Sources */,
 				CF9757992410589900015347 /* KochavaInstanceTests.swift in Sources */,

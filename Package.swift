@@ -12,7 +12,7 @@ let package = Package(
         .library(name: "TealiumKochava", targets: ["TealiumKochava"]),
     ],
     dependencies: [
-        .package(name: "TealiumSwift", url: "https://github.com/tealium/tealium-swift", .upToNextMajor(from: "2.6.0")),
+        .package(name: "TealiumSwift", url: "https://github.com/tealium/tealium-swift", .upToNextMajor(from: "2.9.0")),
         .package(name: "KochavaTracker", url: "https://github.com/Kochava/Apple-SwiftPackage-KochavaTracker", .upToNextMajor(from: "5.1.0")),
         .package(name: "KochavaCore", url: "https://github.com/Kochava/Apple-SwiftPackage-KochavaCore", .upToNextMajor(from: "5.1.0"))
     ],

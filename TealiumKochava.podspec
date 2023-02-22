@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
     # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
     s.name         = "TealiumKochava"
     s.module_name  = "TealiumKochava"
-    s.version      = "1.1.0"
+    s.version      = "1.2.0"
     s.summary      = "Tealium Swift and Kochava integration"
     s.description  = <<-DESC
     Tealium's integration with Kochava for iOS.
@@ -27,8 +27,8 @@ Pod::Spec.new do |s|
     s.source_files   = "Sources/*.swift"
 
     # ――― Dependencies ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-    s.ios.dependency "tealium-swift/Core", "~> 2.6"
-    s.ios.dependency "tealium-swift/RemoteCommands", "~> 2.6"
+    s.ios.dependency "tealium-swift/Core", "~> 2.9"
+    s.ios.dependency "tealium-swift/RemoteCommands", "~> 2.9"
     s.ios.dependency "Apple-Cocoapod-KochavaTracker", "~> 5.1"
     s.ios.dependency "Apple-Cocoapod-KochavaCore", "~> 5.1"
     

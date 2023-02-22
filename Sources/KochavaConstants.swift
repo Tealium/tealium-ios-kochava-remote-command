@@ -14,7 +14,7 @@ enum KochavaConstants {
     static let commandName = "command_name"
     static let separator: Character = ","
     static let errorPrefix = "Tealium Kochava: "
-    static let version = "1.1.0"
+    static let version = "1.2.0"
     
     enum Keys {
         static let command = "command_name"

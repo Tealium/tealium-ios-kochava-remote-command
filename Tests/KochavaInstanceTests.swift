@@ -23,260 +23,140 @@ class KochavaInstanceTests: XCTestCase {
     override func tearDown() { }
     
     func testLoglevel() {
-        let expect = expectation(description: "testLoglevel")
         let payload: [String: Any] = ["command_name": "initialize",
                                       "app_guid": "test", "log_level": "debug"]
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertEqual(1, self.mockKochavaInstance.logLevelCount)
-            expect.fulfill()
-        }
-        wait(for: [expect], timeout: 5.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertEqual(1, self.mockKochavaInstance.logLevelCount)
     }
     
     
     func testLoglevelNotRun() {
-        let expect = expectation(description: "testLoglevelNotRun")
         let payload: [String: Any] = ["command_name": "initialize",
                                       "app_guid": "test"]
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertEqual(0, self.mockKochavaInstance.logLevelCount)
-            expect.fulfill()
-        }
-        wait(for: [expect], timeout: 5.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertEqual(0, self.mockKochavaInstance.logLevelCount)
     }
     
     func testAttEnabled() {
-        let expect = expectation(description: "testAttEnabled")
         let payload: [String: Any] = ["command_name": "initialize",
                                       "app_guid": "test", "app_tracking_transparency_enabled": true]
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertEqual(1, self.mockKochavaInstance.attEnabledCount)
-            expect.fulfill()
-        }
-        wait(for: [expect], timeout: 5.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertEqual(1, self.mockKochavaInstance.attEnabledCount)
     }
     
     
     func testAttEnabledNotRun() {
-        let expect = expectation(description: "testAttEnabledNotRun")
         let payload: [String: Any] = ["command_name": "initialize",
                                       "app_guid": "test"]
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertEqual(0, self.mockKochavaInstance.attEnabledCount)
-            expect.fulfill()
-        }
-        wait(for: [expect], timeout: 5.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertEqual(0, self.mockKochavaInstance.attEnabledCount)
     }
 
     func testInitialize() {
-        let expect = expectation(description: "testInitialize")
         let payload: [String: Any] = ["command_name": "initialize",
             "app_guid": "test", "retrieve_attribution_data": true]
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertEqual(1, self.mockKochavaInstance.initializeCount)
-            expect.fulfill()
-        }
-        wait(for: [expect], timeout: 2.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertEqual(1, self.mockKochavaInstance.initializeCount)
     }
     
     func testInitializeNotRunNoAppGUID() {
-        let expect = expectation(description: "testInitializeAndStartNotRunNoAppGUID")
         let payload: [String: Any] = ["command_name": "initialize"]
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertEqual(0, self.mockKochavaInstance.initializeCount)
-            XCTAssertEqual(0, self.mockKochavaInstance.startCount)
-            expect.fulfill()
-        }
-        wait(for: [expect], timeout: 5.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertEqual(0, self.mockKochavaInstance.initializeCount)
+        XCTAssertEqual(0, self.mockKochavaInstance.startCount)
     }
     
     func testSleepTrackerRun() {
-        let expect = expectation(description: "testInvalidate")
         let payload: [String: Any] = ["command_name": "configure,sleeptracker",
                                       "app_guid": "test", "sleep_tracker": true]
-
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertEqual(1, self.mockKochavaInstance.sleepTrackerCount)
-        }
-
-        expect.fulfill()
-        wait(for: [expect], timeout: 2.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertEqual(1, self.mockKochavaInstance.sleepTrackerCount)
     }
     
     func testSleepTrackerNotRun() {
-        let expect = expectation(description: "testInvalidate")
         let payload: [String: Any] = ["command_name": "configure,sleeptracker",
                                       "app_guid": "test"]
-
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertEqual(0, self.mockKochavaInstance.sleepTrackerCount)
-        }
-
-        expect.fulfill()
-        wait(for: [expect], timeout: 2.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertEqual(0, self.mockKochavaInstance.sleepTrackerCount)
     }
 
     func testInvalidate() {
-        let expect = expectation(description: "testInvalidate")
         let payload: [String: Any] = ["command_name": "configure,invalidate",
             "app_guid": "test"]
-
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertEqual(1, self.mockKochavaInstance.invalidateCount)
-        }
-
-        expect.fulfill()
-        wait(for: [expect], timeout: 2.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertEqual(1, self.mockKochavaInstance.invalidateCount)
     }
     
     func testSendCustomEventWithDictionary() {
-        let expect = expectation(description: "testSendCustomEventWithOutDictionary")
         let payload: [String: Any] = ["command_name": "custom",
                                       "custom_event_name": "someEventName", "event_parameters": ["info_dictionary": ["hello": "world"]]]
-
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertEqual(1, self.mockKochavaInstance.sendCustomEventWithDictionaryCount)
-        }
-
-        expect.fulfill()
-        wait(for: [expect], timeout: 2.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertEqual(1, self.mockKochavaInstance.sendCustomEventWithDictionaryCount)
     }
     
     func testSendCustomEventWithCustomDictionary() {
-        let expect = expectation(description: "testSendCustomEventWithOutDictionary")
         let payload: [String: Any] = ["command_name": "custom",
                                       "custom_event_name": "someEventName", "custom": ["hello": "world"]]
-
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertEqual(1, self.mockKochavaInstance.sendCustomEventWithDictionaryCount)
-        }
-
-        expect.fulfill()
-        wait(for: [expect], timeout: 2.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertEqual(1, self.mockKochavaInstance.sendCustomEventWithDictionaryCount)
     }
 
     func testSendCustomEventWithOutDictionary() {
-        let expect = expectation(description: "testSendCustomEventWithOutDictionary")
         let payload: [String: Any] = ["command_name": "custom",
             "custom_event_name": "someEventName"]
-
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertEqual(1, self.mockKochavaInstance.sendCustomEventNoDictionaryCount)
-        }
-
-        expect.fulfill()
-        wait(for: [expect], timeout: 2.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertEqual(1, self.mockKochavaInstance.sendCustomEventNoDictionaryCount)
     }
     
     func testSendEventWithoutDictionary() {
-        let expect = expectation(description: "testSendEventTypeEnumWithoutDictionary")
         let payload: [String: Any] = ["command_name": "achievement"]
-
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertEqual(1, self.mockKochavaInstance.sendEventNoDictionary)
-        }
-
-        expect.fulfill()
-        wait(for: [expect], timeout: 2.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertEqual(1, self.mockKochavaInstance.sendEventNoDictionary)
     }
 
     func testSendEventWithDictionary() {
-        let expect = expectation(description: "testSendEventTypeEnumWithDictionary")
         let payload: [String: Any] = ["command_name": "addtocart",
                                       "event_parameters": ["content_id": "123sdf"]]
-
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertEqual(1, self.mockKochavaInstance.sendEventWithDictionary)
-        }
-
-        expect.fulfill()
-        wait(for: [expect], timeout: 2.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertEqual(1, self.mockKochavaInstance.sendEventWithDictionary)
     }
     
     func testSendEventWithParamsAndCustomDictionary() {
-        let expect = expectation(description: "testSendEventTypeEnumWithDictionary")
         let payload: [String: Any] = ["command_name": "addtocart",
                                       "event": ["content_id": "123sdf"], "custom": ["bob": "hope"]]
-
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertEqual(1, self.mockKochavaInstance.sendEventWithDictionary)
-        }
-
-        expect.fulfill()
-        wait(for: [expect], timeout: 2.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertEqual(1, self.mockKochavaInstance.sendEventWithDictionary)
     }
     
     func testSendEventWithOnlyCustomDictionary() {
-        let expect = expectation(description: "testSendEventTypeEnumWithDictionary")
         let payload: [String: Any] = ["command_name": "addtocart","custom": ["bob": "hope"]]
-
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertEqual(1, self.mockKochavaInstance.sendEventWithDictionary)
-        }
-
-        expect.fulfill()
-        wait(for: [expect], timeout: 2.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertEqual(1, self.mockKochavaInstance.sendEventWithDictionary)
     }
 
     func testSendCustomEventWithInfoDictionary() {
-        let expect = expectation(description: "testSendCustomEventWithInfoDictionary")
         let payload: [String: Any] = ["command_name": "custom",
                                       "custom_event_name": "someEventName", "event_parameters": [
             "info_dictionary": ["blahBlah": "test123", "tacos": "cheetos"]]]
-
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertEqual(1, self.mockKochavaInstance.sendCustomEventWithDictionaryCount)
-        }
-
-        expect.fulfill()
-        wait(for: [expect], timeout: 2.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertEqual(1, self.mockKochavaInstance.sendCustomEventWithDictionaryCount)
     }
     
     func testSendCustomEventWithCustom() {
-        let expect = expectation(description: "testSendCustomEventWithInfoDictionary")
         let payload: [String: Any] = ["command_name": "custom",
                                       "custom_event_name": "someEventName", "event_parameters": [
             "custom": ["blahBlah": "test123", "tacos": "cheetos"]]]
-
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertEqual(1, self.mockKochavaInstance.sendCustomEventWithDictionaryCount)
-        }
-
-        expect.fulfill()
-        wait(for: [expect], timeout: 2.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertEqual(1, self.mockKochavaInstance.sendCustomEventWithDictionaryCount)
     }
 
     func testSendIdentityLink() {
-        let expect = expectation(description: "testSendIdentityLink")
         let payload: [String: Any] = ["command_name": "configure,sendidentitylink",
             "app_guid": "test",
             "identity_link_ids": ["customer_id": "abc123",
                 "twittername": "@random_dev"]]
-
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertEqual(1, self.mockKochavaInstance.sendIdentityLinkCount)
-            expect.fulfill()
-        }
-        wait(for: [expect], timeout: 2.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertEqual(1, self.mockKochavaInstance.sendIdentityLinkCount)
     }
     
     func testLogLevelFrom() {
@@ -289,7 +169,6 @@ class KochavaInstanceTests: XCTestCase {
     }
 
     func testKVAEventCreateFromCommands() {
-        let expect = expectation(description: "testEventNamesSentFromCommands")
         let eventNames: [KVAEvent] = [KVAEvent(type: .achievement),
                                       KVAEvent(type: .adClick),
                                       KVAEvent(type: .addToCart),
@@ -309,50 +188,31 @@ class KochavaInstanceTests: XCTestCase {
                                       KVAEvent(type: .view)]
         let commands = "configure,addtocart,achievement,levelcomplete,purchase,checkoutstart,rating,search,registrationcomplete,tutorialcomplete,view,adview,pushrecieved,pushopened,consentgranted,subscribe,starttrial,adclick,addtowishlist"
         
-
         let payload: [String: Any] = ["command_name": commands, "app_guid": "test"]
-
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            eventNames.forEach {
-                let name = $0.eventType?.nameString
-                XCTAssertNotNil(name)
-                XCTAssert(1 == self.mockKochavaInstance.eventLookup[name!], "🐙\(name!)")
-            }
+        kochavaCommand.processRemoteCommand(with: payload)
+        eventNames.forEach {
+            let name = $0.eventType?.nameString
+            XCTAssertNotNil(name)
+            XCTAssert(1 == self.mockKochavaInstance.eventLookup[name!], "🐙\(name!)")
         }
-
-        expect.fulfill()
-        wait(for: [expect], timeout: 2.0)
     }
     
     func testLoggingEnabledSetToTrue() {
-        let expect = expectation(description: "testLoggingEnabledSetToTrue")
         let payload: [String: Any] = ["command_name": "initialize,sendidentitylink",
             "app_guid": "test",
             "log_level": "debug"]
         XCTAssertFalse(kochavaCommand.loggingEnabled) // Should be false initially
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertTrue(kochavaCommand.loggingEnabled)
-        }
-
-        expect.fulfill()
-        wait(for: [expect], timeout: 2.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertTrue(kochavaCommand.loggingEnabled)
     }
     
     func testLoggingEnabledNotSetToTrue() {
-        let expect = expectation(description: "testLoggingEnabledNotSetToTrue")
         let payload: [String: Any] = ["command_name": "initialize,sendidentitylink",
             "app_guid": "test",
             "log_level": "info"]
         XCTAssertFalse(kochavaCommand.loggingEnabled) // Should be false initially
-        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "kochava", payload: payload) {
-            kochavaCommand.completion(response)
-            XCTAssertFalse(kochavaCommand.loggingEnabled)
-        }
-
-        expect.fulfill()
-        wait(for: [expect], timeout: 2.0)
+        kochavaCommand.processRemoteCommand(with: payload)
+        XCTAssertFalse(kochavaCommand.loggingEnabled)
     }
     
     func testRetrieveProperties() {
