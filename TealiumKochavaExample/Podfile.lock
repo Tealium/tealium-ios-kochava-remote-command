@@ -2,22 +2,22 @@ PODS:
   - Apple-Cocoapod-KochavaCore (5.1.0)
   - Apple-Cocoapod-KochavaTracker (5.1.0):
     - Apple-Cocoapod-KochavaCore (~> 5.1.0)
-  - tealium-swift/Core (2.9.1)
-  - tealium-swift/Lifecycle (2.9.1):
+  - tealium-swift/Core (2.12.2)
+  - tealium-swift/Lifecycle (2.12.2):
     - tealium-swift/Core
-  - tealium-swift/RemoteCommands (2.9.1):
+  - tealium-swift/RemoteCommands (2.12.2):
     - tealium-swift/Core
-  - tealium-swift/TagManagement (2.9.1):
+  - tealium-swift/TagManagement (2.12.2):
     - tealium-swift/Core
-  - TealiumKochava (1.2.0):
+  - TealiumKochava (1.3.0):
     - Apple-Cocoapod-KochavaCore (~> 5.1)
     - Apple-Cocoapod-KochavaTracker (~> 5.1)
-    - tealium-swift/Core (~> 2.9)
-    - tealium-swift/RemoteCommands (~> 2.9)
+    - tealium-swift/Core (~> 2.12)
+    - tealium-swift/RemoteCommands (~> 2.12)
 
 DEPENDENCIES:
-  - tealium-swift/Lifecycle (~> 2.6)
-  - tealium-swift/TagManagement (~> 2.6)
+  - tealium-swift/Lifecycle (~> 2.12)
+  - tealium-swift/TagManagement (~> 2.12)
   - TealiumKochava (from `../`)
 
 SPEC REPOS:
@@ -33,9 +33,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Apple-Cocoapod-KochavaCore: b6dd9883c28d6d151de674dee571f28c0244a6fb
   Apple-Cocoapod-KochavaTracker: 00ce9d493f3676288147a73e73850e0ef14597c9
-  tealium-swift: 137769254e97d4c9f7ed6e16e0768b40888e6452
-  TealiumKochava: bbe24cf71bbe48440ac5e57cb621c2ffccf8853e
+  tealium-swift: 4b7e3dda42d7c1de6acb769abad9920346d17d43
+  TealiumKochava: d133abe1b17ec6c8e61290580efdb52756d9b971
 
-PODFILE CHECKSUM: dea0a33c4f0009bcfee7f8082d0e373c3ed9cfea
+PODFILE CHECKSUM: 49795d0989ccd8c9f5a41a4e696d6bd946af4a59
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.15.2
