@@ -1,0 +1,42 @@
+{
+  "originHash" : "c6a5310a01379d24ed8f98241096041986188f749dc8e6d89d650e2ba15f909c",
+  "pins" : [
+    {
+      "identity" : "apple-swiftpackage-kochavameasurement-xcframework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kochava/Apple-SwiftPackage-KochavaMeasurement-XCFramework",
+      "state" : {
+        "revision" : "b1562a5ef19faec9cda31b43bef1593cc886af00",
+        "version" : "9.1.0"
+      }
+    },
+    {
+      "identity" : "apple-swiftpackage-kochavanetworking-xcframework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kochava/Apple-SwiftPackage-KochavaNetworking-XCFramework",
+      "state" : {
+        "revision" : "a780ab3c8f4503e2306a16cef2b3ee6ba59ab300",
+        "version" : "9.1.0"
+      }
+    },
+    {
+      "identity" : "apple-swiftpackage-kochavatracking-xcframework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kochava/Apple-SwiftPackage-KochavaTracking-XCFramework",
+      "state" : {
+        "revision" : "4c361ae010e460c818698cd5aec631f5eb0ccd7f",
+        "version" : "9.1.0"
+      }
+    },
+    {
+      "identity" : "tealium-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Tealium/tealium-swift",
+      "state" : {
+        "revision" : "0dad26baa86977fa9464494beac4c82f75c1b1ff",
+        "version" : "2.18.0"
+      }
+    }
+  ],
+  "version" : 3
+}

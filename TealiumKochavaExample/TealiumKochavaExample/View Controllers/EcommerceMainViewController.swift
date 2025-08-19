@@ -70,10 +70,49 @@ class EcommerceMainViewController: UIViewController {
     }
 
     @IBAction func signUp(_ sender: Any) {
-        TealiumHelper.trackEvent(title: "subscribe", data: [EcommerceMainViewController.signUpMethod: "shop homepage"])
-        let ac = UIAlertController(title: "Congrats!", message: "You're all signed up. You will receive discounts right away!", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        guard let email = emailTextField.text, !email.isEmpty, isValidEmail(email) else {
+            showAlert(title: "Error", message: "Please enter a valid email address")
+            return
+        }
+        
+        // Rich data for subscription
+        let subscriptionData: [String: Any] = [
+            EcommerceMainViewController.signUpMethod: "email_signup",
+            "email": email,
+            "subscription_type": "newsletter",
+            "source": "shop_homepage",
+            "marketing_consent": true,
+            "subscription_benefits": ["discounts", "early_access", "exclusive_offers"],
+            "signup_timestamp": Date().timeIntervalSince1970,
+            "user_segment": "prospect",
+            "referral_source": "organic"
+        ]
+        
+        TealiumHelper.trackEvent(title: "subscribe", data: subscriptionData)
+        
+        // Also send as email_signup
+        TealiumHelper.trackEvent(title: "email_signup", data: subscriptionData)
+        
+        let ac = UIAlertController(title: "Congratulations!", 
+                                 message: "You're successfully signed up! You'll receive discounts starting now!", 
+                                 preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Great!", style: .default))
         present(ac, animated: true)
+        
+        // Clear email field
+        emailTextField.text = ""
+    }
+    
+    private func isValidEmail(_ email: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
+        return emailPredicate.evaluate(with: email)
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 
     func hideAllViews(except: UIView) {

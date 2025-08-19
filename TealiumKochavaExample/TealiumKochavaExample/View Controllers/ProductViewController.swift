@@ -39,24 +39,84 @@ class ProductViewController: UIViewController {
     }
     
     @IBAction func addToCart(_ sender: UIButton) {
-        let ac = UIAlertController(title: "Added!", message: "\(String(describing: productName.text!)) was added to your cart", preferredStyle: .alert)
+        let productNameText = productName.text ?? "Unknown Product"
+        let quantity = Int(quantityLabel.text ?? "1") ?? 1
+        let priceText = productPrice.text?.replacingOccurrences(of: "$", with: "") ?? "0"
+        let price = Double(priceText) ?? 0.0
+        
+        let ac = UIAlertController(title: "Added!", 
+                                 message: "\(productNameText) has been added to your cart", 
+                                 preferredStyle: .alert)
+        
         ac.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-            self.data[ProductViewController.productName] = [self.productName.text]
-            self.data[ProductViewController.productQuantity] = [self.quantityLabel.text]
-            TealiumHelper.trackEvent(title: "cart_add", data: self.data)
+            // Rich data for add to cart
+            let cartData: [String: Any] = [
+                ProductViewController.productName: productNameText,
+                ProductViewController.productQuantity: quantity,
+                ProductViewController.productPrice: price,
+                ProductViewController.productId: self.data[ProductViewController.productId] ?? "PROD_UNKNOWN",
+                ProductViewController.productCategory: self.data[ProductViewController.productCategory] ?? "appliances",
+                "product_variant": self.data["product_variant"] ?? "default",
+                "currency_code": "USD",
+                "item_added_from": "product_detail_page",
+                "cart_value": price * Double(quantity),
+                "total_cart_items": Int.random(in: 1...5),
+                "user_segment": "premium",
+                "add_to_cart_timestamp": Date().timeIntervalSince1970
+            ]
+            
+            TealiumHelper.trackEvent(title: "cart_add", data: cartData)
         })
-        ac.addAction(UIAlertAction(title: "Cancel", style: .destructive))
+        ac.addAction(UIAlertAction(title: "Continue Shopping", style: .default) { _ in
+            // Track continue shopping
+            TealiumHelper.trackEvent(title: "continue_shopping", data: [
+                "source": "add_to_cart_dialog",
+                "product_added": productNameText
+            ])
+        })
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
     }
     
     @IBAction func AddToWishList(_ sender: UIButton) {
-        let ac = UIAlertController(title: "Added!", message: "\(String(describing: productName.text!)) was added to your wishlist", preferredStyle: .alert)
+        let productNameText = productName.text ?? "Unknown Product"
+        let quantity = Int(quantityLabel.text ?? "1") ?? 1
+        let priceText = productPrice.text?.replacingOccurrences(of: "$", with: "") ?? "0"
+        let price = Double(priceText) ?? 0.0
+        
+        let ac = UIAlertController(title: "Added to Wishlist!", 
+                                 message: "\(productNameText) has been added to your wishlist", 
+                                 preferredStyle: .alert)
+        
         ac.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-            self.data["product_name"] = [self.productName.text]
-            self.data["product_quantity"] = [self.quantityLabel.text]
-            TealiumHelper.trackEvent(title: "wishlist_add", data: self.data)
+            // Rich data for wishlist
+            let wishlistData: [String: Any] = [
+                "product_name": productNameText,
+                "product_quantity": quantity,
+                ProductViewController.productPrice: price,
+                ProductViewController.productId: self.data[ProductViewController.productId] ?? "PROD_UNKNOWN",
+                ProductViewController.productCategory: self.data[ProductViewController.productCategory] ?? "appliances",
+                "product_variant": self.data["product_variant"] ?? "default",
+                "currency_code": "USD",
+                "wishlist_name": "main",
+                "wishlist_size": Int.random(in: 1...20),
+                "price_alert_enabled": Bool.random(),
+                "in_stock": true,
+                "wishlist_add_timestamp": Date().timeIntervalSince1970
+            ]
+            
+            TealiumHelper.trackEvent(title: "wishlist_add", data: wishlistData)
         })
-        ac.addAction(UIAlertAction(title: "Cancel", style: .destructive))
+        
+        ac.addAction(UIAlertAction(title: "View Wishlist", style: .default) { _ in
+            // Track wishlist view
+            TealiumHelper.trackEvent(title: "wishlist_view", data: [
+                "source": "add_to_wishlist_dialog",
+                "total_items": Int.random(in: 1...20)
+            ])
+        })
+        
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
     }
     

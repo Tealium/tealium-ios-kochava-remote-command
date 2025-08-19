@@ -3,11 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		17C8EA86EE4A359D3CB4F749 /* Pods_TealiumKochavaExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC26AF6B89FBD0DBF8D51F63 /* Pods_TealiumKochavaExample.framework */; };
+		9E06091C2E5363D300721808 /* KochavaMeasurement in Frameworks */ = {isa = PBXBuildFile; productRef = 9E06091B2E5363D300721808 /* KochavaMeasurement */; };
+		9E06091F2E5363DD00721808 /* KochavaNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 9E06091E2E5363DD00721808 /* KochavaNetworking */; };
+		9E0609222E5363EF00721808 /* TealiumCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9E0609212E5363EF00721808 /* TealiumCore */; };
+		9E0609242E5363EF00721808 /* TealiumRemoteCommands in Frameworks */ = {isa = PBXBuildFile; productRef = 9E0609232E5363EF00721808 /* TealiumRemoteCommands */; };
 		CF89C4312550D278008B1F04 /* kochava.json in Resources */ = {isa = PBXBuildFile; fileRef = CF89C4302550D278008B1F04 /* kochava.json */; };
 		CFA6B04B240493B400CA6A07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B04A240493B400CA6A07 /* AppDelegate.swift */; };
 		CFA6B04D240493B400CA6A07 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B04C240493B400CA6A07 /* SceneDelegate.swift */; };
@@ -30,9 +34,25 @@
 		CFA6B088240496B200CA6A07 /* Ecommerce.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA6B087240496B200CA6A07 /* Ecommerce.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		9E58312E2E535CE40016DC7C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9E5831292E535CE40016DC7C /* TealiumKochava.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CF97577A2410585300015347;
+			remoteInfo = TealiumKochava;
+		};
+		9E5831302E535CE40016DC7C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9E5831292E535CE40016DC7C /* TealiumKochava.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CF9757832410585300015347;
+			remoteInfo = TealiumKochavaTests;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		1AEEBB9979202BB910F43471 /* Pods-TealiumKochavaExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TealiumKochavaExample.release.xcconfig"; path = "Target Support Files/Pods-TealiumKochavaExample/Pods-TealiumKochavaExample.release.xcconfig"; sourceTree = "<group>"; };
-		400BB11CF7995857A28B6535 /* Pods-TealiumKochavaExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TealiumKochavaExample.debug.xcconfig"; path = "Target Support Files/Pods-TealiumKochavaExample/Pods-TealiumKochavaExample.debug.xcconfig"; sourceTree = "<group>"; };
+		9E5831292E535CE40016DC7C /* TealiumKochava.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TealiumKochava.xcodeproj; path = ../TealiumKochava.xcodeproj; sourceTree = "<group>"; };
 		AC26AF6B89FBD0DBF8D51F63 /* Pods_TealiumKochavaExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TealiumKochavaExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF89C4302550D278008B1F04 /* kochava.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = kochava.json; sourceTree = "<group>"; };
 		CFA6B047240493B400CA6A07 /* TealiumKochavaExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TealiumKochavaExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,18 +84,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				17C8EA86EE4A359D3CB4F749 /* Pods_TealiumKochavaExample.framework in Frameworks */,
+				9E0609222E5363EF00721808 /* TealiumCore in Frameworks */,
+				9E0609242E5363EF00721808 /* TealiumRemoteCommands in Frameworks */,
+				9E06091C2E5363D300721808 /* KochavaMeasurement in Frameworks */,
+				9E06091F2E5363DD00721808 /* KochavaNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E58312A2E535CE40016DC7C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9E58312F2E535CE40016DC7C /* TealiumKochava.framework */,
+				9E5831312E535CE40016DC7C /* TealiumKochavaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		CFA6B03E240493B400CA6A07 = {
 			isa = PBXGroup;
 			children = (
 				CFA6B049240493B400CA6A07 /* TealiumKochavaExample */,
 				CFA6B048240493B400CA6A07 /* Products */,
-				D9D04B14D121E9E0645749CF /* Pods */,
 				F22616BF825B091B4337BF65 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -140,18 +172,10 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		D9D04B14D121E9E0645749CF /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				400BB11CF7995857A28B6535 /* Pods-TealiumKochavaExample.debug.xcconfig */,
-				1AEEBB9979202BB910F43471 /* Pods-TealiumKochavaExample.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		F22616BF825B091B4337BF65 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9E5831292E535CE40016DC7C /* TealiumKochava.xcodeproj */,
 				AC26AF6B89FBD0DBF8D51F63 /* Pods_TealiumKochavaExample.framework */,
 			);
 			name = Frameworks;
@@ -203,14 +227,43 @@
 				Base,
 			);
 			mainGroup = CFA6B03E240493B400CA6A07;
+			packageReferences = (
+				9E0609192E5363C700721808 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaTracking-XCFramework" */,
+				9E06091A2E5363D300721808 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaMeasurement-XCFramework" */,
+				9E06091D2E5363DD00721808 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaNetworking-XCFramework" */,
+				9E0609202E5363EF00721808 /* XCRemoteSwiftPackageReference "tealium-swift" */,
+			);
 			productRefGroup = CFA6B048240493B400CA6A07 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9E58312A2E535CE40016DC7C /* Products */;
+					ProjectRef = 9E5831292E535CE40016DC7C /* TealiumKochava.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				CFA6B046240493B400CA6A07 /* TealiumKochavaExample */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9E58312F2E535CE40016DC7C /* TealiumKochava.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TealiumKochava.framework;
+			remoteRef = 9E58312E2E535CE40016DC7C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9E5831312E535CE40016DC7C /* TealiumKochavaTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TealiumKochavaTests.xctest;
+			remoteRef = 9E5831302E535CE40016DC7C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CFA6B045240493B400CA6A07 /* Resources */ = {
@@ -237,9 +290,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-TealiumKochavaExample/Pods-TealiumKochavaExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-TealiumKochavaExample/Pods-TealiumKochavaExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -438,7 +495,6 @@
 		};
 		CFA6B05C240493B700CA6A07 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 400BB11CF7995857A28B6535 /* Pods-TealiumKochavaExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -458,7 +514,6 @@
 		};
 		CFA6B05D240493B700CA6A07 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AEEBB9979202BB910F43471 /* Pods-TealiumKochavaExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -498,6 +553,64 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9E0609192E5363C700721808 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaTracking-XCFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kochava/Apple-SwiftPackage-KochavaTracking-XCFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+		9E06091A2E5363D300721808 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaMeasurement-XCFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kochava/Apple-SwiftPackage-KochavaMeasurement-XCFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+		9E06091D2E5363DD00721808 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaNetworking-XCFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kochava/Apple-SwiftPackage-KochavaNetworking-XCFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+		9E0609202E5363EF00721808 /* XCRemoteSwiftPackageReference "tealium-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Tealium/tealium-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.18.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9E06091B2E5363D300721808 /* KochavaMeasurement */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E06091A2E5363D300721808 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaMeasurement-XCFramework" */;
+			productName = KochavaMeasurement;
+		};
+		9E06091E2E5363DD00721808 /* KochavaNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E06091D2E5363DD00721808 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaNetworking-XCFramework" */;
+			productName = KochavaNetworking;
+		};
+		9E0609212E5363EF00721808 /* TealiumCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E0609202E5363EF00721808 /* XCRemoteSwiftPackageReference "tealium-swift" */;
+			productName = TealiumCore;
+		};
+		9E0609232E5363EF00721808 /* TealiumRemoteCommands */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E0609202E5363EF00721808 /* XCRemoteSwiftPackageReference "tealium-swift" */;
+			productName = TealiumRemoteCommands;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CFA6B03F240493B400CA6A07 /* Project object */;
 }

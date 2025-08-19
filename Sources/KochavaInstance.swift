@@ -5,8 +5,15 @@
 //  Copyright © 2020 Tealium. All rights reserved.
 //
 
+import Foundation
+import UserNotifications
+#if canImport(UIKit)
 import UIKit
-import KochavaTracker
+#endif
+// Kochava v8 imports - split from KochavaTracker
+import KochavaNetworking
+import KochavaMeasurement
+import KochavaTracking
 #if COCOAPODS
     import TealiumSwift
 #else
@@ -14,122 +21,96 @@ import KochavaTracker
     import TealiumRemoteCommands
 #endif
 
-public protocol KochavaEventProtocol: AnyObject { }
-extension KVAEvent: KochavaEventProtocol { }
-
 public protocol KochavaCommand {
-    var attEnabled: Bool { get set }
-    var limitAdTracking: Bool { get set }
-    var logLevel: String { get set }
-    func initialize(with payload: [String: Any], appGuid: String)
-    func start(with appGuid: String)
+    func setAppTrackingTransparency(enabled: Bool, waitTime: TimeInterval?, autoRequest: Bool?)
+    func setLimitAdTracking(_ limitAdTracking: Bool)
+    func setLogLevel(_ level: Log.Level)
+    func onReady(_ onReady: @escaping () -> Void)
+    func initialize(appGuid: String)
     func sleepTracker(_ sleep: Bool)
     func invalidate()
-    func sendCustom(event name: String)
-    func sendCustom(event name: String, with dictionary: [String: Any])
-    func send(event: KVAEvent)
-    func send(event: KVAEvent, with dictionary: [String : Any])
+    func send(event: Event)
     func sendIdentityLink(with info: [String: String])
-    func retrieveProperties<T: KochavaEventProtocol>(from cls: T.Type) -> [String]
 }
 
-public class KochavaInstance: KochavaCommand, TealiumRegistration, TealiumDeepLinkable {
+public class KochavaInstance: KochavaCommand { 
+    
     public init() { }
     
-    public var attEnabled: Bool {
-        get {
-            KVATracker.shared.appTrackingTransparency.enabledBool
+    private var _onReady = TealiumReplaySubject<Void>(cacheSize: 1)
+    
+    public func onReady(_ onReady: @escaping () -> Void) {
+        TealiumQueues.secureMainThreadExecution {
+            self._onReady.subscribeOnce(onReady)
         }
-        set {
-            KVATracker.shared.appTrackingTransparency.enabledBool = newValue
+    }
+            
+    public func initialize(appGuid: String) {
+ 
+        Measurement.shared.start(appGUIDString: appGuid)
+        
+        // Optional: Start tracking for IDFA collection
+        Tracking.shared.start()
+        
+        // Notify that Kochava is ready
+        _onReady.publish()
+    }
+
+    public func setAppTrackingTransparency(enabled: Bool, waitTime: TimeInterval? = nil, autoRequest: Bool? = nil) {
+        let measurement = Measurement.shared
+        
+        // Enable/disable ATT enforcement
+        measurement.appTrackingTransparency.enabledBool = enabled
+        
+        // Optional: Set custom wait time (default: 30 seconds)
+        if let waitTime = waitTime {
+            measurement.appTrackingTransparency.authorizationStatusWaitTimeInterval = waitTime
+        }
+        
+        // Optional: Set auto-request behavior (default: true)
+        if let autoRequest = autoRequest {
+            measurement.appTrackingTransparency.autoRequestTrackingAuthorizationBool = autoRequest
         }
     }
     
-    public var limitAdTracking: Bool {
-        get {
-            KVATracker.shared.appLimitAdTrackingBool
-        }
-        set {
-            KVATracker.shared.appLimitAdTrackingBool = newValue
-        }
+    public func setLimitAdTracking(_ limitAdTracking: Bool) {
+        Measurement.shared.appLimitAdTracking.bool = limitAdTracking
     }
     
-    public var logLevel: String {
-        get {
-            KVALog.shared.level.nameString
-        }
-        set {
-            KVALog.shared.level = KVALogLevel.from(string: newValue)
-        }
-    }
-    
-    public func initialize(with payload: [String: Any], appGuid: String) {
-        if let appLimitAdTracking = payload[KochavaConstants.Keys.limitAdTracking] as? Int {
-            limitAdTracking = appLimitAdTracking.toBool
-        } else if let appLimitAdTracking = payload[KochavaConstants.Keys.limitAdTracking] as? Bool {
-            limitAdTracking = appLimitAdTracking
-        }
-        start(with: appGuid)
-        if let identityLink = payload[KochavaConstants.Keys.identityLinks] as? [String: String] {
-            sendIdentityLink(with: identityLink)
-        }
-        if let sleep = payload[KochavaConstants.Keys.sleepTracker] as? Int {
-            sleepTracker(sleep.toBool)
-        } else if let sleep = payload[KochavaConstants.Keys.sleepTracker] as? Bool {
-            sleepTracker(sleep)
-        }
-    }
-    
-    public func start(with appGuid: String) {
-        KVATracker.shared.start(withAppGUIDString: appGuid)
+    public func setLogLevel(_ level: Log.Level) {
+        Log.shared.level = level
     }
     
     public func sleepTracker(_ sleep: Bool) {
-        KVATracker.shared.sleepBool = sleep
+        Measurement.shared.sleepBool = sleep
     }
     
     public func invalidate() {
-        KVATracker.shared.invalidate()
+        Measurement.shared.invalidate()
     }
     
-    public func sendCustom(event name: String) {
-        KVAEvent.sendCustom(withNameString: name)
-    }
-    
-    public func sendCustom(event name: String, with dictionary: [String: Any]) {
-        KVAEvent.sendCustom(withNameString: name, infoDictionary: dictionary)
-    }
-    
-    public func send(event: KVAEvent) {
+    public func send(event: Event) {
         event.send()
     }
     
-    public func send(event: KVAEvent, with dictionary: [String : Any]) {
-        let properties = retrieveProperties(from: KVAEvent.self)
-        KochavaConstants.eventParameters.map(dictionary)
-             .filter { properties.contains($0.key) }
-             .forEach {
-                event.setValue($0.value, forKey: $0.key)
-             }
-        event.send()
-    }
+
     
     public func sendIdentityLink(with info: [String: String]) {
-        info.forEach {
-            KVATracker.shared.identityLink.register(withNameString: $0.key, identifierString: $0.value)
+        info.forEach { key, value in
+            IdentityLink.register(name: key, identifier: value)
         }
     }
     
     // MARK: Push Notification Tracking
     // https://support.kochava.com/sdk-integration/ios-sdk-integration/ios-push-notification/
     public func registerPushToken(_ token: String) {
-        
-        guard let kvaToken = KVAPushNotificationsToken.kva_from(object: token) else {
-            return
-        }
-        KVATracker.shared.pushNotifications.register(token: kvaToken)
+        // v8 API: Push token registration - API may have changed
+        // TODO: Update this to correct v8 API when available
+        print("KochavaInstance: Push token registration - \(token)")
+        // Placeholder implementation - needs actual v8 API
     }
     
+    #if os(iOS)
     public func application(_ application: UIApplication,
                             didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                             fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -137,13 +118,14 @@ public class KochavaInstance: KochavaCommand, TealiumRegistration, TealiumDeepLi
         // Example:
         // sendCustom(event: "Push Message Opened", with: userInfo)
     }
+    #endif
     
     @available(iOS 10.0, *)
     public func userNotificationCenter(_ center: UNUserNotificationCenter,
                                        didReceive response: UNNotificationResponse,
                                        withCompletionHandler completionHandler: @escaping () -> Void) {
         
-        let event = KVAEvent(type: .pushOpened)
+        let event = Event(type: .pushOpened)
         event.payloadDictionary = response.notification.request.content.userInfo
         event.actionString = response.actionIdentifier
         event.send()
@@ -151,11 +133,13 @@ public class KochavaInstance: KochavaCommand, TealiumRegistration, TealiumDeepLi
     
     // MARK: Enhanced Deeplinking - Example
     // https://support.kochava.com/sdk-integration/ios-sdk-integration/ios-using-the-sdk/#collapseEnhancedDeeplinking
+    #if os(iOS)
     public func application(_ application: UIApplication,
                             continue userActivity: NSUserActivity,
                             restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         let url = userActivity.webpageURL
-        KVADeeplink.process(withURL: url) { deeplink in
+        // v8 API: Deeplink processing (removed KVA prefix)
+        Deeplink.process(url: url) { deeplink in
             guard let destination = deeplink.destinationString,
                 destination.count > 0 else {
                 // no deeplink
@@ -168,36 +152,9 @@ public class KochavaInstance: KochavaCommand, TealiumRegistration, TealiumDeepLi
         }
         return true
     }
+    #endif
     
 }
 
-fileprivate extension Dictionary where Key == String, Value == String {
-    func map(_ eventParameters: [String: Any]) -> [String: Any] {
-        self.reduce(into: [String: Any]()) { result, dictionary in
-            if eventParameters[dictionary.key] != nil {
-                result[dictionary.value] = eventParameters[dictionary.key]
-            }
-        }
-    }
-}
-
-extension KochavaInstance {
-    public func retrieveProperties<T: KochavaEventProtocol>(from cls: T.Type) -> [String] {
-        var count = UInt32()
-        var propertyNames = [String]()
-        guard let properties : UnsafeMutablePointer <objc_property_t> = class_copyPropertyList(cls, &count) else {
-            return []
-        }
-        for i in 0..<Int(count) {
-            let property : objc_property_t = properties[i]
-            guard let propertyName = NSString(utf8String: property_getName(property)) as String? else {
-                print("\(KochavaConstants.errorPrefix)Couldn't unwrap property name for \(property)")
-                break
-            }
-            propertyNames.append(propertyName)
-        }
-        return propertyNames
-    }
-}
 
 

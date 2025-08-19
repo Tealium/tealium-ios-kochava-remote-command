@@ -37,32 +37,88 @@ class GamingViewController: UIViewController {
     
     @IBAction func achievementSwitch(_ sender: UISwitch) {
         if sender.isOn {
-            TealiumHelper.trackEvent(title: "unlock_achievement", data: [GamingViewController.achievementId: "\(Int.random(in: 1...1000))"])
+            let achievementId = "ACHIEVEMENT_\(Int.random(in: 1...1000))"
+            
+            // Use enhanced method from TealiumHelper
+            TealiumHelper.trackAchievement(achievementId: achievementId, description: "Random test achievement unlocked")
+            
+            // Additional data for testing
+            TealiumHelper.trackEvent(title: "unlock_achievement", data: [
+                GamingViewController.achievementId: achievementId,
+                "achievement_type": "random_test",
+                "player_level": Int.random(in: 1...50),
+                "time_played": Int.random(in: 60...3600), // seconds
+                "difficulty": ["easy", "medium", "hard"].randomElement() ?? "medium"
+            ])
+            
             achievementLabel.text = "Lock Achievement"
         } else {
             achievementLabel.text = "Unlock Achievement"
         }
-        
     }
     
     @IBAction func ratingStepper(_ sender: UIStepper) {
-        levelLabel.text = String(Int(sender.value))
-        data[GamingViewController.rating] = String(Int(sender.value))
-        TealiumHelper.trackEvent(title: "rating", data: data)
+        let rating = Int(sender.value)
+        levelLabel.text = String(rating)
+        
+        // Add rich rating data
+        let ratingData: [String: Any] = [
+            GamingViewController.rating: rating,
+            "rating_value": Double(rating),
+            "max_rating_value": 10.0,
+            "item_rated": "game_experience",
+            "user_level": Int.random(in: 1...50),
+            "session_duration": Int.random(in: 60...1800)
+        ]
+        
+        TealiumHelper.trackEvent(title: "rating", data: ratingData)
     }
     
-    
     @IBAction func startTrial(_ sender: UIButton) {
-        TealiumHelper.trackEvent(title: "start_trial", data: nil)
+        let trialData: [String: Any] = [
+            "trial_type": "premium",
+            "trial_duration_days": 7,
+            "trial_value": 9.99,
+            "currency_code": "USD",
+            "source": "gaming_screen"
+        ]
+        
+        TealiumHelper.trackEvent(title: "start_trial", data: trialData)
     }
     
     @IBAction func completeTutorial(_ sender: UIButton) {
-        TealiumHelper.trackEvent(title: "complete_tutorial", data: nil)
+        let tutorialData: [String: Any] = [
+            "tutorial_name": "basic_gameplay",
+            "completion_time": Int.random(in: 30...300), // seconds
+            "steps_completed": Int.random(in: 5...10),
+            "help_used": Bool.random(),
+            "completed": true
+        ]
+        
+        TealiumHelper.trackEvent(title: "complete_tutorial", data: tutorialData)
     }
     
     @IBAction func completeLevel(_ sender: Any) {
-        data[GamingViewController.score] = Int.random(in: 1...1000) * 1000
-        TealiumHelper.trackEvent(title: "complete_level", data: data)
+        let level = "LEVEL_\(Int.random(in: 1...100))"
+        let score = Int.random(in: 1...1000) * 1000
+        let duration = TimeInterval(Int.random(in: 30...600))
+        
+        // Use enhanced method from TealiumHelper
+        TealiumHelper.trackLevelComplete(level: level, score: score, duration: duration)
+        
+        // Additional data for levels
+        let levelData: [String: Any] = [
+            GamingViewController.score: score,
+            "level": level,
+            "stars_earned": Int.random(in: 1...3),
+            "power_ups_used": Int.random(in: 0...5),
+            "enemies_defeated": Int.random(in: 0...20),
+            "coins_collected": Int.random(in: 0...100),
+            "completion_percentage": Double.random(in: 80...100),
+            "difficulty": ["easy", "medium", "hard"].randomElement() ?? "medium"
+        ]
+        
+        TealiumHelper.trackEvent(title: "complete_level", data: levelData)
     }
 
 }

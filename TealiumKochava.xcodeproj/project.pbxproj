@@ -7,15 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		151C9B61278D8BF100CE7D6E /* KochavaTracker.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151C9B60278D8BF100CE7D6E /* KochavaTracker.xcframework */; };
-		151C9B62278D8BF100CE7D6E /* KochavaTracker.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151C9B60278D8BF100CE7D6E /* KochavaTracker.xcframework */; };
-		CF60E51824887043006D2DAD /* MockKochavaEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF60E51624887020006D2DAD /* MockKochavaEvent.swift */; };
-		CF89C40B2550BA7D008B1F04 /* KochavaCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF89C4062550BA7D008B1F04 /* KochavaCore.xcframework */; };
-		CF89C40C2550BA7D008B1F04 /* TealiumCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF89C4072550BA7D008B1F04 /* TealiumCore.xcframework */; };
-		CF89C40E2550BA7D008B1F04 /* TealiumRemoteCommands.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF89C4092550BA7D008B1F04 /* TealiumRemoteCommands.xcframework */; };
-		CF89C4102550BAF2008B1F04 /* TealiumCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF89C4072550BA7D008B1F04 /* TealiumCore.xcframework */; };
-		CF89C4112550BAF2008B1F04 /* TealiumRemoteCommands.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF89C4092550BA7D008B1F04 /* TealiumRemoteCommands.xcframework */; };
-		CF9757842410585300015347 /* TealiumKochava.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF97577A2410585300015347 /* TealiumKochava.framework */; };
+		9E9659AB2E55322F00D81FAB /* KochavaEventExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9659AA2E55322F00D81FAB /* KochavaEventExtensions.swift */; };
+		9ECF78B82E4E828E004BA3BC /* TealiumCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9ECF78B72E4E828E004BA3BC /* TealiumCore */; };
+		9ECF78BA2E4E828E004BA3BC /* TealiumRemoteCommands in Frameworks */ = {isa = PBXBuildFile; productRef = 9ECF78B92E4E828E004BA3BC /* TealiumRemoteCommands */; };
+		9ECF78BC2E4E828E004BA3BC /* KochavaNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 9ECF78BB2E4E828E004BA3BC /* KochavaNetworking */; };
+		9ECF78BE2E4E828E004BA3BC /* KochavaMeasurement in Frameworks */ = {isa = PBXBuildFile; productRef = 9ECF78BD2E4E828E004BA3BC /* KochavaMeasurement */; };
+		9ECF78C02E4E828E004BA3BC /* KochavaTracking in Frameworks */ = {isa = PBXBuildFile; productRef = 9ECF78BF2E4E828E004BA3BC /* KochavaTracking */; };
+		9ECF78C12E4E86C0004BA3BC /* TealiumKochava.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF97577A2410585300015347 /* TealiumKochava.framework */; };
+		9ECF78C22E4E86C0004BA3BC /* TealiumKochava.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CF97577A2410585300015347 /* TealiumKochava.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF97578B2410585400015347 /* TealiumKochava.h in Headers */ = {isa = PBXBuildFile; fileRef = CF97577D2410585300015347 /* TealiumKochava.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF9757992410589900015347 /* KochavaInstanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757952410589900015347 /* KochavaInstanceTests.swift */; };
 		CF97579A2410589900015347 /* MockKochavaInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757962410589900015347 /* MockKochavaInstance.swift */; };
@@ -25,7 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CF9757852410585300015347 /* PBXContainerItemProxy */ = {
+		9ECF78C32E4E86C0004BA3BC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CF9757712410585300015347 /* Project object */;
 			proxyType = 1;
@@ -35,22 +34,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CF89C3D92550B57F008B1F04 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CF9757F824105A6C00015347 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				9ECF78C22E4E86C0004BA3BC /* TealiumKochava.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +50,7 @@
 		151C9B60278D8BF100CE7D6E /* KochavaTracker.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = KochavaTracker.xcframework; path = Carthage/Build/KochavaTracker.xcframework; sourceTree = SOURCE_ROOT; };
 		15E5546F278DDEBC0044D9F2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15E55472278DDEC70044D9F2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CF60E51624887020006D2DAD /* MockKochavaEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockKochavaEvent.swift; sourceTree = "<group>"; };
+		9E9659AA2E55322F00D81FAB /* KochavaEventExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KochavaEventExtensions.swift; sourceTree = "<group>"; };
 		CF89C4062550BA7D008B1F04 /* KochavaCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = KochavaCore.xcframework; path = Carthage/Build/KochavaCore.xcframework; sourceTree = SOURCE_ROOT; };
 		CF89C4072550BA7D008B1F04 /* TealiumCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TealiumCore.xcframework; path = Carthage/Build/TealiumCore.xcframework; sourceTree = SOURCE_ROOT; };
 		CF89C4092550BA7D008B1F04 /* TealiumRemoteCommands.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TealiumRemoteCommands.xcframework; path = Carthage/Build/TealiumRemoteCommands.xcframework; sourceTree = SOURCE_ROOT; };
@@ -80,10 +70,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF89C40E2550BA7D008B1F04 /* TealiumRemoteCommands.xcframework in Frameworks */,
-				CF89C40C2550BA7D008B1F04 /* TealiumCore.xcframework in Frameworks */,
-				151C9B61278D8BF100CE7D6E /* KochavaTracker.xcframework in Frameworks */,
-				CF89C40B2550BA7D008B1F04 /* KochavaCore.xcframework in Frameworks */,
+				9ECF78BA2E4E828E004BA3BC /* TealiumRemoteCommands in Frameworks */,
+				9ECF78BE2E4E828E004BA3BC /* KochavaMeasurement in Frameworks */,
+				9ECF78B82E4E828E004BA3BC /* TealiumCore in Frameworks */,
+				9ECF78C02E4E828E004BA3BC /* KochavaTracking in Frameworks */,
+				9ECF78BC2E4E828E004BA3BC /* KochavaNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,10 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF89C4102550BAF2008B1F04 /* TealiumCore.xcframework in Frameworks */,
-				CF89C4112550BAF2008B1F04 /* TealiumRemoteCommands.xcframework in Frameworks */,
-				151C9B62278D8BF100CE7D6E /* KochavaTracker.xcframework in Frameworks */,
-				CF9757842410585300015347 /* TealiumKochava.framework in Frameworks */,
+				9ECF78C12E4E86C0004BA3BC /* TealiumKochava.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +141,7 @@
 				15E5546E278DDEBC0044D9F2 /* Support */,
 				CF97579E241058B100015347 /* KochavaRemoteCommand.swift */,
 				CF97579F241058B100015347 /* KochavaInstance.swift */,
+				9E9659AA2E55322F00D81FAB /* KochavaEventExtensions.swift */,
 				CF9757A6241058B100015347 /* KochavaConstants.swift */,
 				CF97577D2410585300015347 /* TealiumKochava.h */,
 			);
@@ -163,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				15E55471278DDEC70044D9F2 /* Support */,
-				CF60E51624887020006D2DAD /* MockKochavaEvent.swift */,
 				CF9757962410589900015347 /* MockKochavaInstance.swift */,
 				CF9757952410589900015347 /* KochavaInstanceTests.swift */,
 				CF9757942410589800015347 /* TealiumKochavaTests-Bridging-Header.h */,
@@ -193,7 +181,6 @@
 				CF9757762410585300015347 /* Sources */,
 				CF9757772410585300015347 /* Frameworks */,
 				CF9757782410585300015347 /* Resources */,
-				CF89C3D92550B57F008B1F04 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -216,7 +203,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				CF9757862410585300015347 /* PBXTargetDependency */,
+				9ECF78C42E4E86C0004BA3BC /* PBXTargetDependency */,
 			);
 			name = TealiumKochavaTests;
 			productName = TealiumKochavaTests;
@@ -252,6 +239,12 @@
 				Base,
 			);
 			mainGroup = CF9757702410585300015347;
+			packageReferences = (
+				9E3E83462E4E6E900040BF04 /* XCRemoteSwiftPackageReference "tealium-swift" */,
+				9E3E83472E4E6EAB0040BF04 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaNetworking-XCFramework" */,
+				9E3E83482E4E6EBB0040BF04 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaMeasurement-XCFramework" */,
+				9E3E83492E4E6ECD0040BF04 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaTracking-XCFramework" */,
+			);
 			productRefGroup = CF97577B2410585300015347 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -286,6 +279,7 @@
 			files = (
 				CF9757BB241058B200015347 /* KochavaInstance.swift in Sources */,
 				CF9757BA241058B200015347 /* KochavaRemoteCommand.swift in Sources */,
+				9E9659AB2E55322F00D81FAB /* KochavaEventExtensions.swift in Sources */,
 				CF9757C1241058B200015347 /* KochavaConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,7 +289,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF97579A2410589900015347 /* MockKochavaInstance.swift in Sources */,
-				CF60E51824887043006D2DAD /* MockKochavaEvent.swift in Sources */,
 				CF9757992410589900015347 /* KochavaInstanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,10 +296,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CF9757862410585300015347 /* PBXTargetDependency */ = {
+		9ECF78C42E4E86C0004BA3BC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CF9757792410585300015347 /* TealiumKochava */;
-			targetProxy = CF9757852410585300015347 /* PBXContainerItemProxy */;
+			targetProxy = 9ECF78C32E4E86C0004BA3BC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -489,7 +482,6 @@
 		CF9757922410585400015347 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XC939GDC9P;
@@ -513,7 +505,6 @@
 		CF9757932410585400015347 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XC939GDC9P;
@@ -564,6 +555,69 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9E3E83462E4E6E900040BF04 /* XCRemoteSwiftPackageReference "tealium-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Tealium/tealium-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.18.0;
+			};
+		};
+		9E3E83472E4E6EAB0040BF04 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaNetworking-XCFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kochava/Apple-SwiftPackage-KochavaNetworking-XCFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+		9E3E83482E4E6EBB0040BF04 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaMeasurement-XCFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kochava/Apple-SwiftPackage-KochavaMeasurement-XCFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+		9E3E83492E4E6ECD0040BF04 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaTracking-XCFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kochava/Apple-SwiftPackage-KochavaTracking-XCFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9ECF78B72E4E828E004BA3BC /* TealiumCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E3E83462E4E6E900040BF04 /* XCRemoteSwiftPackageReference "tealium-swift" */;
+			productName = TealiumCore;
+		};
+		9ECF78B92E4E828E004BA3BC /* TealiumRemoteCommands */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E3E83462E4E6E900040BF04 /* XCRemoteSwiftPackageReference "tealium-swift" */;
+			productName = TealiumRemoteCommands;
+		};
+		9ECF78BB2E4E828E004BA3BC /* KochavaNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E3E83472E4E6EAB0040BF04 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaNetworking-XCFramework" */;
+			productName = KochavaNetworking;
+		};
+		9ECF78BD2E4E828E004BA3BC /* KochavaMeasurement */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E3E83482E4E6EBB0040BF04 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaMeasurement-XCFramework" */;
+			productName = KochavaMeasurement;
+		};
+		9ECF78BF2E4E828E004BA3BC /* KochavaTracking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E3E83492E4E6ECD0040BF04 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaTracking-XCFramework" */;
+			productName = KochavaTracking;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CF9757712410585300015347 /* Project object */;
 }
