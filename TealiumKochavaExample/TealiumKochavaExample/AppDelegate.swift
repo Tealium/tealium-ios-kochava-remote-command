@@ -22,6 +22,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         tealiumHelper = TealiumHelper.shared
         notificationRegistration(application)
+        
+        // Example: Track app launch without deeplink (for analytics)
+        TealiumHelper.trackAppLaunchWithoutDeeplink(launchType: "normal_launch")
+        
+        // For Enhanced Deferred Deeplinking, implement native Kochava SDK here if needed:
+        // Example (check for deferred deeplink when no direct deeplink on launch):
+        // let userActivityDictionary = launchOptions?[UIApplication.LaunchOptionsKey.userActivityDictionary] as? [AnyHashable: Any]
+        // if userActivityDictionary == nil {
+        //     Deeplink.process(url: nil, timeoutTimeInterval: 15.0) { deeplink in
+        //         guard let destination = deeplink.destinationString, destination.count > 0 else { 
+        //             // No deferred deeplink found
+        //             return
+        //         }
+        //         
+        //         // Track deferred deeplink analytics
+        //         TealiumHelper.trackDeeplinkDeferred(url: destination, timeout: 15.0)
+        //         
+        //         // Route user to destination
+        //         DispatchQueue.main.async {
+        //             self.routeUser(to: destination)
+        //         }
+        //     }
+        // }
+        
         return true
     }
     
@@ -87,24 +111,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("🔗 Deep link received: \(userActivity.webpageURL?.absoluteString ?? "No URL")")
         
-        // Track deep link event
+        // Track deeplink analytics event via Remote Command helper
         if let url = userActivity.webpageURL {
-            TealiumHelper.trackEvent(title: "deeplink_received", data: [
-                "deeplink_url": url.absoluteString,
-                "activity_type": userActivity.activityType,
-                "source_application": userActivity.userInfo?["source_application"] as? String ?? "unknown"
-            ])
+            TealiumHelper.trackDeeplinkReceived(
+                url: url.absoluteString,
+                activityType: userActivity.activityType,
+                sourceApp: userActivity.userInfo?["source_application"] as? String
+            )
         }
         
-        // Use remote command to handle deep link
-        var handled = false
-        tealiumHelper?.deepLinkHelpers.forEach {
-            if $0.application(application, continue: userActivity, restorationHandler: restorationHandler) {
-                handled = true
-            }
-        }
+        // For Enhanced Deeplinking (routing/navigation), implement native Kochava SDK here if needed:
+        // Example:
+        // if let url = userActivity.webpageURL {
+        //     Deeplink.process(url: url, timeoutTimeInterval: 10.0) { deeplink in
+        //         let originalUrl = url.absoluteString
+        //         let destination = deeplink.destinationString
+        //         let success = destination != nil && destination!.count > 0
+        //         
+        //         // Track deeplink processing analytics
+        //         TealiumHelper.trackDeeplinkProcessed(
+        //             originalUrl: originalUrl,
+        //             finalDestination: destination,
+        //             success: success,
+        //             timeout: 10.0
+        //         )
+        //         
+        //         // Route user to destination if successful
+        //         if success {
+        //             DispatchQueue.main.async {
+        //                 self.routeUser(to: destination!)
+        //             }
+        //         }
+        //     }
+        // }
         
-        return handled
+        return true
     }
     
     // MARK: - URL Handling for custom schemes
@@ -112,12 +153,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("🔗 URL scheme received: \(url.absoluteString)")
         
-        // Track URL scheme event
-        TealiumHelper.trackEvent(title: "url_scheme_opened", data: [
-            "url": url.absoluteString,
-            "scheme": url.scheme ?? "unknown",
-            "source_application": options[.sourceApplication] as? String ?? "unknown"
-        ])
+        // Track URL scheme analytics via Remote Command helper
+        TealiumHelper.trackUrlSchemeOpened(
+            url: url.absoluteString,
+            scheme: url.scheme ?? "unknown",
+            sourceApp: options[.sourceApplication] as? String
+        )
         
         return true
     }
@@ -198,5 +239,4 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             application.registerForRemoteNotifications()
         }
     }
-    
 }

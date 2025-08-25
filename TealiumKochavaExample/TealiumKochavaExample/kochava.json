@@ -6,11 +6,18 @@
     "att_authorization_wait_time": 30.0,
     "att_auto_request_authorization": true,
     "limit_ad_tracking": false,
-    "sleep_tracker": false,
+    "sleep": false,
     "identity_link_ids": {
         "userID": "CUST123",
         "userName": "Bob",
         "email": "bob@example.com"
+    },
+    "configuration_params": {
+      "$default.append$": {
+        "privacy": {
+          "deny_datapoints": ["device_name"]
+        }
+      }
     }
   },
   "mappings": {
@@ -66,11 +73,20 @@
       "success": "event.success",
       "description": "event.description",
       "source": "event.source",
-      "validated": "event.validated"
+      "validated": "event.validated",
+      "deeplink_url": "event.uri",
+      "activity_type": "event.info_string",
+      "source_application": "event.source",
+      "deeplink_type": "event.description",
+      "deeplink_timeout": "event.duration",
+      "deeplink_processed": "event.success",
+      "launch_type": "event.info_string",
+      "url_scheme": "event.source",
+      "user_tier": "custom_values.subscription_tier"
     },
   "commands": {
       "launch": "initialize",
-      "user_login": "custom,sendidentitylink",
+      "user_login": "custom,setidentitylinks",
       "user_register": "registrationcomplete",
       "share": "custom",
       "show_offers": "adview",
@@ -97,7 +113,20 @@
       "subscribe": "subscribe",
       "email_signup": "subscribe",
       "order": "purchase",
-      "disable_analytics": "sleeptracker,invalidate"
+      "deeplink_opened": "deeplink",
+      "deeplink_received": "deeplink",
+      "deeplink_deferred": "deeplink", 
+      "deeplink_processed": "deeplink",
+      "app_launch_no_deeplink": "custom",
+      "url_scheme_opened": "deeplink",
+      "disable_analytics": "setsleep,invalidate",
+      "pause_tracking": "stop",
+      "resume_tracking": "start",
+      "register_crm_id": "setcustomidentifiers",
+      "sync_custom_ids": "setcustomidentifiers",
+      "set_identity_links": "setidentitylinks",
+      "set_custom_values": "setcustomvalues",
+      "set_sleep_mode": "setsleep"
   }
 }
 

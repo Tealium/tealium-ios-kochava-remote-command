@@ -83,8 +83,12 @@ extension Event {
             // NSDecimalNumber properties
             case "price_decimal": self.priceDecimalNumber = value as? NSDecimalNumber
             
-            default: 
-                break
+            default:
+                // Forward compatibility: Unknown properties preserved in infoDictionary
+                // Ensures new Kochava Event properties are not lost in analytics
+                var info = self.infoDictionary ?? [:]
+                info[key] = value
+                self.infoDictionary = info
             }
         }
     }

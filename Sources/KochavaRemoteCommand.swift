@@ -64,14 +64,26 @@ public class KochavaRemoteCommand: RemoteCommand {
             switch command {
             case .initialize:
                 executeInitialize(with: payload)
-            case .enableAppLimitAdTracking, .setAppLimitAdTracking:
+            case .setAppLimitAdTracking:
                 executeLimitAdTracking(with: payload)
-            case .sendIdentityLink:
-                executeIdentityLink(with: payload)
-            case .sleepTracker:
-                executeSleepTracker(with: payload)
+            case .setIdentityLinks:
+                executeSetIdentityLinks(with: payload)
+            case .setCustomIdentifiers:
+                executeSetCustomIdentifiers(with: payload)
+            case .setCustomValues:
+                executeSetCustomValues(with: payload)
+            case .setSleep:
+                executeSetSleep(with: payload)
             case .invalidate:
                 executeInvalidate()
+            case .start:
+                executeStart()
+            case .stop:
+                executeStop()
+            case .createPrivacyProfile:
+                executeCreatePrivacyProfile(with: payload)
+            case .setPrivacyProfile:
+                executeSetPrivacyProfile(with: payload)
             default:
                 executeSendEvent(eventName: $0.lowercased(), with: payload)
             }
@@ -86,9 +98,9 @@ public class KochavaRemoteCommand: RemoteCommand {
             return
         }
         
-        // Configure settings before initialization
-        configureAppTrackingTransparency(with: payload)
         configureLogLevel(with: payload)
+        configureMeasurementParams(with: payload)
+        configureAppTrackingTransparency(with: payload)
         configureLimitAdTracking(with: payload)
         
         // Initialize Kochava
@@ -96,7 +108,7 @@ public class KochavaRemoteCommand: RemoteCommand {
         
         // Configure settings after initialization
         configureIdentityLinks(with: payload)
-        configureSleepTracker(with: payload)
+        configureSleep(with: payload)
     }
     
     // MARK: - Configuration Helper Methods
@@ -126,14 +138,14 @@ public class KochavaRemoteCommand: RemoteCommand {
         guard let identityLinks = payload[KochavaConstants.Configuration.identityLinks] as? [String: String] else {
             return
         }
-        kochavaInstance.sendIdentityLink(with: identityLinks)
+        kochavaInstance.setIdentityLinks(with: identityLinks)
     }
     
-    private func configureSleepTracker(with payload: [String: Any]) {
-        if let sleepInt = payload[KochavaConstants.Configuration.sleepTracker] as? Int {
-            kochavaInstance.sleepTracker(sleepInt != 0)
-        } else if let sleepBool = payload[KochavaConstants.Configuration.sleepTracker] as? Bool {
-            kochavaInstance.sleepTracker(sleepBool)
+    private func configureSleep(with payload: [String: Any]) {
+        if let sleepInt = payload[KochavaConstants.Configuration.sleep] as? Int {
+            kochavaInstance.setSleep(sleepInt != 0)
+        } else if let sleepBool = payload[KochavaConstants.Configuration.sleep] as? Bool {
+            kochavaInstance.setSleep(sleepBool)
         }
     }
     
@@ -150,7 +162,7 @@ public class KochavaRemoteCommand: RemoteCommand {
     private func configureAppTrackingTransparency(with payload: [String: Any]) {
         guard let attEnabled = payload[KochavaConstants.Configuration.attEnabled] as? Bool else {
             if debug {
-                print("\(KochavaConstants.errorPrefix)configureAppTrackingTransparency - att_enabled not provided")
+                print("\(KochavaConstants.errorPrefix)configureAppTrackingTransparency - app_tracking_transparency_enabled not provided")
             }
             return
         }
@@ -182,24 +194,48 @@ public class KochavaRemoteCommand: RemoteCommand {
         kochavaInstance.send(event: event)
     }
     
-    private func executeIdentityLink(with payload: [String: Any]) {
-        guard let identityLink = payload[KochavaConstants.IdentityLink.identityLinks] as? [String: String] else {
+    private func executeSetIdentityLinks(with payload: [String: Any]) {
+        guard let identityLinks = payload[KochavaConstants.IdentityLink.identityLinks] as? [String: String] else {
             if debug {
-                print("\(KochavaConstants.errorPrefix)sendIdentityLink - identity_link_ids must be a dictionary of strings")
+                print("\(KochavaConstants.errorPrefix)setIdentityLinks - identity_link_ids must be a dictionary of strings")
             }
             return
         }
-        kochavaInstance.sendIdentityLink(with: identityLink)
+        kochavaInstance.setIdentityLinks(with: identityLinks)
     }
     
-    private func executeSleepTracker(with payload: [String: Any]) {
-        guard let sleep = payload[KochavaConstants.SleepTracker.sleepTracker] as? Bool else {
+    private func executeSetCustomIdentifiers(with payload: [String: Any]) {
+        guard let customIdentifiers = payload[KochavaConstants.CustomIdentifiers.customIdentifiers] as? [String: String] else {
             if debug {
-                print("\(KochavaConstants.errorPrefix)sleepTracker - sleep_tracker must be a boolean")
+                print("\(KochavaConstants.errorPrefix)setCustomIdentifiers - custom_identifiers must be a dictionary of strings")
             }
             return
         }
-        kochavaInstance.sleepTracker(sleep)
+        kochavaInstance.setCustomIdentifiers(with: customIdentifiers)
+    }
+    
+    private func executeSetCustomValues(with payload: [String: Any]) {
+        guard let customValues = payload[KochavaConstants.CustomValues.customValues] as? [String: Any] else {
+            if debug {
+                print("\(KochavaConstants.errorPrefix)setCustomValues - custom_values must be a dictionary")
+            }
+            return
+        }
+        kochavaInstance.setCustomValues(with: customValues)
+        
+        if debug {
+            print("\(KochavaConstants.errorPrefix)Set \(customValues.count) custom values")
+        }
+    }
+    
+    private func executeSetSleep(with payload: [String: Any]) {
+        guard let sleep = payload[KochavaConstants.Sleep.sleep] as? Bool else {
+            if debug {
+                print("\(KochavaConstants.errorPrefix)setSleep - sleep must be a boolean")
+            }
+            return
+        }
+        kochavaInstance.setSleep(sleep)
     }
     
     private func executeInvalidate() { 
@@ -207,6 +243,74 @@ public class KochavaRemoteCommand: RemoteCommand {
         
         if debug {
             print("\(KochavaConstants.errorPrefix)Kochava measurement instance invalidated")
+        }
+    }
+    
+    private func configureMeasurementParams(with payload: [String: Any]) {
+        guard let configParams = payload[KochavaConstants.Configuration.configParams] else {
+            return
+        }
+        
+        kochavaInstance.configure(with: configParams)
+        
+        if debug {
+            print("\(KochavaConstants.errorPrefix)Applied configuration_params during initialization")
+        }
+    }
+    
+    private func executeStart() {
+        kochavaInstance.start()
+        
+        if debug {
+            print("\(KochavaConstants.errorPrefix)Kochava measurement instance started (resumed)")
+        }
+    }
+    
+    private func executeStop() {
+        kochavaInstance.stop()
+        
+        if debug {
+            print("\(KochavaConstants.errorPrefix)Kochava measurement instance stopped (paused)")
+        }
+    }
+    
+    private func executeCreatePrivacyProfile(with payload: [String: Any]) {
+        guard let profileName = payload[KochavaConstants.PrivacyProfile.profileName] as? String else {
+            if debug {
+                print("\(KochavaConstants.errorPrefix)createPrivacyProfile - privacy_profile_name is required")
+            }
+            return
+        }
+        
+        guard let datapoints = payload[KochavaConstants.PrivacyProfile.datapoints] as? [String] else {
+            if debug {
+                print("\(KochavaConstants.errorPrefix)createPrivacyProfile - privacy_datapoints must be an array of strings")
+            }
+            return
+        }
+        
+        kochavaInstance.createPrivacyProfile(name: profileName, datapoints: datapoints)
+        
+        if debug {
+            print("\(KochavaConstants.errorPrefix)Created privacy profile '\(profileName)' with \(datapoints.count) datapoint(s): \(datapoints.joined(separator: ", "))")
+        }
+    }
+    
+    private func executeSetPrivacyProfile(with payload: [String: Any]) {
+        guard let profileName = payload[KochavaConstants.PrivacyProfile.profileName] as? String else {
+            if debug {
+                print("\(KochavaConstants.errorPrefix)setPrivacyProfile - privacy_profile_name is required")
+            }
+            return
+        }
+        
+        let enabled = payload[KochavaConstants.PrivacyProfile.enabled] as? Bool ?? false
+        
+        kochavaInstance.setPrivacyProfile(name: profileName, enabled: enabled)
+        
+        if debug {
+            let status = enabled ? "enabled" : "disabled"
+            print("\(KochavaConstants.errorPrefix)Privacy profile '\(profileName)' \(status)")
         }
     }
 

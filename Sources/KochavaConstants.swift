@@ -21,45 +21,98 @@ enum KochavaConstants {
         static let appGuid = "app_guid"
         static let debug = "debug"
         static let logLevel = "log_level"
+        
+        /// Identity Links configuration
+        /// Reference: https://kochava.github.io/Apple-SwiftPackage-KochavaMeasurement/documentation/kochavameasurement/measurement/identitylinking-swift.property/
         static let identityLinks = "identity_link_ids"
         
         /// App Tracking Transparency (ATT) configuration
-        /// Reference: https://kochava.github.io/Apple-SwiftPackage-KochavaMeasurement/documentation/kochavameasurement/measurement_apptrackingtransparency
+        /// Reference: https://kochava.github.io/Apple-SwiftPackage-KochavaMeasurement/documentation/kochavameasurement/measurement/apptrackingtransparency/
         static let attEnabled = "app_tracking_transparency_enabled"
         static let attWaitTime = "att_authorization_wait_time"
         static let attAutoRequest = "att_auto_request_authorization"
         
+        /// Limit Ad Tracking configuration
+        /// Reference: https://kochava.github.io/Apple-SwiftPackage-KochavaMeasurement/documentation/kochavameasurement/measurement/applimitadtracking-swift.property/
         static let limitAdTracking = "limit_ad_tracking"
-        static let sleepTracker = "sleep_tracker"
+
+        /// Sleep mode configuration
+        /// Reference: https://kochava.github.io/Apple-SwiftPackage-KochavaMeasurement/documentation/kochavameasurement/measurement/sleepbool/
+        static let sleep = "sleep"
+
+        /// Configuration parameters
+        /// Reference: https://kochava.github.io/Apple-SwiftPackage-KochavaMeasurement/documentation/kochavameasurement/measurement/configure(with:context:)
         static let configParams = "configuration_params"
     }
     
-    /// Identity Link command payload keys
+    /// Identity Link parameters
     enum IdentityLink {
         static let identityLinks = "identity_link_ids"
     }
     
-    /// Limit Ad Tracking command payload keys  
+    /// Custom Identifiers parameters
+    enum CustomIdentifiers {
+        static let customIdentifiers = "custom_identifiers"
+    }
+    
+    /// Custom Values parameters
+    enum CustomValues {
+        static let customValues = "custom_values"
+    }
+    
+    /// Limit Ad Tracking parameters
     enum LimitAdTracking {
         static let limitAdTracking = "limit_ad_tracking"
     }
     
-    /// Sleep Tracker command payload keys
-    enum SleepTracker {
-        static let sleepTracker = "sleep_tracker"
+    /// Sleep mode command payload keys
+    enum Sleep {
+        static let sleep = "sleep"
     }
     
     enum Event {
         static let event = "event"
     }
     
+    /// Privacy profile command payload keys
+    enum PrivacyProfile {
+        static let profileName = "privacy_profile_name"
+        static let datapoints = "privacy_datapoints"
+        static let enabled = "privacy_enabled"
+    }
+    
+    /// Remote Command identifiers for Kochava SDK operations
     enum Commands: String {
         case initialize = "initialize"
-        case enableAppLimitAdTracking = "enableapplimitadtracking"
+
+        /// Reference: https://kochava.github.io/Apple-SwiftPackage-KochavaMeasurement/documentation/kochavameasurement/measurement/applimitadtracking-swift.property/
         case setAppLimitAdTracking = "setapplimitadtracking"
-        case sendIdentityLink = "sendidentitylink"
-        case sleepTracker = "sleeptracker"
-        case invalidate = "invalidate" 
+
+        /// Reference: https://kochava.github.io/Apple-SwiftPackage-KochavaMeasurement/documentation/kochavameasurement/measurement/identitylinking-swift.property/
+        case setIdentityLinks = "setidentitylinks"
+
+        /// Reference: https://kochava.github.io/Apple-SwiftPackage-KochavaMeasurement/documentation/kochavameasurement/measurement/customidentifiers-swift.property
+        case setCustomIdentifiers = "setcustomidentifiers"
+        
+        /// Reference: https://kochava.github.io/Apple-SwiftPackage-KochavaMeasurement/documentation/kochavameasurement/measurement/customvalues-swift.property
+        case setCustomValues = "setcustomvalues"
+
+        /// Reference: https://kochava.github.io/Apple-SwiftPackage-KochavaMeasurement/documentation/kochavameasurement/measurement/sleepbool/
+        case setSleep = "setsleep"
+
+        /// Reference: https://kochava.github.io/Apple-SwiftPackage-KochavaMeasurement/documentation/kochavameasurement/measurement/invalidate()/
+        case invalidate = "invalidate"
+
+        /// Reference: https://kochava.github.io/Apple-SwiftPackage-KochavaMeasurement/documentation/kochavameasurement/measurement/start()/
+        case start = "start"
+
+        /// Reference: https://kochava.github.io/Apple-SwiftPackage-KochavaMeasurement/documentation/kochavameasurement/measurement/stop()/
+        case stop = "stop"
+        
+        /// Reference: https://kochava.github.io/Apple-SwiftPackage-KochavaMeasurement/documentation/kochavameasurement/measurement/privacy
+        /// Reference: https://kochava.github.io/Apple-SwiftPackage-KochavaNetworking/documentation/kochavanetworking/networking/privacy-swift.class
+        case createPrivacyProfile = "createprivacyprofile"
+        case setPrivacyProfile = "setprivacyprofile"
     }
     
     /// Event type mapping from JSON payload values to Kochava Event_Type
@@ -78,7 +131,7 @@ enum KochavaConstants {
         "levelcomplete": .levelComplete,
         "purchase": .purchase,
         "pushopened": .pushOpened,
-        "pushrecieved": .pushReceived,
+        "pushreceived": .pushReceived,
         "rating": .rating,
         "registrationcomplete": .registrationComplete,
         "search": .search,

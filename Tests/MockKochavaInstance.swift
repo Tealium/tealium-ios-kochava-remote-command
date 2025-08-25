@@ -20,11 +20,17 @@ class MockKochavaInstance: KochavaCommand {
     var limitAdTrackingCount = 0
     var logLevelCount = 0
     var initializeCount = 0
-    var sleepTrackerCount = 0
+    var setSleepCount = 0
     var invalidateCount = 0
     var sendEventCount = 0
-    var sendIdentityLinkCount = 0
-    var eventLookup = [String: Int]()
+    var setIdentityLinksCount = 0
+    var setCustomIdentifiersCount = 0
+    var setCustomValuesCount = 0
+    var configureCount = 0
+    var startCount = 0
+    var stopCount = 0
+    var createPrivacyProfileCount = 0
+    var setPrivacyProfileCount = 0
     
     // Tracking for ATT settings
     var lastATTEnabled: Bool?
@@ -37,7 +43,13 @@ class MockKochavaInstance: KochavaCommand {
     var lastSleepTracker: Bool?
     var lastAppGuid: String?
     var lastIdentityLinks: [String: String]?
+    var lastCustomIdentifiers: [String: String]?
+    var lastCustomValues: [String: Any]?
+    var lastConfigureObject: Any?
     var lastSentEvents: [Event] = []
+    var lastPrivacyProfileName: String?
+    var lastPrivacyDatapoints: [String]?
+    var lastPrivacyEnabled: Bool?
     
     private var onReadyCallbacks: [() -> Void] = []
     
@@ -76,8 +88,8 @@ class MockKochavaInstance: KochavaCommand {
         triggerOnReadyCallbacks()
     }
     
-    func sleepTracker(_ sleep: Bool) {
-        sleepTrackerCount += 1
+    func setSleep(_ sleep: Bool) {
+        setSleepCount += 1
         lastSleepTracker = sleep
     }
     
@@ -88,38 +100,45 @@ class MockKochavaInstance: KochavaCommand {
     func send(event: Event) {
         sendEventCount += 1
         lastSentEvents.append(event)
-        
-        // Track event names for compatibility with old tests
-        var eventName: String = "unknown"
-        
-        if let customName = event.customEventName, !customName.isEmpty {
-            eventName = customName
-        } else if let nameString = event.nameString, !nameString.isEmpty {
-            eventName = nameString
-        } else {
-            eventName = extractEventTypeName(from: event)
-        }
-        
-        if eventLookup[eventName] != nil {
-            eventLookup[eventName]! += 1
-        } else {
-            eventLookup[eventName] = 1
-        }
     }
     
-    func sendIdentityLink(with info: [String : String]) {
-        sendIdentityLinkCount += 1
+    func setIdentityLinks(with info: [String : String]) {
+        setIdentityLinksCount += 1
         lastIdentityLinks = info
     }
     
-    // Helper method to extract event type name from Event object
-    private func extractEventTypeName(from event: Event) -> String {
-        if let customName = event.customEventName, !customName.isEmpty {
-            return customName
-        }
-        
-        return "predefinedEvent"
+    func setCustomIdentifiers(with identifiers: [String: String]) {
+        setCustomIdentifiersCount += 1
+        lastCustomIdentifiers = identifiers
     }
     
-
+    func setCustomValues(with values: [String: Any]) {
+        setCustomValuesCount += 1
+        lastCustomValues = values
+    }
+    
+    func configure(with object: Any?) {
+        configureCount += 1
+        lastConfigureObject = object
+    }
+    
+    func start() {
+        startCount += 1
+    }
+    
+    func stop() {
+        stopCount += 1
+    }
+    
+    func createPrivacyProfile(name: String, datapoints: [String]) {
+        createPrivacyProfileCount += 1
+        lastPrivacyProfileName = name
+        lastPrivacyDatapoints = datapoints
+    }
+    
+    func setPrivacyProfile(name: String, enabled: Bool) {
+        setPrivacyProfileCount += 1
+        lastPrivacyProfileName = name
+        lastPrivacyEnabled = enabled
+    }
 }

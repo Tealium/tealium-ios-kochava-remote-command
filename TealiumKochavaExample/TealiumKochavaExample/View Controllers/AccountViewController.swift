@@ -56,7 +56,7 @@ class AccountViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Test Identity Link", style: .default) { _ in
             let userId = "TEST_USER_\(Int.random(in: 1000...9999))"
-            TealiumHelper.trackEvent(title: "sendidentitylink", data: [
+            TealiumHelper.trackEvent(title: "setidentitylinks", data: [
                 "identity_link_ids": [
                     "userID": userId,
                     "email": "test@example.com",

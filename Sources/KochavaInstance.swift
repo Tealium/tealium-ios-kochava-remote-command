@@ -27,10 +27,17 @@ public protocol KochavaCommand {
     func setLogLevel(_ level: Log.Level)
     func onReady(_ onReady: @escaping () -> Void)
     func initialize(appGuid: String)
-    func sleepTracker(_ sleep: Bool)
+    func setSleep(_ sleep: Bool)
     func invalidate()
     func send(event: Event)
-    func sendIdentityLink(with info: [String: String])
+    func setIdentityLinks(with info: [String: String])
+    func setCustomIdentifiers(with identifiers: [String: String])
+    func setCustomValues(with values: [String: Any])
+    func configure(with object: Any?)
+    func start()
+    func stop()
+    func createPrivacyProfile(name: String, datapoints: [String])
+    func setPrivacyProfile(name: String, enabled: Bool)
 }
 
 public class KochavaInstance: KochavaCommand { 
@@ -81,7 +88,7 @@ public class KochavaInstance: KochavaCommand {
         Log.shared.level = level
     }
     
-    public func sleepTracker(_ sleep: Bool) {
+    public func setSleep(_ sleep: Bool) {
         Measurement.shared.sleepBool = sleep
     }
     
@@ -93,12 +100,42 @@ public class KochavaInstance: KochavaCommand {
         event.send()
     }
     
-
-    
-    public func sendIdentityLink(with info: [String: String]) {
+    public func setIdentityLinks(with info: [String: String]) {
         info.forEach { key, value in
             IdentityLink.register(name: key, identifier: value)
         }
+    }
+    
+    public func setCustomIdentifiers(with identifiers: [String: String]) {
+        identifiers.forEach { name, identifier in
+            CustomIdentifier.register(name: name, identifier: identifier)
+        }
+    }
+    
+    public func setCustomValues(with values: [String: Any]) {
+        values.forEach { name, value in
+            CustomValue.register(name: name, value: value)
+        }
+    }
+    
+    public func configure(with object: Any?) {
+        Measurement.shared.configure(with: object, context: .host)
+    }
+    
+    public func start() {
+        Measurement.shared.start()
+    }
+    
+    public func stop() {
+        Measurement.shared.stop()
+    }
+    
+    public func createPrivacyProfile(name: String, datapoints: [String]) {
+        PrivacyProfile.register(name: name, datapointKeyArray: datapoints)
+    }
+    
+    public func setPrivacyProfile(name: String, enabled: Bool) {
+        Measurement.shared.privacy.setEnabledBool(forProfileName: name, enabledBool: enabled)
     }
     
     // MARK: Push Notification Tracking
@@ -130,30 +167,6 @@ public class KochavaInstance: KochavaCommand {
         event.actionString = response.actionIdentifier
         event.send()
     }
-    
-    // MARK: Enhanced Deeplinking - Example
-    // https://support.kochava.com/sdk-integration/ios-sdk-integration/ios-using-the-sdk/#collapseEnhancedDeeplinking
-    #if os(iOS)
-    public func application(_ application: UIApplication,
-                            continue userActivity: NSUserActivity,
-                            restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        let url = userActivity.webpageURL
-        // v8 API: Deeplink processing (removed KVA prefix)
-        Deeplink.process(url: url) { deeplink in
-            guard let destination = deeplink.destinationString,
-                destination.count > 0 else {
-                // no deeplink
-                return
-            }
-            // deeplink exists, parse the destination as you see fit
-            // let components = URLComponents(string: destination)
-            // route the user to the destination accordingly
-            // print(components ?? "")
-        }
-        return true
-    }
-    #endif
-    
 }
 
 

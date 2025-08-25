@@ -171,15 +171,139 @@ class TealiumHelper {
     /// Test sleep tracker functionality
     class func testSleepTracker(enabled: Bool) {
         let sleepData: [String: Any] = [
-            "sleep_tracker": enabled
+            "sleep": enabled
         ]
         
-        trackEvent(title: "sleeptracker", data: sleepData)
+        trackEvent(title: "setsleep", data: sleepData)
     }
     
     /// Test invalidate functionality
     class func testInvalidate() {
         trackEvent(title: "invalidate", data: nil)
+    }
+
+    /// Set Identity Links to connect user identities
+    class func setIdentityLinks(identities: [String: String]) {
+        let identityData: [String: Any] = [
+            "identity_link_ids": identities
+        ]
+        
+        trackEvent(title: "setidentitylinks", data: identityData)
+    }
+    
+    /// Set single Identity Link
+    class func setIdentityLink(name: String, identifier: String) {
+        setIdentityLinks(identities: [name: identifier])
+    }
+    
+    /// Common identity links for user login/registration
+    class func linkUserIdentities(userId: String, email: String? = nil, username: String? = nil, customerId: String? = nil) {
+        var identities: [String: String] = [
+            "User ID": userId
+        ]
+        
+        if let email = email {
+            identities["Email"] = email
+        }
+        
+        if let username = username {
+            identities["Login"] = username
+        }
+        
+        if let customerId = customerId {
+            identities["Customer ID"] = customerId
+        }
+        
+        setIdentityLinks(identities: identities)
+    }
+    
+    /// Track standard deeplink received (Universal Link)
+    class func trackDeeplinkReceived(url: String, activityType: String, sourceApp: String? = nil) {
+        let deeplinkData: [String: Any] = [
+            "deeplink_url": url,
+            "activity_type": activityType,
+            "source_application": sourceApp ?? "unknown",
+            "deeplink_type": "standard"
+        ]
+        
+        trackEvent(title: "deeplink_received", data: deeplinkData)
+    }
+    
+    /// Track deferred deeplink (after app install)
+    class func trackDeeplinkDeferred(url: String, timeout: TimeInterval? = nil) {
+        var deeplinkData: [String: Any] = [
+            "deeplink_url": url,
+            "deeplink_type": "deferred",
+            "deeplink_processed": true
+        ]
+        
+        if let timeout = timeout {
+            deeplinkData["deeplink_timeout"] = timeout
+        }
+        
+        trackEvent(title: "deeplink_deferred", data: deeplinkData)
+    }
+    
+    /// Track URL scheme opened (custom scheme)
+    class func trackUrlSchemeOpened(url: String, scheme: String, sourceApp: String? = nil) {
+        let urlData: [String: Any] = [
+            "deeplink_url": url,
+            "url_scheme": scheme,
+            "source_application": sourceApp ?? "unknown",
+            "deeplink_type": "url_scheme"
+        ]
+        
+        trackEvent(title: "url_scheme_opened", data: urlData)
+    }
+    
+    /// Track app launch without deeplink (for deferred deeplink check)
+    class func trackAppLaunchWithoutDeeplink(launchType: String = "normal") {
+        let launchData: [String: Any] = [
+            "launch_type": launchType,
+            "deeplink_processed": false
+        ]
+        
+        trackEvent(title: "app_launch_no_deeplink", data: launchData)
+    }
+    
+    /// Track deeplink processing result (for Enhanced Deeplinking)
+    class func trackDeeplinkProcessed(originalUrl: String, finalDestination: String?, success: Bool, timeout: TimeInterval? = nil) {
+        var processData: [String: Any] = [
+            "deeplink_url": originalUrl,
+            "deeplink_processed": success,
+            "deeplink_type": "enhanced"
+        ]
+        
+        if let destination = finalDestination {
+            processData["description"] = "Processed to: \(destination)"
+        }
+        
+        if let timeout = timeout {
+            processData["deeplink_timeout"] = timeout
+        }
+        
+        trackEvent(title: "deeplink_processed", data: processData)
+    }
+    
+    // MARK: - Custom Values Methods
+    
+    /// Set custom values for user analytics
+    class func setCustomValues(_ customValues: [String: Any]) {
+        let customValuesData: [String: Any] = [
+            "custom_values": customValues
+        ]
+        
+        trackEvent(title: "set_custom_values", data: customValuesData)
+    }
+    
+    /// Update single custom value
+    class func setCustomValue(name: String, value: Any) {
+        setCustomValues([name: value])
+    }
+    
+    /// Example: Set user tier custom value (common use case)
+    class func setUserTier(_ tier: String) {
+        setCustomValue(name: "subscription_tier", value: tier)
     }
 
 }
