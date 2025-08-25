@@ -72,8 +72,6 @@ extension KochavaInstanceTests {
         XCTAssertEqual(1, self.mockKochavaInstance.initializeCount)
     }
 
-
-
     func testInitializeWithIdentityLink() {
         let payload: [String: Any] = [
             "command_name": "initialize",
@@ -117,7 +115,6 @@ extension KochavaInstanceTests {
     }
 
     func testLimitAdTrackingWithInt() {
-        // Test z wartością Int (0 = false, non-zero = true)
         let payload: [String: Any] = [
             "command_name": "initialize",
             "app_guid": "test",
@@ -130,7 +127,6 @@ extension KochavaInstanceTests {
     }
 
     func testSleepWithInt() {
-        // Test z wartością Int dla sleep
         let payload: [String: Any] = [
             "command_name": "initialize",
             "app_guid": "test",
@@ -186,8 +182,6 @@ extension KochavaInstanceTests {
         XCTAssertNotNil(self.mockKochavaInstance.lastSentEvents.last)
     }
 
-
-
     func testSendIdentityLink() {
         let payload: [String: Any] = [
             "command_name": "setidentitylinks",
@@ -196,10 +190,6 @@ extension KochavaInstanceTests {
         kochavaCommand.processRemoteCommand(with: payload)
         XCTAssertEqual(1, self.mockKochavaInstance.setIdentityLinksCount)
     }
-
-
-
-
 
     func testInvalidateCommand() {
         let payload: [String: Any] = ["command_name": "invalidate"]
@@ -215,7 +205,7 @@ extension KochavaInstanceTests {
         ]
         kochavaCommand.processRemoteCommand(with: payload)
         XCTAssertEqual(1, self.mockKochavaInstance.initializeCount)
-        XCTAssertEqual(2, self.mockKochavaInstance.setSleepCount)  // Called during init + explicit command
+        XCTAssertEqual(2, self.mockKochavaInstance.setSleepCount)
     }
 
     func testSetCustomIdentifiersCommand() {
@@ -398,8 +388,6 @@ extension KochavaInstanceTests {
         XCTAssertEqual(0, self.mockKochavaInstance.initializeCount)
     }
 
-
-
     func testAllPredefinedEventTypes() {
         let eventTypes = [
             "achievement", "adclick", "adview", "addtocart", "addtowishlist",
@@ -423,7 +411,6 @@ extension KochavaInstanceTests {
             eventTypes.count,
             self.mockKochavaInstance.lastSentEvents.count
         )
-        // All events should be predefined, so none should have customEventName
         for event in self.mockKochavaInstance.lastSentEvents {
             XCTAssertNil(event.customEventName)
         }
