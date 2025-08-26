@@ -16,7 +16,7 @@ struct ContentView: View {
             ScrollView {
                 LazyVStack(spacing: 20) {
                     // Basic Events Section
-                    SectionView(title: "📊 Basic Events", icon: "chart.bar.fill", color: .blue) {
+                    SectionView(title: "Basic Events", icon: "chart.bar.fill", color: .blue) {
                         TestButton(title: "Track View", icon: "eye.fill") {
                             tealiumHelper.trackView(title: "test_view", data: ["page": "test_page"])
                         }
@@ -29,7 +29,7 @@ struct ContentView: View {
                     }
                     
                     // E-commerce Events Section
-                    SectionView(title: "🛒 E-commerce Events", icon: "cart.fill", color: .green) {
+                    SectionView(title: "E-commerce Events", icon: "cart.fill", color: .green) {
                         TestButton(title: "Track Purchase", icon: "creditcard.fill") {
                             tealiumHelper.trackPurchase(
                                 orderId: "ORDER-\(Int.random(in: 1000...9999))",
@@ -50,7 +50,7 @@ struct ContentView: View {
                     }
                     
                     // Gaming Events Section
-                    SectionView(title: "🎮 Gaming Events", icon: "gamecontroller.fill", color: .purple) {
+                    SectionView(title: "Gaming Events", icon: "gamecontroller.fill", color: .purple) {
                         TestButton(title: "Track Achievement", icon: "trophy.fill") {
                             tealiumHelper.trackAchievement(
                                 achievementId: "ACHIEVEMENT_\(Int.random(in: 1...10))",
@@ -73,7 +73,7 @@ struct ContentView: View {
                     }
                     
                     // Identity & Custom Values Section
-                    SectionView(title: "👤 Identity & Custom Values", icon: "person.2.fill", color: .orange) {
+                    SectionView(title: "Identity & Custom Values", icon: "person.2.fill", color: .orange) {
                         TestButton(title: "Set Identity Links", icon: "link") {
                             tealiumHelper.setIdentityLinks(identities: [
                                 "Email": "test@example.com",
@@ -99,7 +99,7 @@ struct ContentView: View {
                     }
                     
                     // Deeplink Events Section
-                    SectionView(title: "🔗 Deeplink Events", icon: "link.circle.fill", color: .teal) {
+                    SectionView(title: "Deeplink Events", icon: "link.circle.fill", color: .teal) {
                         TestButton(title: "Standard Deeplink", icon: "link.circle.fill") {
                             tealiumHelper.trackDeeplink(
                                 url: "https://example.com/test",
@@ -128,7 +128,7 @@ struct ContentView: View {
                     }
                     
                     // Push Notifications Section
-                    SectionView(title: "📱 Push Notifications", icon: "bell.circle.fill", color: .pink) {
+                    SectionView(title: "Push Notifications", icon: "bell.circle.fill", color: .pink) {
                         TestButton(title: "Request Permission", icon: "bell.badge.fill") {
                             requestNotificationPermission()
                         }
@@ -144,7 +144,7 @@ struct ContentView: View {
                     }
                     
                     // Advanced Commands Section
-                    SectionView(title: "🔧 Advanced Commands", icon: "wrench.and.screwdriver.fill", color: .brown) {
+                    SectionView(title: "Advanced Commands", icon: "wrench.and.screwdriver.fill", color: .brown) {
                         TestButton(title: "Set Custom Identifiers", icon: "person.text.rectangle.fill") {
                             tealiumHelper.setCustomIdentifiers([
                                 "CRM_ID": "12345",
@@ -163,7 +163,7 @@ struct ContentView: View {
                     }
                     
                     // Privacy Commands Section
-                    SectionView(title: "🔒 Privacy Commands", icon: "lock.shield.fill", color: .indigo) {
+                    SectionView(title: "Privacy Commands", icon: "lock.shield.fill", color: .indigo) {
                         TestButton(title: "Create GDPR Profile", icon: "plus.circle.fill") {
                             tealiumHelper.createPrivacyProfile(
                                 name: "GDPR_EU", 
@@ -179,7 +179,7 @@ struct ContentView: View {
                     }
                     
                     // System Controls Section
-                    SectionView(title: "⚙️ System Controls", icon: "gear.circle.fill", color: .red) {
+                    SectionView(title: "System Controls", icon: "gear.circle.fill", color: .red) {
                         TestButton(title: "Test Sleep Mode", icon: "moon.fill") {
                             tealiumHelper.testSleepTracker(enabled: true)
                         }
