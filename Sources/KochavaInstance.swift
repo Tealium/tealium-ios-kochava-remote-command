@@ -137,37 +137,4 @@ public class KochavaInstance: KochavaCommand {
     public func setPrivacyProfile(name: String, enabled: Bool) {
         Measurement.shared.privacy.setEnabledBool(forProfileName: name, enabledBool: enabled)
     }
-    
-    // MARK: Push Notification Tracking
-    // https://support.kochava.com/sdk-integration/ios-sdk-integration/ios-push-notification/
-    public func registerPushToken(_ token: String) {
-        // v8 API: Push token registration - API may have changed
-        // TODO: Update this to correct v8 API when available
-        print("KochavaInstance: Push token registration - \(token)")
-        // Placeholder implementation - needs actual v8 API
-    }
-    
-    #if os(iOS)
-    public func application(_ application: UIApplication,
-                            didReceiveRemoteNotification userInfo: [AnyHashable: Any],
-                            fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        // .... Optional tracking, implement a custom event here.
-        // Example:
-        // sendCustom(event: "Push Message Opened", with: userInfo)
-    }
-    #endif
-    
-    @available(iOS 10.0, *)
-    public func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                       didReceive response: UNNotificationResponse,
-                                       withCompletionHandler completionHandler: @escaping () -> Void) {
-        
-        let event = Event(type: .pushOpened)
-        event.payloadDictionary = response.notification.request.content.userInfo
-        event.actionString = response.actionIdentifier
-        event.send()
-    }
 }
-
-
-

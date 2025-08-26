@@ -47,10 +47,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         print("🔔 Device Token: \(token)")
 
         let deviceTokenString = String(format: "%@", deviceToken as CVarArg)
-        
-        // Use Kochava instance directly to register push token
-        tealiumHelper?.kochavaInstance?.registerPushToken(deviceTokenString)
-        
+         
         // Track push token registration event
         tealiumHelper?.trackEvent(title: "push_token_registered", data: [
             "device_token": token,
@@ -70,10 +67,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
         print("📩 Received push notification: \(userInfo)")
-        
-        // Use Kochava instance directly to log push notification receipt/open
-        tealiumHelper?.kochavaInstance?.application(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: completionHandler)
-        
+           
         // Track push notification received event
         tealiumHelper?.trackEvent(title: "push_received", data: [
             "notification_payload": userInfo,
@@ -147,10 +141,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         print("📱 User interacted with notification: \(response.actionIdentifier)")
-        
-        // Use Kochava instance directly to log push notification receipt/open
-        tealiumHelper?.kochavaInstance?.userNotificationCenter(center, didReceive: response, withCompletionHandler: completionHandler)
-        
+         
         // Track notification interaction
         tealiumHelper?.trackEvent(title: "push_opened", data: [
             "action_identifier": response.actionIdentifier,
