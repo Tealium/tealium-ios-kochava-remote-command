@@ -3,333 +3,169 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		17C8EA86EE4A359D3CB4F749 /* Pods_TealiumKochavaExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC26AF6B89FBD0DBF8D51F63 /* Pods_TealiumKochavaExample.framework */; };
-		CF89C4312550D278008B1F04 /* kochava.json in Resources */ = {isa = PBXBuildFile; fileRef = CF89C4302550D278008B1F04 /* kochava.json */; };
-		CFA6B04B240493B400CA6A07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B04A240493B400CA6A07 /* AppDelegate.swift */; };
-		CFA6B04D240493B400CA6A07 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B04C240493B400CA6A07 /* SceneDelegate.swift */; };
-		CFA6B054240493B700CA6A07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFA6B053240493B700CA6A07 /* Assets.xcassets */; };
-		CFA6B0602404950700CA6A07 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B05E2404950700CA6A07 /* ProductCell.swift */; };
-		CFA6B0612404950700CA6A07 /* TealiumHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B05F2404950700CA6A07 /* TealiumHelper.swift */; };
-		CFA6B06D2404951400CA6A07 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B0632404951300CA6A07 /* OrderViewController.swift */; };
-		CFA6B06E2404951400CA6A07 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B0642404951300CA6A07 /* CheckoutViewController.swift */; };
-		CFA6B06F2404951400CA6A07 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B0652404951300CA6A07 /* ProductViewController.swift */; };
-		CFA6B0702404951400CA6A07 /* EcommerceMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B0662404951300CA6A07 /* EcommerceMainViewController.swift */; };
-		CFA6B0712404951400CA6A07 /* GamingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B0672404951300CA6A07 /* GamingViewController.swift */; };
-		CFA6B0722404951400CA6A07 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B0682404951300CA6A07 /* LoginViewController.swift */; };
-		CFA6B0732404951400CA6A07 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B0692404951300CA6A07 /* CategoryViewController.swift */; };
-		CFA6B0752404951400CA6A07 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B06B2404951400CA6A07 /* AccountViewController.swift */; };
-		CFA6B0762404951400CA6A07 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B06C2404951400CA6A07 /* RegisterViewController.swift */; };
-		CFA6B07F2404952D00CA6A07 /* Activities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA6B0792404952D00CA6A07 /* Activities.storyboard */; };
-		CFA6B0802404952D00CA6A07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA6B07B2404952D00CA6A07 /* LaunchScreen.storyboard */; };
-		CFA6B0812404952D00CA6A07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA6B07D2404952D00CA6A07 /* Main.storyboard */; };
-		CFA6B0862404965D00CA6A07 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6B0852404965D00CA6A07 /* DateExtensions.swift */; };
-		CFA6B088240496B200CA6A07 /* Ecommerce.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA6B087240496B200CA6A07 /* Ecommerce.storyboard */; };
+		9E537B7A2E5DEE47004B8253 /* TealiumCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9E7C88002E5DCE1000056B13 /* TealiumCore */; };
+		9E537B7B2E5DEE47004B8253 /* TealiumRemoteCommands in Frameworks */ = {isa = PBXBuildFile; productRef = 9E7C88012E5DCE1100056B13 /* TealiumRemoteCommands */; };
+		9E537BB02E5DF556004B8253 /* TealiumCollect in Frameworks */ = {isa = PBXBuildFile; productRef = 9E537BAF2E5DF556004B8253 /* TealiumCollect */; };
+		9E537BB22E5DF556004B8253 /* TealiumLifecycle in Frameworks */ = {isa = PBXBuildFile; productRef = 9E537BB12E5DF556004B8253 /* TealiumLifecycle */; };
+		9E537BB42E5DF556004B8253 /* TealiumTagManagement in Frameworks */ = {isa = PBXBuildFile; productRef = 9E537BB32E5DF556004B8253 /* TealiumTagManagement */; };
+		9E7C87FF2E5DCDDE00056B13 /* TealiumKochava in Frameworks */ = {isa = PBXBuildFile; productRef = 9E7C87FE2E5DCDDE00056B13 /* TealiumKochava */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1AEEBB9979202BB910F43471 /* Pods-TealiumKochavaExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TealiumKochavaExample.release.xcconfig"; path = "Target Support Files/Pods-TealiumKochavaExample/Pods-TealiumKochavaExample.release.xcconfig"; sourceTree = "<group>"; };
-		400BB11CF7995857A28B6535 /* Pods-TealiumKochavaExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TealiumKochavaExample.debug.xcconfig"; path = "Target Support Files/Pods-TealiumKochavaExample/Pods-TealiumKochavaExample.debug.xcconfig"; sourceTree = "<group>"; };
-		AC26AF6B89FBD0DBF8D51F63 /* Pods_TealiumKochavaExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TealiumKochavaExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF89C4302550D278008B1F04 /* kochava.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = kochava.json; sourceTree = "<group>"; };
-		CFA6B047240493B400CA6A07 /* TealiumKochavaExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TealiumKochavaExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFA6B04A240493B400CA6A07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CFA6B04C240493B400CA6A07 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CFA6B053240493B700CA6A07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CFA6B058240493B700CA6A07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CFA6B05E2404950700CA6A07 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
-		CFA6B05F2404950700CA6A07 /* TealiumHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TealiumHelper.swift; sourceTree = "<group>"; };
-		CFA6B0632404951300CA6A07 /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
-		CFA6B0642404951300CA6A07 /* CheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
-		CFA6B0652404951300CA6A07 /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
-		CFA6B0662404951300CA6A07 /* EcommerceMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EcommerceMainViewController.swift; sourceTree = "<group>"; };
-		CFA6B0672404951300CA6A07 /* GamingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamingViewController.swift; sourceTree = "<group>"; };
-		CFA6B0682404951300CA6A07 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		CFA6B0692404951300CA6A07 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
-		CFA6B06B2404951400CA6A07 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
-		CFA6B06C2404951400CA6A07 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		CFA6B07A2404952D00CA6A07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Activities.storyboard; sourceTree = "<group>"; };
-		CFA6B07C2404952D00CA6A07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		CFA6B07E2404952D00CA6A07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CFA6B0852404965D00CA6A07 /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
-		CFA6B087240496B200CA6A07 /* Ecommerce.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Ecommerce.storyboard; sourceTree = "<group>"; };
+		9E7C87DA2E5DC9D000056B13 /* TealiumKochavaExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TealiumKochavaExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		9E7C87DC2E5DC9D000056B13 /* TealiumKochavaExample */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TealiumKochavaExample;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
-		CFA6B044240493B400CA6A07 /* Frameworks */ = {
+		9E7C87D72E5DC9D000056B13 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17C8EA86EE4A359D3CB4F749 /* Pods_TealiumKochavaExample.framework in Frameworks */,
+				9E537B7B2E5DEE47004B8253 /* TealiumRemoteCommands in Frameworks */,
+				9E537BB02E5DF556004B8253 /* TealiumCollect in Frameworks */,
+				9E537B7A2E5DEE47004B8253 /* TealiumCore in Frameworks */,
+				9E537BB22E5DF556004B8253 /* TealiumLifecycle in Frameworks */,
+				9E537BB42E5DF556004B8253 /* TealiumTagManagement in Frameworks */,
+				9E7C87FF2E5DCDDE00056B13 /* TealiumKochava in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CFA6B03E240493B400CA6A07 = {
+		9E537BAE2E5DF556004B8253 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CFA6B049240493B400CA6A07 /* TealiumKochavaExample */,
-				CFA6B048240493B400CA6A07 /* Products */,
-				D9D04B14D121E9E0645749CF /* Pods */,
-				F22616BF825B091B4337BF65 /* Frameworks */,
-			);
-			sourceTree = "<group>";
-		};
-		CFA6B048240493B400CA6A07 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CFA6B047240493B400CA6A07 /* TealiumKochavaExample.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		CFA6B049240493B400CA6A07 /* TealiumKochavaExample */ = {
-			isa = PBXGroup;
-			children = (
-				CFA6B04A240493B400CA6A07 /* AppDelegate.swift */,
-				CFA6B05F2404950700CA6A07 /* TealiumHelper.swift */,
-				CFA6B05E2404950700CA6A07 /* ProductCell.swift */,
-				CFA6B04C240493B400CA6A07 /* SceneDelegate.swift */,
-				CF89C4302550D278008B1F04 /* kochava.json */,
-				CFA6B0622404951300CA6A07 /* View Controllers */,
-				CFA6B0772404952D00CA6A07 /* Storyboards */,
-				CFA6B0822404961300CA6A07 /* Utilities */,
-				CFA6B053240493B700CA6A07 /* Assets.xcassets */,
-				CFA6B058240493B700CA6A07 /* Info.plist */,
-			);
-			path = TealiumKochavaExample;
-			sourceTree = "<group>";
-		};
-		CFA6B0622404951300CA6A07 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				CFA6B0632404951300CA6A07 /* OrderViewController.swift */,
-				CFA6B0642404951300CA6A07 /* CheckoutViewController.swift */,
-				CFA6B0652404951300CA6A07 /* ProductViewController.swift */,
-				CFA6B0662404951300CA6A07 /* EcommerceMainViewController.swift */,
-				CFA6B0672404951300CA6A07 /* GamingViewController.swift */,
-				CFA6B0682404951300CA6A07 /* LoginViewController.swift */,
-				CFA6B0692404951300CA6A07 /* CategoryViewController.swift */,
-				CFA6B06B2404951400CA6A07 /* AccountViewController.swift */,
-				CFA6B06C2404951400CA6A07 /* RegisterViewController.swift */,
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		CFA6B0772404952D00CA6A07 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				CFA6B087240496B200CA6A07 /* Ecommerce.storyboard */,
-				CFA6B0792404952D00CA6A07 /* Activities.storyboard */,
-				CFA6B07B2404952D00CA6A07 /* LaunchScreen.storyboard */,
-				CFA6B07D2404952D00CA6A07 /* Main.storyboard */,
-			);
-			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		CFA6B0822404961300CA6A07 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				CFA6B0852404965D00CA6A07 /* DateExtensions.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		D9D04B14D121E9E0645749CF /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				400BB11CF7995857A28B6535 /* Pods-TealiumKochavaExample.debug.xcconfig */,
-				1AEEBB9979202BB910F43471 /* Pods-TealiumKochavaExample.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		F22616BF825B091B4337BF65 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				AC26AF6B89FBD0DBF8D51F63 /* Pods_TealiumKochavaExample.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9E7C87D12E5DC9D000056B13 = {
+			isa = PBXGroup;
+			children = (
+				9E7C87DC2E5DC9D000056B13 /* TealiumKochavaExample */,
+				9E537BAE2E5DF556004B8253 /* Frameworks */,
+				9E7C87DB2E5DC9D000056B13 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9E7C87DB2E5DC9D000056B13 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9E7C87DA2E5DC9D000056B13 /* TealiumKochavaExample.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CFA6B046240493B400CA6A07 /* TealiumKochavaExample */ = {
+		9E7C87D92E5DC9D000056B13 /* TealiumKochavaExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CFA6B05B240493B700CA6A07 /* Build configuration list for PBXNativeTarget "TealiumKochavaExample" */;
+			buildConfigurationList = 9E7C87E52E5DC9D200056B13 /* Build configuration list for PBXNativeTarget "TealiumKochavaExample" */;
 			buildPhases = (
-				D6E80E197E7ED5B1D3191AC3 /* [CP] Check Pods Manifest.lock */,
-				CFA6B043240493B400CA6A07 /* Sources */,
-				CFA6B044240493B400CA6A07 /* Frameworks */,
-				CFA6B045240493B400CA6A07 /* Resources */,
-				6AC2390DB4E1371E5A4355C6 /* [CP] Embed Pods Frameworks */,
+				9E7C87D62E5DC9D000056B13 /* Sources */,
+				9E7C87D72E5DC9D000056B13 /* Frameworks */,
+				9E7C87D82E5DC9D000056B13 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				9E7C87DC2E5DC9D000056B13 /* TealiumKochavaExample */,
+			);
 			name = TealiumKochavaExample;
+			packageProductDependencies = (
+				9E7C87FE2E5DCDDE00056B13 /* TealiumKochava */,
+				9E7C88002E5DCE1000056B13 /* TealiumCore */,
+				9E7C88012E5DCE1100056B13 /* TealiumRemoteCommands */,
+				9E537BAF2E5DF556004B8253 /* TealiumCollect */,
+				9E537BB12E5DF556004B8253 /* TealiumLifecycle */,
+				9E537BB32E5DF556004B8253 /* TealiumTagManagement */,
+			);
 			productName = TealiumKochavaExample;
-			productReference = CFA6B047240493B400CA6A07 /* TealiumKochavaExample.app */;
+			productReference = 9E7C87DA2E5DC9D000056B13 /* TealiumKochavaExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		CFA6B03F240493B400CA6A07 /* Project object */ = {
+		9E7C87D22E5DC9D000056B13 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
-				ORGANIZATIONNAME = Tealium;
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1630;
+				LastUpgradeCheck = 1630;
 				TargetAttributes = {
-					CFA6B046240493B400CA6A07 = {
-						CreatedOnToolsVersion = 11.3.1;
+					9E7C87D92E5DC9D000056B13 = {
+						CreatedOnToolsVersion = 16.3;
 					};
 				};
 			};
-			buildConfigurationList = CFA6B042240493B400CA6A07 /* Build configuration list for PBXProject "TealiumKochavaExample" */;
-			compatibilityVersion = "Xcode 9.3";
+			buildConfigurationList = 9E7C87D52E5DC9D000056B13 /* Build configuration list for PBXProject "TealiumKochavaExample" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = CFA6B03E240493B400CA6A07;
-			productRefGroup = CFA6B048240493B400CA6A07 /* Products */;
+			mainGroup = 9E7C87D12E5DC9D000056B13;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				9E7C87FD2E5DCDDE00056B13 /* XCLocalSwiftPackageReference "../../tealium-ios-kochava-remote-command" */,
+				9E7C87FF2E5DCE1000056B13 /* XCRemoteSwiftPackageReference "tealium-swift" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 9E7C87DB2E5DC9D000056B13 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CFA6B046240493B400CA6A07 /* TealiumKochavaExample */,
+				9E7C87D92E5DC9D000056B13 /* TealiumKochavaExample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CFA6B045240493B400CA6A07 /* Resources */ = {
+		9E7C87D82E5DC9D000056B13 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFA6B07F2404952D00CA6A07 /* Activities.storyboard in Resources */,
-				CF89C4312550D278008B1F04 /* kochava.json in Resources */,
-				CFA6B054240493B700CA6A07 /* Assets.xcassets in Resources */,
-				CFA6B0812404952D00CA6A07 /* Main.storyboard in Resources */,
-				CFA6B088240496B200CA6A07 /* Ecommerce.storyboard in Resources */,
-				CFA6B0802404952D00CA6A07 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		6AC2390DB4E1371E5A4355C6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TealiumKochavaExample/Pods-TealiumKochavaExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TealiumKochavaExample/Pods-TealiumKochavaExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TealiumKochavaExample/Pods-TealiumKochavaExample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D6E80E197E7ED5B1D3191AC3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TealiumKochavaExample-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		CFA6B043240493B400CA6A07 /* Sources */ = {
+		9E7C87D62E5DC9D000056B13 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFA6B0702404951400CA6A07 /* EcommerceMainViewController.swift in Sources */,
-				CFA6B0752404951400CA6A07 /* AccountViewController.swift in Sources */,
-				CFA6B0602404950700CA6A07 /* ProductCell.swift in Sources */,
-				CFA6B04B240493B400CA6A07 /* AppDelegate.swift in Sources */,
-				CFA6B0762404951400CA6A07 /* RegisterViewController.swift in Sources */,
-				CFA6B0732404951400CA6A07 /* CategoryViewController.swift in Sources */,
-				CFA6B0612404950700CA6A07 /* TealiumHelper.swift in Sources */,
-				CFA6B0712404951400CA6A07 /* GamingViewController.swift in Sources */,
-				CFA6B04D240493B400CA6A07 /* SceneDelegate.swift in Sources */,
-				CFA6B06D2404951400CA6A07 /* OrderViewController.swift in Sources */,
-				CFA6B0862404965D00CA6A07 /* DateExtensions.swift in Sources */,
-				CFA6B06F2404951400CA6A07 /* ProductViewController.swift in Sources */,
-				CFA6B06E2404951400CA6A07 /* CheckoutViewController.swift in Sources */,
-				CFA6B0722404951400CA6A07 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		CFA6B0792404952D00CA6A07 /* Activities.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CFA6B07A2404952D00CA6A07 /* Base */,
-			);
-			name = Activities.storyboard;
-			sourceTree = "<group>";
-		};
-		CFA6B07B2404952D00CA6A07 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CFA6B07C2404952D00CA6A07 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		CFA6B07D2404952D00CA6A07 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CFA6B07E2404952D00CA6A07 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		CFA6B059240493B700CA6A07 /* Debug */ = {
+		9E7C87E32E5DC9D200056B13 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -348,6 +184,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -356,9 +193,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = XC939GDC9P;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -372,24 +211,25 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		CFA6B05A240493B700CA6A07 /* Release */ = {
+		9E7C87E42E5DC9D200056B13 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -408,6 +248,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -416,9 +257,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = XC939GDC9P;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -426,51 +269,63 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		CFA6B05C240493B700CA6A07 /* Debug */ = {
+		9E7C87E62E5DC9D200056B13 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 400BB11CF7995857A28B6535 /* Pods-TealiumKochavaExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XC939GDC9P;
-				INFOPLIST_FILE = TealiumKochavaExample/Info.plist;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tealium.TealiumKochavaExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		CFA6B05D240493B700CA6A07 /* Release */ = {
+		9E7C87E72E5DC9D200056B13 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AEEBB9979202BB910F43471 /* Pods-TealiumKochavaExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XC939GDC9P;
-				INFOPLIST_FILE = TealiumKochavaExample/Info.plist;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tealium.TealiumKochavaExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -479,25 +334,75 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CFA6B042240493B400CA6A07 /* Build configuration list for PBXProject "TealiumKochavaExample" */ = {
+		9E7C87D52E5DC9D000056B13 /* Build configuration list for PBXProject "TealiumKochavaExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CFA6B059240493B700CA6A07 /* Debug */,
-				CFA6B05A240493B700CA6A07 /* Release */,
+				9E7C87E32E5DC9D200056B13 /* Debug */,
+				9E7C87E42E5DC9D200056B13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CFA6B05B240493B700CA6A07 /* Build configuration list for PBXNativeTarget "TealiumKochavaExample" */ = {
+		9E7C87E52E5DC9D200056B13 /* Build configuration list for PBXNativeTarget "TealiumKochavaExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CFA6B05C240493B700CA6A07 /* Debug */,
-				CFA6B05D240493B700CA6A07 /* Release */,
+				9E7C87E62E5DC9D200056B13 /* Debug */,
+				9E7C87E72E5DC9D200056B13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		9E7C87FD2E5DCDDE00056B13 /* XCLocalSwiftPackageReference "../../tealium-ios-kochava-remote-command" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../tealium-ios-kochava-remote-command";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9E7C87FF2E5DCE1000056B13 /* XCRemoteSwiftPackageReference "tealium-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tealium/tealium-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.18.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9E537BAF2E5DF556004B8253 /* TealiumCollect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E7C87FF2E5DCE1000056B13 /* XCRemoteSwiftPackageReference "tealium-swift" */;
+			productName = TealiumCollect;
+		};
+		9E537BB12E5DF556004B8253 /* TealiumLifecycle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E7C87FF2E5DCE1000056B13 /* XCRemoteSwiftPackageReference "tealium-swift" */;
+			productName = TealiumLifecycle;
+		};
+		9E537BB32E5DF556004B8253 /* TealiumTagManagement */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E7C87FF2E5DCE1000056B13 /* XCRemoteSwiftPackageReference "tealium-swift" */;
+			productName = TealiumTagManagement;
+		};
+		9E7C87FE2E5DCDDE00056B13 /* TealiumKochava */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TealiumKochava;
+		};
+		9E7C88002E5DCE1000056B13 /* TealiumCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E7C87FF2E5DCE1000056B13 /* XCRemoteSwiftPackageReference "tealium-swift" */;
+			productName = TealiumCore;
+		};
+		9E7C88012E5DCE1100056B13 /* TealiumRemoteCommands */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E7C87FF2E5DCE1000056B13 /* XCRemoteSwiftPackageReference "tealium-swift" */;
+			productName = TealiumRemoteCommands;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = CFA6B03F240493B400CA6A07 /* Project object */;
+	rootObject = 9E7C87D22E5DC9D000056B13 /* Project object */;
 }
