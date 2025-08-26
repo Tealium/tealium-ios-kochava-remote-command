@@ -1,6 +1,7 @@
 {
   "config": {
     "app_guid": "YOUR_APP_GUID",
+    "debug": true,
     "log_level": "debug",
     "app_tracking_transparency_enabled": true,
     "att_authorization_wait_time": 30.0,
