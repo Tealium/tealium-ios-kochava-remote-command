@@ -28,7 +28,6 @@ class TealiumHelper: ObservableObject {
         environment: TealiumConfiguration.environment)
 
     var tealium: Tealium? 
-    var kochavaInstance: KochavaInstance?
     
     private init() {
         config.shouldUseRemotePublishSettings = false
@@ -44,12 +43,8 @@ class TealiumHelper: ObservableObject {
                 return
             }
             
-            let kochavaInstance = KochavaInstance()
-            self.kochavaInstance = kochavaInstance
-            
             // Używamy lokalnego pliku JSON z backupem zdalnym
             let kochavaRemoteCommand = KochavaRemoteCommand(
-                kochavaInstance: kochavaInstance,
                 type: .local(file: "kochava")
             )
             
@@ -82,11 +77,6 @@ class TealiumHelper: ObservableObject {
         tealium?.track(tealiumEvent)
     }
     
-
-    
-    // MARK: - Specialized tracking methods for better testing
-    
-    /// Track purchase events with enhanced data
     func trackPurchase(orderId: String, total: Double, currency: String, products: [[String: Any]]?) {
         var purchaseData: [String: Any] = [
             "order_id": orderId,
@@ -102,7 +92,6 @@ class TealiumHelper: ObservableObject {
         trackEvent(title: "order", data: purchaseData)
     }
     
-    /// Track achievement events
     func trackAchievement(achievementId: String, description: String? = nil) {
         var achievementData: [String: Any] = [
             "achievement_id": achievementId
@@ -114,8 +103,7 @@ class TealiumHelper: ObservableObject {
         
         trackEvent(title: "unlock_achievement", data: achievementData)
     }
-    
-    /// Track level completion with score and duration
+
     func trackLevelComplete(level: String, score: Int? = nil, duration: TimeInterval? = nil) {
         var levelData: [String: Any] = [
             "level": level,
@@ -133,7 +121,6 @@ class TealiumHelper: ObservableObject {
         trackEvent(title: "level_complete", data: levelData)
     }
     
-    /// Track registration with method
     func trackRegistration(userId: String, method: String, userData: [String: Any]? = nil) {
         var registrationData: [String: Any] = [
             "customer_id": userId,
@@ -147,7 +134,6 @@ class TealiumHelper: ObservableObject {
         trackEvent(title: "user_register", data: registrationData)
     }
     
-    /// Track login events
     func trackLogin(userId: String, method: String) {
         let loginData: [String: Any] = [
             "customer_id": userId,
@@ -157,7 +143,6 @@ class TealiumHelper: ObservableObject {
         trackEvent(title: "user_login", data: loginData)
     }
     
-    /// Track ad events
     func trackAdEvent(eventType: String, networkName: String, campaignId: String? = nil) {
         var adData: [String: Any] = [
             "ad_network_name": networkName
@@ -170,7 +155,6 @@ class TealiumHelper: ObservableObject {
         trackEvent(title: eventType, data: adData)
     }
     
-    /// Test sleep tracker functionality
     func testSleepTracker(enabled: Bool) {
         let sleepData: [String: Any] = [
             "sleep": enabled
@@ -179,7 +163,6 @@ class TealiumHelper: ObservableObject {
         trackEvent(title: "setsleep", data: sleepData)
     }
     
-    /// Test invalidate functionality
     func testInvalidate() {
         trackEvent(title: "invalidate", data: nil)
     }
@@ -193,12 +176,10 @@ class TealiumHelper: ObservableObject {
         trackEvent(title: "setidentitylinks", data: identityData)
     }
     
-    /// Set single Identity Link
     func setIdentityLink(name: String, identifier: String) {
         setIdentityLinks(identities: [name: identifier])
     }
     
-    /// Common identity links for user login/registration
     func linkUserIdentities(userId: String, email: String? = nil, username: String? = nil, customerId: String? = nil) {
         var identities: [String: String] = [
             "User ID": userId
@@ -219,7 +200,6 @@ class TealiumHelper: ObservableObject {
         setIdentityLinks(identities: identities)
     }
     
-    /// Track deeplink event (unified for all deeplink types)
     func trackDeeplink(url: String, type: String = "standard", activityType: String? = nil, sourceApp: String? = nil) {
         var deeplinkData: [String: Any] = [
             "deeplink_url": url,
@@ -237,12 +217,10 @@ class TealiumHelper: ObservableObject {
         trackEvent(title: "deeplink_test", data: deeplinkData)
     }
     
-    /// Track URL scheme opened (custom scheme) - just calls trackDeeplink
     func trackUrlSchemeOpened(url: String, scheme: String, sourceApp: String? = nil) {
         trackDeeplink(url: url, type: "url_scheme", sourceApp: sourceApp)
     }
     
-    /// Track app launch without deeplink (for deferred deeplink check)
     func trackAppLaunchWithoutDeeplink(launchType: String = "normal") {
         let launchData: [String: Any] = [
             "launch_type": launchType,
@@ -252,11 +230,6 @@ class TealiumHelper: ObservableObject {
         trackEvent(title: "app_launch_no_deeplink", data: launchData)
     }
     
-
-    
-    // MARK: - Custom Values Methods
-    
-    /// Set custom values for user analytics
     func setCustomValues(_ customValues: [String: Any]) {
         let customValuesData: [String: Any] = [
             "custom_values": customValues
@@ -265,19 +238,14 @@ class TealiumHelper: ObservableObject {
         trackEvent(title: "set_custom_values", data: customValuesData)
     }
     
-    /// Update single custom value
     func setCustomValue(name: String, value: Any) {
         setCustomValues([name: value])
     }
     
-    /// Example: Set user tier custom value (common use case)
     func setUserTier(_ tier: String) {
         setCustomValue(name: "subscription_tier", value: tier)
     }
     
-    // MARK: - Additional Remote Commands
-    
-    /// Set App Limit Ad Tracking
     func setAppLimitAdTracking(_ enabled: Bool) {
         let limitAdData: [String: Any] = [
             "limit_ad_tracking": enabled
@@ -286,7 +254,6 @@ class TealiumHelper: ObservableObject {
         trackEvent(title: "setapplimitadtracking", data: limitAdData)
     }
     
-    /// Set Custom Identifiers for user identification
     func setCustomIdentifiers(_ identifiers: [String: String]) {
         let identifierData: [String: Any] = [
             "custom_identifiers": identifiers
@@ -295,17 +262,14 @@ class TealiumHelper: ObservableObject {
         trackEvent(title: "setcustomidentifiers", data: identifierData)
     }
     
-    /// Start Kochava tracking (resume)
     func startTracking() {
         trackEvent(title: "start", data: nil)
     }
     
-    /// Stop Kochava tracking (pause)
     func stopTracking() {
         trackEvent(title: "stop", data: nil)
     }
     
-    /// Create Privacy Profile for GDPR compliance
     func createPrivacyProfile(name: String, datapoints: [String]) {
         let privacyData: [String: Any] = [
             "privacy_profile_name": name,
@@ -315,7 +279,6 @@ class TealiumHelper: ObservableObject {
         trackEvent(title: "create_privacy_profile", data: privacyData)
     }
     
-    /// Set Privacy Profile enabled/disabled
     func setPrivacyProfile(name: String, enabled: Bool) {
         let privacyData: [String: Any] = [
             "privacy_profile_name": name,
