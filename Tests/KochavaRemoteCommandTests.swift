@@ -1,5 +1,5 @@
 //
-//  KochavaInstanceTests.swift
+//  KochavaRemoteCommandTests.swift
 //  TealiumKochavaTests
 //
 //  Copyright © 2020 Tealium. All rights reserved.
@@ -13,29 +13,29 @@ import XCTest
 
 @testable import TealiumKochava
 
-class KochavaInstanceTests: XCTestCase {
+class KochavaRemoteCommandTests: XCTestCase {
 
-    var mockKochavaInstance: MockKochavaInstance!
+    var mockKochavaCommand: MockKochavaCommand!
     var kochavaCommand: KochavaRemoteCommand!
 
     override func setUp() {
-        mockKochavaInstance = MockKochavaInstance()
+        mockKochavaCommand = MockKochavaCommand()
         kochavaCommand = KochavaRemoteCommand(
-            kochavaInstance: mockKochavaInstance
+            kochavaInstance: mockKochavaCommand
         )
     }
 
     override func tearDown() {
-        mockKochavaInstance = nil
+        mockKochavaCommand = nil
         kochavaCommand = nil
     }
 }
 
 // MARK: - onReady Tests
-extension KochavaInstanceTests {
+extension KochavaRemoteCommandTests {
     func testOnReady() {
         kochavaCommand.onReady {}
-        XCTAssertTrue(mockKochavaInstance.didCallOnReady)
+        XCTAssertTrue(mockKochavaCommand.didCallOnReady)
     }
 
     func testOnReadyCalledAfterInitialize() {
@@ -52,7 +52,7 @@ extension KochavaInstanceTests {
 }
 
 // MARK: - processRemoteCommand Tests
-extension KochavaInstanceTests {    
+extension KochavaRemoteCommandTests {    
     func testLoglevel() {
         let payload: [String: Any] = [
             "command_name": "initialize",
@@ -60,7 +60,7 @@ extension KochavaInstanceTests {
             "log_level": "debug",
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(1, self.mockKochavaInstance.logLevelCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.logLevelCount)
     }
 
     func testInitialize() {
@@ -69,7 +69,7 @@ extension KochavaInstanceTests {
             "app_guid": "test",
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(1, self.mockKochavaInstance.initializeCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.initializeCount)
     }
 
     func testInitializeWithIdentityLink() {
@@ -79,14 +79,14 @@ extension KochavaInstanceTests {
             "identity_link_ids": ["email": "test@tealium.com"],
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(1, self.mockKochavaInstance.initializeCount)
-        XCTAssertEqual(1, self.mockKochavaInstance.setIdentityLinksCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.initializeCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.setIdentityLinksCount)
     }
 
     func testInitializeWithoutAppGuid() {
         let payload: [String: Any] = ["command_name": "initialize"]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(0, self.mockKochavaInstance.initializeCount)
+        XCTAssertEqual(0, self.mockKochavaCommand.initializeCount)
     }
 
     func testInitializeWithInvalidLogLevel() {
@@ -96,8 +96,8 @@ extension KochavaInstanceTests {
             "log_level": "invalid_level",
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(1, self.mockKochavaInstance.initializeCount)
-        XCTAssertEqual(0, self.mockKochavaInstance.logLevelCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.initializeCount)
+        XCTAssertEqual(0, self.mockKochavaCommand.logLevelCount)
     }
 
 
@@ -109,9 +109,9 @@ extension KochavaInstanceTests {
             "configuration_params": configParams,
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(1, self.mockKochavaInstance.initializeCount)
-        XCTAssertEqual(1, self.mockKochavaInstance.configureCount)
-        XCTAssertNotNil(self.mockKochavaInstance.lastConfigureObject)
+        XCTAssertEqual(1, self.mockKochavaCommand.initializeCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.configureCount)
+        XCTAssertNotNil(self.mockKochavaCommand.lastConfigureObject)
     }
 
     func testLimitAdTrackingWithInt() {
@@ -121,9 +121,9 @@ extension KochavaInstanceTests {
             "limit_ad_tracking": 1,
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(1, self.mockKochavaInstance.initializeCount)
-        XCTAssertEqual(1, self.mockKochavaInstance.limitAdTrackingCount)
-        XCTAssertEqual(true, self.mockKochavaInstance.lastLimitAdTracking)
+        XCTAssertEqual(1, self.mockKochavaCommand.initializeCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.limitAdTrackingCount)
+        XCTAssertEqual(true, self.mockKochavaCommand.lastLimitAdTracking)
     }
 
     func testSleepWithInt() {
@@ -133,9 +133,9 @@ extension KochavaInstanceTests {
             "sleep": 0,
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(1, self.mockKochavaInstance.initializeCount)
-        XCTAssertEqual(1, self.mockKochavaInstance.setSleepCount)
-        XCTAssertEqual(false, self.mockKochavaInstance.lastSleepTracker)
+        XCTAssertEqual(1, self.mockKochavaCommand.initializeCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.setSleepCount)
+        XCTAssertEqual(false, self.mockKochavaCommand.lastSleepTracker)
     }
 
     func testAppTrackingTransparency() {
@@ -149,11 +149,11 @@ extension KochavaInstanceTests {
         kochavaCommand.processRemoteCommand(with: payload)
         XCTAssertEqual(
             1,
-            self.mockKochavaInstance.setAppTrackingTransparencyCount
+            self.mockKochavaCommand.setAppTrackingTransparencyCount
         )
-        XCTAssertEqual(true, self.mockKochavaInstance.lastATTEnabled)
-        XCTAssertEqual(30.0, self.mockKochavaInstance.lastATTWaitTime)
-        XCTAssertEqual(false, self.mockKochavaInstance.lastATTAutoRequest)
+        XCTAssertEqual(true, self.mockKochavaCommand.lastATTEnabled)
+        XCTAssertEqual(30.0, self.mockKochavaCommand.lastATTWaitTime)
+        XCTAssertEqual(false, self.mockKochavaCommand.lastATTAutoRequest)
     }
 
     func testSendCustomEvent() {
@@ -162,9 +162,9 @@ extension KochavaInstanceTests {
             "event": ["name": "test"],
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(1, self.mockKochavaInstance.sendEventCount)
-        XCTAssertEqual(1, self.mockKochavaInstance.lastSentEvents.count)
-        XCTAssertNotNil(self.mockKochavaInstance.lastSentEvents.last)
+        XCTAssertEqual(1, self.mockKochavaCommand.sendEventCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.lastSentEvents.count)
+        XCTAssertNotNil(self.mockKochavaCommand.lastSentEvents.last)
     }
 
     func testSendCustomEventWithParameters() {
@@ -177,9 +177,9 @@ extension KochavaInstanceTests {
             ],
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(1, self.mockKochavaInstance.sendEventCount)
-        XCTAssertEqual(1, self.mockKochavaInstance.lastSentEvents.count)
-        XCTAssertNotNil(self.mockKochavaInstance.lastSentEvents.last)
+        XCTAssertEqual(1, self.mockKochavaCommand.sendEventCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.lastSentEvents.count)
+        XCTAssertNotNil(self.mockKochavaCommand.lastSentEvents.last)
     }
 
     func testSendIdentityLink() {
@@ -188,13 +188,13 @@ extension KochavaInstanceTests {
             "identity_link_ids": ["email": "test@tealium.com"],
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(1, self.mockKochavaInstance.setIdentityLinksCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.setIdentityLinksCount)
     }
 
     func testInvalidateCommand() {
         let payload: [String: Any] = ["command_name": "invalidate"]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(1, self.mockKochavaInstance.invalidateCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.invalidateCount)
     }
 
     func testMultipleCommands() {
@@ -204,8 +204,8 @@ extension KochavaInstanceTests {
             "sleep": true,
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(1, self.mockKochavaInstance.initializeCount)
-        XCTAssertEqual(2, self.mockKochavaInstance.setSleepCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.initializeCount)
+        XCTAssertEqual(2, self.mockKochavaCommand.setSleepCount)
     }
 
     func testSetCustomIdentifiersCommand() {
@@ -217,10 +217,10 @@ extension KochavaInstanceTests {
             "custom_identifiers": customIdentifiers,
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(1, self.mockKochavaInstance.setCustomIdentifiersCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.setCustomIdentifiersCount)
         XCTAssertEqual(
             customIdentifiers,
-            self.mockKochavaInstance.lastCustomIdentifiers
+            self.mockKochavaCommand.lastCustomIdentifiers
         )
     }
 
@@ -233,28 +233,28 @@ extension KochavaInstanceTests {
             "custom_values": customValues,
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(1, self.mockKochavaInstance.setCustomValuesCount)
-        XCTAssertNotNil(self.mockKochavaInstance.lastCustomValues)
+        XCTAssertEqual(1, self.mockKochavaCommand.setCustomValuesCount)
+        XCTAssertNotNil(self.mockKochavaCommand.lastCustomValues)
         XCTAssertEqual(
             5,
-            self.mockKochavaInstance.lastCustomValues?["level"] as? Int
+            self.mockKochavaCommand.lastCustomValues?["level"] as? Int
         )
         XCTAssertEqual(
             true,
-            self.mockKochavaInstance.lastCustomValues?["premium"] as? Bool
+            self.mockKochavaCommand.lastCustomValues?["premium"] as? Bool
         )
     }
 
     func testStartCommand() {
         let payload: [String: Any] = ["command_name": "start"]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(1, self.mockKochavaInstance.startCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.startCount)
     }
 
     func testStopCommand() {
         let payload: [String: Any] = ["command_name": "stop"]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(1, self.mockKochavaInstance.stopCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.stopCount)
     }
 
     func testCreatePrivacyProfileCommand() {
@@ -266,14 +266,14 @@ extension KochavaInstanceTests {
             "privacy_datapoints": datapoints,
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(1, self.mockKochavaInstance.createPrivacyProfileCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.createPrivacyProfileCount)
         XCTAssertEqual(
             profileName,
-            self.mockKochavaInstance.lastPrivacyProfileName
+            self.mockKochavaCommand.lastPrivacyProfileName
         )
         XCTAssertEqual(
             datapoints,
-            self.mockKochavaInstance.lastPrivacyDatapoints
+            self.mockKochavaCommand.lastPrivacyDatapoints
         )
     }
 
@@ -285,12 +285,12 @@ extension KochavaInstanceTests {
             "privacy_enabled": true,
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(1, self.mockKochavaInstance.setPrivacyProfileCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.setPrivacyProfileCount)
         XCTAssertEqual(
             profileName,
-            self.mockKochavaInstance.lastPrivacyProfileName
+            self.mockKochavaCommand.lastPrivacyProfileName
         )
-        XCTAssertEqual(true, self.mockKochavaInstance.lastPrivacyEnabled)
+        XCTAssertEqual(true, self.mockKochavaCommand.lastPrivacyEnabled)
     }
 
     func testSetCustomIdentifiersWithoutDictionary() {
@@ -299,7 +299,7 @@ extension KochavaInstanceTests {
             "custom_identifiers": "not_a_dictionary",
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(0, self.mockKochavaInstance.setCustomIdentifiersCount)
+        XCTAssertEqual(0, self.mockKochavaCommand.setCustomIdentifiersCount)
     }
 
     func testSetCustomValuesWithoutDictionary() {
@@ -308,7 +308,7 @@ extension KochavaInstanceTests {
             "custom_values": "not_a_dictionary",
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(0, self.mockKochavaInstance.setCustomValuesCount)
+        XCTAssertEqual(0, self.mockKochavaCommand.setCustomValuesCount)
     }
 
     func testSetIdentityLinksWithoutDictionary() {
@@ -317,7 +317,7 @@ extension KochavaInstanceTests {
             "identity_link_ids": "not_a_dictionary",
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(0, self.mockKochavaInstance.setIdentityLinksCount)
+        XCTAssertEqual(0, self.mockKochavaCommand.setIdentityLinksCount)
     }
 
     func testCreatePrivacyProfileWithoutName() {
@@ -326,7 +326,7 @@ extension KochavaInstanceTests {
             "privacy_datapoints": ["device_id"],
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(0, self.mockKochavaInstance.createPrivacyProfileCount)
+        XCTAssertEqual(0, self.mockKochavaCommand.createPrivacyProfileCount)
     }
 
     func testCreatePrivacyProfileWithoutDatapoints() {
@@ -335,7 +335,7 @@ extension KochavaInstanceTests {
             "privacy_profile_name": "TestProfile",
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(0, self.mockKochavaInstance.createPrivacyProfileCount)
+        XCTAssertEqual(0, self.mockKochavaCommand.createPrivacyProfileCount)
     }
 
     func testCreatePrivacyProfileWithInvalidDatapoints() {
@@ -345,7 +345,7 @@ extension KochavaInstanceTests {
             "privacy_datapoints": "not_an_array",
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(0, self.mockKochavaInstance.createPrivacyProfileCount)
+        XCTAssertEqual(0, self.mockKochavaCommand.createPrivacyProfileCount)
     }
 
     func testSetPrivacyProfileWithoutName() {
@@ -354,7 +354,7 @@ extension KochavaInstanceTests {
             "privacy_enabled": true,
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(0, self.mockKochavaInstance.setPrivacyProfileCount)
+        XCTAssertEqual(0, self.mockKochavaCommand.setPrivacyProfileCount)
     }
 
     func testLimitAdTrackingWithoutBool() {
@@ -363,7 +363,7 @@ extension KochavaInstanceTests {
             "limit_ad_tracking": "not_a_bool",
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(0, self.mockKochavaInstance.limitAdTrackingCount)
+        XCTAssertEqual(0, self.mockKochavaCommand.limitAdTrackingCount)
     }
 
     func testSetSleepWithoutBool() {
@@ -372,20 +372,20 @@ extension KochavaInstanceTests {
             "sleep": "not_a_bool",
         ]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(0, self.mockKochavaInstance.setSleepCount)
+        XCTAssertEqual(0, self.mockKochavaCommand.setSleepCount)
     }
 
     func testEmptyCommandName() {
         let payload: [String: Any] = ["command_name": ""]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(0, self.mockKochavaInstance.initializeCount)
-        XCTAssertEqual(0, self.mockKochavaInstance.sendEventCount)
+        XCTAssertEqual(0, self.mockKochavaCommand.initializeCount)
+        XCTAssertEqual(0, self.mockKochavaCommand.sendEventCount)
     }
 
     func testMissingCommandName() {
         let payload: [String: Any] = ["app_guid": "test"]
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(0, self.mockKochavaInstance.initializeCount)
+        XCTAssertEqual(0, self.mockKochavaCommand.initializeCount)
     }
 
     func testAllPredefinedEventTypes() {
@@ -405,13 +405,13 @@ extension KochavaInstanceTests {
 
         XCTAssertEqual(
             eventTypes.count,
-            self.mockKochavaInstance.sendEventCount
+            self.mockKochavaCommand.sendEventCount
         )
         XCTAssertEqual(
             eventTypes.count,
-            self.mockKochavaInstance.lastSentEvents.count
+            self.mockKochavaCommand.lastSentEvents.count
         )
-        for event in self.mockKochavaInstance.lastSentEvents {
+        for event in self.mockKochavaCommand.lastSentEvents {
             XCTAssertNil(event.customEventName)
         }
     }
@@ -436,9 +436,9 @@ extension KochavaInstanceTests {
         ]
 
         kochavaCommand.processRemoteCommand(with: payload)
-        XCTAssertEqual(1, self.mockKochavaInstance.sendEventCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.sendEventCount)
 
-        let sentEvent = self.mockKochavaInstance.lastSentEvents.first!
+        let sentEvent = self.mockKochavaCommand.lastSentEvents.first!
         XCTAssertEqual("EUR", sentEvent.currencyString)
         XCTAssertEqual(49.99, sentEvent.priceDoubleNumber?.doubleValue)
         XCTAssertEqual(3, sentEvent.quantityDoubleNumber?.doubleValue)
@@ -462,13 +462,13 @@ extension KochavaInstanceTests {
         ]
         kochavaCommand.processRemoteCommand(with: payload)
 
-        XCTAssertEqual(1, self.mockKochavaInstance.initializeCount)
-        XCTAssertEqual(1, self.mockKochavaInstance.startCount)
-        XCTAssertEqual(1, self.mockKochavaInstance.sendEventCount)
-        XCTAssertEqual(1, self.mockKochavaInstance.lastSentEvents.count)
+        XCTAssertEqual(1, self.mockKochavaCommand.initializeCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.startCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.sendEventCount)
+        XCTAssertEqual(1, self.mockKochavaCommand.lastSentEvents.count)
         XCTAssertEqual(
             "invalid_command",
-            self.mockKochavaInstance.lastSentEvents.last?.customEventName
+            self.mockKochavaCommand.lastSentEvents.last?.customEventName
         )
     }
 }

@@ -1,5 +1,5 @@
 //
-//  MockKochavaInstance.swift
+//  MockKochavaCommand.swift
 //  TealiumKochavaTests
 //
 //  Copyright © 2020 Tealium. All rights reserved.
@@ -13,7 +13,7 @@ import TealiumRemoteCommands
 import TealiumCore
 @testable import TealiumKochava
 
-class MockKochavaInstance: KochavaCommand {
+class MockKochavaCommand: KochavaCommand {
     
     var didCallOnReady = false
     var setAppTrackingTransparencyCount = 0

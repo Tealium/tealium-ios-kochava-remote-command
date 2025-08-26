@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E7C87CE2E5DBE6300056B13 /* KochavaRemoteCommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C87CC2E5DBE6300056B13 /* KochavaRemoteCommandTests.swift */; };
+		9E7C87CF2E5DBE6300056B13 /* MockKochavaCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C87CD2E5DBE6300056B13 /* MockKochavaCommand.swift */; };
 		9E9659AB2E55322F00D81FAB /* KochavaEventExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9659AA2E55322F00D81FAB /* KochavaEventExtensions.swift */; };
 		9ECF78B82E4E828E004BA3BC /* TealiumCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9ECF78B72E4E828E004BA3BC /* TealiumCore */; };
 		9ECF78BA2E4E828E004BA3BC /* TealiumRemoteCommands in Frameworks */ = {isa = PBXBuildFile; productRef = 9ECF78B92E4E828E004BA3BC /* TealiumRemoteCommands */; };
@@ -16,8 +18,6 @@
 		9ECF78C12E4E86C0004BA3BC /* TealiumKochava.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF97577A2410585300015347 /* TealiumKochava.framework */; };
 		9ECF78C22E4E86C0004BA3BC /* TealiumKochava.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CF97577A2410585300015347 /* TealiumKochava.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF97578B2410585400015347 /* TealiumKochava.h in Headers */ = {isa = PBXBuildFile; fileRef = CF97577D2410585300015347 /* TealiumKochava.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CF9757992410589900015347 /* KochavaInstanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757952410589900015347 /* KochavaInstanceTests.swift */; };
-		CF97579A2410589900015347 /* MockKochavaInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757962410589900015347 /* MockKochavaInstance.swift */; };
 		CF9757BA241058B200015347 /* KochavaRemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97579E241058B100015347 /* KochavaRemoteCommand.swift */; };
 		CF9757BB241058B200015347 /* KochavaInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97579F241058B100015347 /* KochavaInstance.swift */; };
 		CF9757C1241058B200015347 /* KochavaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9757A6241058B100015347 /* KochavaConstants.swift */; };
@@ -50,6 +50,8 @@
 		151C9B60278D8BF100CE7D6E /* KochavaTracker.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = KochavaTracker.xcframework; path = Carthage/Build/KochavaTracker.xcframework; sourceTree = SOURCE_ROOT; };
 		15E5546F278DDEBC0044D9F2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15E55472278DDEC70044D9F2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E7C87CC2E5DBE6300056B13 /* KochavaRemoteCommandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KochavaRemoteCommandTests.swift; sourceTree = "<group>"; };
+		9E7C87CD2E5DBE6300056B13 /* MockKochavaCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockKochavaCommand.swift; sourceTree = "<group>"; };
 		9E9659AA2E55322F00D81FAB /* KochavaEventExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KochavaEventExtensions.swift; sourceTree = "<group>"; };
 		CF89C4062550BA7D008B1F04 /* KochavaCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = KochavaCore.xcframework; path = Carthage/Build/KochavaCore.xcframework; sourceTree = SOURCE_ROOT; };
 		CF89C4072550BA7D008B1F04 /* TealiumCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TealiumCore.xcframework; path = Carthage/Build/TealiumCore.xcframework; sourceTree = SOURCE_ROOT; };
@@ -58,8 +60,6 @@
 		CF97577D2410585300015347 /* TealiumKochava.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TealiumKochava.h; sourceTree = "<group>"; };
 		CF9757832410585300015347 /* TealiumKochavaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TealiumKochavaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF9757942410589800015347 /* TealiumKochavaTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TealiumKochavaTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		CF9757952410589900015347 /* KochavaInstanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KochavaInstanceTests.swift; sourceTree = "<group>"; };
-		CF9757962410589900015347 /* MockKochavaInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockKochavaInstance.swift; sourceTree = "<group>"; };
 		CF97579E241058B100015347 /* KochavaRemoteCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KochavaRemoteCommand.swift; sourceTree = "<group>"; };
 		CF97579F241058B100015347 /* KochavaInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KochavaInstance.swift; sourceTree = "<group>"; };
 		CF9757A6241058B100015347 /* KochavaConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KochavaConstants.swift; sourceTree = "<group>"; };
@@ -111,6 +111,8 @@
 		15E55471278DDEC70044D9F2 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				9E7C87CC2E5DBE6300056B13 /* KochavaRemoteCommandTests.swift */,
+				9E7C87CD2E5DBE6300056B13 /* MockKochavaCommand.swift */,
 				15E55472278DDEC70044D9F2 /* Info.plist */,
 			);
 			path = Support;
@@ -152,8 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				15E55471278DDEC70044D9F2 /* Support */,
-				CF9757962410589900015347 /* MockKochavaInstance.swift */,
-				CF9757952410589900015347 /* KochavaInstanceTests.swift */,
 				CF9757942410589800015347 /* TealiumKochavaTests-Bridging-Header.h */,
 			);
 			path = Tests;
@@ -288,8 +288,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF97579A2410589900015347 /* MockKochavaInstance.swift in Sources */,
-				CF9757992410589900015347 /* KochavaInstanceTests.swift in Sources */,
+				9E7C87CE2E5DBE6300056B13 /* KochavaRemoteCommandTests.swift in Sources */,
+				9E7C87CF2E5DBE6300056B13 /* MockKochavaCommand.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

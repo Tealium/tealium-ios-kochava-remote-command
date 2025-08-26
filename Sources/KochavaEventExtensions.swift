@@ -77,7 +77,7 @@ extension Event {
             case "start_date_object": self.startDate = value as? Date
             
             // Dictionary properties
-            case "info_dictionary": self.infoDictionary = value as? [AnyHashable: Any]
+            case "info_dictionary": self.infoDictionary = (self.infoDictionary ?? [:]).merging(value as? [AnyHashable: Any] ?? [:]) { _, new in new }
             case "payload": self.payloadDictionary = value as? [AnyHashable: Any]
             
             // NSDecimalNumber properties
@@ -85,10 +85,7 @@ extension Event {
             
             default:
                 // Forward compatibility: Unknown properties preserved in infoDictionary
-                // Ensures new Kochava Event properties are not lost in analytics
-                var info = self.infoDictionary ?? [:]
-                info[key] = value
-                self.infoDictionary = info
+                self.infoDictionary = (self.infoDictionary ?? [:]).merging([key: value]) { _, new in new }
             }
         }
     }
